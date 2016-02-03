@@ -40,7 +40,8 @@ _start:
 /* shift 3*7 bits over to access the 7th element in the GPFSEL4 register */
 /* (each zero represents 3 bits) */
 /* GPFSEL4 = 0001000000 */
-    ldr r1, #(1<<21)
+    mov r1, #1
+    lsl r1, #21
     str r1, [r0, #GPIO_GPFSEL4]
 
 	/* Write 1 to the proper bit of a GPIO_GPCLR register */
@@ -49,7 +50,8 @@ _start:
 /* clear the 47th bit in GPCLR to turn the LED on*/
 /* GPCLR0 = 00000000000000000000000000000000 */
 /* GPCLR1 = 00000000000000000100000000000000 */
-    ldr r1, #(1<<15)
+    mov r1, #1
+    lsl r1, #15
 blinky:
     str r1, [r0, #GPIO_GPCLR1]
 

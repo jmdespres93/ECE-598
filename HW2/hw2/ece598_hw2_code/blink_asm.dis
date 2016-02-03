@@ -1,0 +1,48 @@
+
+blink_asm.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00008000 <__start>:
+    8000:	e59f003c 	ldr	r0, [pc, #60]	; 8044 <finished+0x8>
+    8004:	e3a01001 	mov	r1, #1
+    8008:	e1a01a81 	lsl	r1, r1, #21
+    800c:	e5801010 	str	r1, [r0, #16]
+    8010:	e3a01001 	mov	r1, #1
+    8014:	e1a01781 	lsl	r1, r1, #15
+
+00008018 <blinky>:
+    8018:	e580102c 	str	r1, [r0, #44]	; 0x2c
+    801c:	e3a02801 	mov	r2, #65536	; 0x10000
+
+00008020 <delay_on>:
+    8020:	e2522001 	subs	r2, r2, #1
+    8024:	1afffffd 	bne	8020 <delay_on>
+    8028:	e5801020 	str	r1, [r0, #32]
+    802c:	e3a02801 	mov	r2, #65536	; 0x10000
+
+00008030 <delay_off>:
+    8030:	e2522001 	subs	r2, r2, #1
+    8034:	1afffffd 	bne	8030 <delay_off>
+    8038:	eafffff6 	b	8018 <blinky>
+
+0000803c <finished>:
+    803c:	e320f002 	wfe
+    8040:	eafffffd 	b	803c <finished>
+    8044:	20200000 	eorcs	r0, r0, r0
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002541 	andeq	r2, r0, r1, asr #10
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000001b 	andeq	r0, r0, fp, lsl r0
+  10:	4d524105 	ldfmie	f4, [r2, #-20]	; 0xffffffec
+  14:	36373131 			; <UNDEFINED> instruction: 0x36373131
+  18:	2d465a4a 	vstrcs	s11, [r6, #-296]	; 0xfffffed8
+  1c:	07060053 	smlsdeq	r6, r3, r0, r0
+  20:	01090108 	tsteq	r9, r8, lsl #2
+  24:	Address 0x0000000000000024 is out of bounds.
+
