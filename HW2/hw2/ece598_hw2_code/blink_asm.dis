@@ -1,0 +1,28 @@
+
+blink_asm.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00008000 <__start>:
+    8000:	e59f0004 	ldr	r0, [pc, #4]	; 800c <finished+0x8>
+
+00008004 <finished>:
+    8004:	e320f002 	wfe
+    8008:	eafffffd 	b	8004 <finished>
+    800c:	20200000 	eorcs	r0, r0, r0
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002541 	andeq	r2, r0, r1, asr #10
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000001b 	andeq	r0, r0, fp, lsl r0
+  10:	4d524105 	ldfmie	f4, [r2, #-20]	; 0xffffffec
+  14:	36373131 			; <UNDEFINED> instruction: 0x36373131
+  18:	2d465a4a 	vstrcs	s11, [r6, #-296]	; 0xfffffed8
+  1c:	07060053 	smlsdeq	r6, r3, r0, r0
+  20:	01090108 	tsteq	r9, r8, lsl #2
+  24:	Address 0x0000000000000024 is out of bounds.
+

@@ -1,0 +1,60 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD blink_asm.o
+                0x0000000000008000                . = 0x8000
+                0x0000000000008000                __start = .
+                0x0000000000008000                __text_start = .
+
+.text           0x0000000000008000       0x10
+ *(.text.boot)
+ *(.text)
+ .text          0x0000000000008000       0x10 blink_asm.o
+                0x0000000000008000                _start
+
+.glue_7         0x0000000000008010        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x0000000000008010        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000008010        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000008010        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+                0x0000000000009000                . = ALIGN (0x1000)
+                0x0000000000009000                __text_end = .
+                0x0000000000009000                __rodata_start = .
+
+.rodata
+ *(.rodata)
+                0x0000000000009000                . = ALIGN (0x1000)
+                0x0000000000009000                __rodata_end = .
+                0x0000000000009000                __data_start = .
+
+.data           0x0000000000009000        0x0
+ *(.data)
+ .data          0x0000000000009000        0x0 blink_asm.o
+                0x0000000000009000                . = ALIGN (0x1000)
+                0x0000000000009000                __data_end = .
+                0x0000000000009000                __bss_start = .
+
+.bss            0x0000000000009000        0x0
+                0x0000000000009000                bss = .
+ *(.bss)
+ .bss           0x0000000000009000        0x0 blink_asm.o
+                0x0000000000009000                . = ALIGN (0x1000)
+                0x0000000000009000                __bss_end = .
+                0x0000000000009000                __end = .
+OUTPUT(blink_asm.elf elf32-littlearm)
+
+.ARM.attributes
+                0x0000000000000000       0x26
+ .ARM.attributes
+                0x0000000000000000       0x26 blink_asm.o
