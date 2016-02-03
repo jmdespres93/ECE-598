@@ -12,33 +12,33 @@ LOAD boot.o
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000       0xc8
+.text           0x0000000000008000       0xc4
  *(.text.boot)
  .text.boot     0x0000000000008000       0x3c boot.o
                 0x0000000000008000                _start
  *(.text)
- .text          0x000000000000803c       0x8c blink_c.o
+ .text          0x000000000000803c       0x88 blink_c.o
                 0x000000000000803c                main
-                0x0000000000008090                delay
-                0x00000000000100c8                _edata
- .text          0x00000000000080c8        0x0 boot.o
+                0x000000000000808c                delay
+                0x00000000000100c4                _edata
+ .text          0x00000000000080c4        0x0 boot.o
 
-.glue_7         0x00000000000080c8        0x0
+.glue_7         0x00000000000080c4        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000080c8        0x0
+.glue_7t        0x00000000000080c4        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000080c8        0x0
+.vfp11_veneer   0x00000000000080c4        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000080c8        0x0
+.v4_bx          0x00000000000080c4        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000080c8        0x0
+.iplt           0x00000000000080c4        0x0
  .iplt          0x0000000000000000        0x0 boot.o
 
-.rel.dyn        0x00000000000080c8        0x0
+.rel.dyn        0x00000000000080c4        0x0
  .rel.iplt      0x0000000000000000        0x0 boot.o
                 0x0000000000009000                . = ALIGN (0x1000)
                 0x0000000000009000                __text_end = .

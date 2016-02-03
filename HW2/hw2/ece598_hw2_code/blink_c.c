@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 			/* delay */
 
 	// delay as long as possible (maybe) sometimes ints are more than 32 but we can roll with it.
-		delay(0xFFFF);
+		delay(0xFFFFFF);
 
 			/* Write 1 to set the GPIO */
 
@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
 			/* delay */
 
 	// delay as long as possible
-		delay(0xFFFF);
+		delay(0xFFFFFF);
 
 	}
 
