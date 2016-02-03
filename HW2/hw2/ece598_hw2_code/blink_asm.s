@@ -1,3 +1,12 @@
+/*
+ * @author: Jasmine Despres
+ * @name: blink_asm
+ * @date: Feb 3, 2016
+ * @description: This program blinks the status? LED on a raspberry pi B+
+ *******ECE 598 Homework 2*******
+ */
+
+
 
 /* Barebones code to Blink LED on Raspberry Pi board */
 
@@ -28,25 +37,46 @@ _start:
 	/* Write to a GPFSEL resgister to enable GPIO16 or GPIO47 */
 	/* Write 1 to the three-bit field to enable as an output  */
 
-// YOUR CODE HERE
+/* shift 3*7 bits over to access the 7th element in the GPFSEL4 register */
+/* (each zero represents 3 bits) */
+/* GPFSEL4 = 0001000000 */
+    ldr r1, #(1<<21)
+    str r1, [r0, #GPIO_GPFSEL4]
 
 	/* Write 1 to the proper bit of a GPIO_GPCLR register */
 	/* which will turn off that GPIO pin.                 */
 
-// YOUR CODE HERE
+/* clear the 47th bit in GPCLR to turn the LED on*/
+/* GPCLR0 = 00000000000000000000000000000000 */
+/* GPCLR1 = 00000000000000000100000000000000 */
+    ldr r1, #(1<<15)
+blinky:
+    str r1, [r0, #GPIO_GPCLR1]
 
 	/* delay */
 
-// YOUR CODE HERE
+/* decrement r2 until zero flag is set in order to delay */
+    mov r2, #65536
+delay_on:
+    subs r2, r2, #1
+    bne delay_on
 
 	/* Write 1 to the proper bit of a GPIO_GPSET register	*/
 	/* which will turn on that GPIO pin.                    */
+    
+/* set the 47th bit in GPSET to turn the LED off*/
+/* GPSET0 = 00000000000000000000000000000000 */
+/* GPSET1 = 00000000000000000100000000000000 */
+    str r1, [r0, #GPIO_GPSET1]
 
-// YOUR CODE HERE
+/* decrement r2 until zero flag is set in order to delay */
+    mov r2, #65536
+delay_off:
+    subs r2, r2, #1
+    bne delay_off
 
-	/* delay again */
-
-// YOUR CODE HERE
+/*blink foevah */    
+    b blinky
 
 finished:
 	wfe			/* wait for event */

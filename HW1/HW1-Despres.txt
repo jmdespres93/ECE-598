@@ -1,0 +1,45 @@
+Jasmine Despres
+ECE 598 
+Homework 1
+
+(a) What is one of the benefits to using an operating system?
+
+	The operating system takes care of a lot of the things that you don't want to have to include in every program such as hardware initialization. 
+
+(b) What is one downside to using an operating system?
+
+	Since the operating system does so much for the user, it can be hard to tell what it really is doing. It takes a lot of control away from the user that can sometimes be really difficult to get back.
+
+(c) Why is the C language often used for programming operating systems?
+
+	It is relatively low level which often means faster, it is very up front as in it can be translated to and from assembly in a really straightforward way as opposed to other languages that may do some weird things in order to make certain functionalities work, also because of legacy. Operating systems have been written in C for a long time and it would take a lot of time and effort to cahnge it all over.
+
+(d) What is one negative consequence of using C for writing operating systems?
+
+	It can be buggy and have security issues.
+
+(e) Pick an operating system that is *not* Linux, Windows, or Mac OSX and answer the following
+questions:
+	i. What is it called?
+
+		CP/M
+
+	ii. What company is responsible for it?
+
+		Digital Research
+
+	iii. When was it first released?
+
+		1974
+
+	iv. How much does it cost?
+
+		It's now open-source
+
+	v. What type of hardware does it run on?
+
+		it was created for Intel 8080/85-based microcomputers. Originally only for 8-bit processors but eventually migrated to 16-bit processors.
+
+	vi. Why does it exist (what features set it apart from other operating systems)?
+
+		Originally it was the industry standard for microcomputers through the late 70's to mid 80's. It greatly reduced the amount of programming required to install and application on a new manufacturer's computer. (Wikipedia)
