@@ -25,6 +25,7 @@
 .equ GPIO_GPCLR0,	0x28
 .equ GPIO_GPCLR1,	0x2C
 
+.equ DELAY,         0xFF
 
 .globl _start
 _start:
@@ -58,7 +59,7 @@ blinky:
 	/* delay */
 
 /* decrement r2 until zero flag is set in order to delay */
-    mov r2, #65536
+    mov r2, #DELAY
 delay_on:
     subs r2, r2, #1
     bne delay_on
@@ -72,7 +73,7 @@ delay_on:
     str r1, [r0, #GPIO_GPSET1]
 
 /* decrement r2 until zero flag is set in order to delay */
-    mov r2, #65536
+    mov r2, #DELAY
 delay_off:
     subs r2, r2, #1
     bne delay_off

@@ -14,13 +14,13 @@ Disassembly of section .text:
 
 00008018 <blinky>:
     8018:	e580102c 	str	r1, [r0, #44]	; 0x2c
-    801c:	e3a02801 	mov	r2, #65536	; 0x10000
+    801c:	e3a020ff 	mov	r2, #255	; 0xff
 
 00008020 <delay_on>:
     8020:	e2522001 	subs	r2, r2, #1
     8024:	1afffffd 	bne	8020 <delay_on>
     8028:	e5801020 	str	r1, [r0, #32]
-    802c:	e3a02801 	mov	r2, #65536	; 0x10000
+    802c:	e3a020ff 	mov	r2, #255	; 0xff
 
 00008030 <delay_off>:
     8030:	e2522001 	subs	r2, r2, #1
