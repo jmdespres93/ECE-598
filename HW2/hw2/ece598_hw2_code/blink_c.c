@@ -25,7 +25,8 @@ void __attribute__ ((noinline)) delay(int length) {
 
 	volatile int i;
 
-// YOUR CODE HERE
+//continue looping until i==0xFFFF - DELAY
+	for(i=0;i<length;i++);
 
 }
 
@@ -38,24 +39,31 @@ int main(int argc, char **argv) {
 	/* Enable GPIO for the ACT LED by setting proper GPIO_GPFSEL */
 	/* On the Model B this is 16, on the B+ this is 47 */
 
-// YOUR CODE HERE
+// Write 1 to GPIO pin 47. make it an output
+	gpio[GPIO_GPFSEL4] = 1<<21;
 
 	while(1) {
 
-		/* Write 1 to clear the GPIO */
+			/* Write 1 to clear the GPIO */
 
-// YOUR CODE HERE
+	// Write 1 to GPIO pin 47 to clear it. Turns on LED
+		gpio[GPIO_GPCLR1] = 1<<15;
 
-		/* delay */
+			/* delay */
 
-// YOUR CODE HERE
+	// delay as long as possible (maybe) sometimes ints are more than 32 but we can roll with it.
+		delay(0xFFFF);
 
-		/* Write 1 to set the GPIO */
+			/* Write 1 to set the GPIO */
 
-// YOUR CODE HERE
 
-		/* delay */
-// YOUR CODE HERE
+	// Write 1 to GPIO 47 to set it. Turns off LED
+		gpio[GPIO_GPSET1] = 1<<15;
+
+			/* delay */
+
+	// delay as long as possible
+		delay(0xFFFF);
 
 	}
 
