@@ -83,7 +83,5 @@ delay_off1:
     b blinky
 
 finished:
-	wfe			/* wait for event */
-				/* suspend CPU, low-power */
 	b	finished
 

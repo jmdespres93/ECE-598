@@ -11,22 +11,22 @@ LOAD blink_asm.o
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000       0x48
+.text           0x0000000000008000       0x44
  *(.text.boot)
  *(.text)
- .text          0x0000000000008000       0x48 blink_asm.o
+ .text          0x0000000000008000       0x44 blink_asm.o
                 0x0000000000008000                _start
 
-.glue_7         0x0000000000008048        0x0
+.glue_7         0x0000000000008044        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000008048        0x0
+.glue_7t        0x0000000000008044        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000008048        0x0
+.vfp11_veneer   0x0000000000008044        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000008048        0x0
+.v4_bx          0x0000000000008044        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
                 0x0000000000009000                . = ALIGN (0x1000)
                 0x0000000000009000                __text_end = .

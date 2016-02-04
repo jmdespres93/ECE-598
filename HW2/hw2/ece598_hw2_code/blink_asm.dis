@@ -5,7 +5,7 @@ blink_asm.elf:     file format elf32-littlearm
 Disassembly of section .text:
 
 00008000 <__start>:
-    8000:	e59f303c 	ldr	r3, [pc, #60]	; 8044 <finished+0x8>
+    8000:	e59f3038 	ldr	r3, [pc, #56]	; 8040 <finished+0x4>
     8004:	e3a04001 	mov	r4, #1
     8008:	e1a04a84 	lsl	r4, r4, #21
     800c:	e5834010 	str	r4, [r3, #16]
@@ -28,9 +28,8 @@ Disassembly of section .text:
     8038:	eafffff4 	b	8010 <blinky>
 
 0000803c <finished>:
-    803c:	e320f002 	wfe
-    8040:	eafffffd 	b	803c <finished>
-    8044:	20200000 	eorcs	r0, r0, r0
+    803c:	eafffffe 	b	803c <finished>
+    8040:	20200000 	eorcs	r0, r0, r0
 
 Disassembly of section .ARM.attributes:
 
