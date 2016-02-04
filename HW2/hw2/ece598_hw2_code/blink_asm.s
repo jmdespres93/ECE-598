@@ -30,7 +30,7 @@
 .globl _start
 _start:
 
-blinky:
+
 	/* Load the GPIO region into r3 */
 	ldr	r3,=GPIO_BASE
 
@@ -56,7 +56,8 @@ blinky:
 
     mov r4, #1
     lsl r4, #15
-    str r4, [r3, #GPIO_GPSET1]
+blinky:
+    str r4, [r3, #GPIO_GPCLR1]
 
 	/* delay */
 
@@ -72,7 +73,7 @@ delay_on1:
 /* set the 47th bit in GPSET to turn the LED off*/
 /* GPSET0 = 00000000000000000000000000000000 */
 /* GPSET1 = 00000000000000000100000000000000 */
-    str r4, [r3, #GPIO_GPCLR1]
+    str r4, [r3, #GPIO_GPSET1]
 
 /* decrement r5 until zero flag is set in order to delay */
     mov r5, #DELAY

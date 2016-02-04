@@ -4,7 +4,7 @@ HW2
 Name: Jasmine Despres
 
 Answers to Questions:
-8a. The C program is bigger. C requires more background information for it to run. It's doing a lot more in the background than what we are fully aware of. The kernel.img was billions of times larger.
+8a. The C program is bigger. C requires more background information for it to run. It's doing a lot more in the background than what we are fully aware of. Also I now see that the image must include the assembly necessary for C on top of the blinking code. The kernel.img was billions of times larger.
 
 8b. The volatile keyword tells the compiler that an outside program can change that variable, therefore, it cannot optimize it away. Every time that variable is used, it must be pulled from memory.
 

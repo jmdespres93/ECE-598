@@ -25,7 +25,7 @@ void __attribute__ ((noinline)) delay(int length) {
 
 	volatile int i;
 
-//continue looping until i==0xFFFF - DELAY
+//continue looping until it reaches length - DELAY
 	for(i=0;i<length;i++);
 
 }
@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
 
 			/* delay */
 
-	// delay as long as possible (maybe) sometimes ints are more than 32 but we can roll with it.
+	// delay awhile
 		delay(0xFFFFFF);
 
 			/* Write 1 to set the GPIO */
@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
 
 			/* delay */
 
-	// delay as long as possible
+	// delay awhile
 		delay(0xFFFFFF);
 
 	}
