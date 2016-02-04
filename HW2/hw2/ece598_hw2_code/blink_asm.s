@@ -52,9 +52,9 @@ _start:
 /* GPCLR0 = 00000000000000000000000000000000 */
 /* GPCLR1 = 00000000000000000100000000000000 */
 
+blinky:
     mov r4, #1
     lsl r4, #15
-blinky:
     str r4, [r3, #GPIO_GPSET1]
 
 	/* delay */
@@ -62,10 +62,6 @@ blinky:
 /* decrement r5 until zero flag is set in order to delay */
     mov r5, #DELAY
 delay_on1:
-    mov r6, #DELAY
-delay_on:
-    subs r6, r6, #1
-    bne delay_on
     subs r5, r5, #1
     bne delay_on1
 
@@ -80,10 +76,6 @@ delay_on:
 /* decrement r5 until zero flag is set in order to delay */
     mov r5, #DELAY
 delay_off1:
-    mov r6, #DELAY
-delay_off:
-    subs r6, r6, #1
-    bne delay_on
     subs r5, r5, #1
     bne delay_on1
 

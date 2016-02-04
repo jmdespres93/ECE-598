@@ -5,42 +5,32 @@ blink_asm.elf:     file format elf32-littlearm
 Disassembly of section .text:
 
 00008000 <__start>:
-    8000:	e59f3054 	ldr	r3, [pc, #84]	; 805c <finished+0x8>
+    8000:	e59f303c 	ldr	r3, [pc, #60]	; 8044 <finished+0x8>
     8004:	e3a04001 	mov	r4, #1
     8008:	e1a04a84 	lsl	r4, r4, #21
     800c:	e5834010 	str	r4, [r3, #16]
+
+00008010 <blinky>:
     8010:	e3a04001 	mov	r4, #1
     8014:	e1a04784 	lsl	r4, r4, #15
-
-00008018 <blinky>:
     8018:	e5834020 	str	r4, [r3, #32]
     801c:	e3a050ff 	mov	r5, #255	; 0xff
 
 00008020 <delay_on1>:
-    8020:	e3a060ff 	mov	r6, #255	; 0xff
+    8020:	e2555001 	subs	r5, r5, #1
+    8024:	1afffffd 	bne	8020 <delay_on1>
+    8028:	e583402c 	str	r4, [r3, #44]	; 0x2c
+    802c:	e3a050ff 	mov	r5, #255	; 0xff
 
-00008024 <delay_on>:
-    8024:	e2566001 	subs	r6, r6, #1
-    8028:	1afffffd 	bne	8024 <delay_on>
-    802c:	e2555001 	subs	r5, r5, #1
-    8030:	1afffffa 	bne	8020 <delay_on1>
-    8034:	e583402c 	str	r4, [r3, #44]	; 0x2c
-    8038:	e3a050ff 	mov	r5, #255	; 0xff
+00008030 <delay_off1>:
+    8030:	e2555001 	subs	r5, r5, #1
+    8034:	1afffff9 	bne	8020 <delay_on1>
+    8038:	eafffff4 	b	8010 <blinky>
 
-0000803c <delay_off1>:
-    803c:	e3a060ff 	mov	r6, #255	; 0xff
-
-00008040 <delay_off>:
-    8040:	e2566001 	subs	r6, r6, #1
-    8044:	1afffff6 	bne	8024 <delay_on>
-    8048:	e2555001 	subs	r5, r5, #1
-    804c:	1afffff3 	bne	8020 <delay_on1>
-    8050:	eafffff0 	b	8018 <blinky>
-
-00008054 <finished>:
-    8054:	e320f002 	wfe
-    8058:	eafffffd 	b	8054 <finished>
-    805c:	20200000 	eorcs	r0, r0, r0
+0000803c <finished>:
+    803c:	e320f002 	wfe
+    8040:	eafffffd 	b	803c <finished>
+    8044:	20200000 	eorcs	r0, r0, r0
 
 Disassembly of section .ARM.attributes:
 
