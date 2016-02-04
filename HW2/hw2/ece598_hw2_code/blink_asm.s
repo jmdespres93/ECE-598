@@ -30,6 +30,7 @@
 .globl _start
 _start:
 
+blinky:
 	/* Load the GPIO region into r3 */
 	ldr	r3,=GPIO_BASE
 
@@ -52,7 +53,7 @@ _start:
 /* GPCLR0 = 00000000000000000000000000000000 */
 /* GPCLR1 = 00000000000000000100000000000000 */
 
-blinky:
+
     mov r4, #1
     lsl r4, #15
     str r4, [r3, #GPIO_GPSET1]
