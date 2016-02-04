@@ -60,9 +60,13 @@ blinky:
 
 /* decrement r2 until zero flag is set in order to delay */
     mov r2, #DELAY
+delay_on1:
+    mov r3, #DELAY
 delay_on:
-    subs r2, r2, #1
+    subs r3, r3, #1
     bne delay_on
+    subs r2, r2, #1
+    bne delay_on1
 
 	/* Write 1 to the proper bit of a GPIO_GPSET register	*/
 	/* which will turn on that GPIO pin.                    */
@@ -74,9 +78,13 @@ delay_on:
 
 /* decrement r2 until zero flag is set in order to delay */
     mov r2, #DELAY
+delay_off1:
+    mov r3, #DELAY
 delay_off:
+    subs r3, r3, #1
+    bne delay_on
     subs r2, r2, #1
-    bne delay_off
+    bne delay_on1
 
 /*blink foevah */    
     b blinky
