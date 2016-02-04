@@ -1,13 +1,13 @@
 ECE598 Advanced Operating Systems
 HW2
 
-Name:
+Name: Jasmine Despres
 
 Answers to Questions:
-8a.
+8a. The C program is bigger. C requires more background information for it to run. It's doing a lot more in the background than what we are fully aware of. The kernel.img was billions of times larger.
 
-8b.
+8b. The volatile keyword tells the compiler that an outside program can change that variable, therefore, it cannot optimize it away. Every time that variable is used, it must be pulled from memory.
 
-8c.
+8c. In the assembly program GPIO_GPCLR0 is a physical offset. Meaning, if you want to access the GPIO_GPCLR0 part of memory, offset everything to 0x28 starting at the GPIO_BASE. In C, though, GPIO_BASE is being pointed to by gpio meaning each different section can be indexed to by accessing it as an array. 
 
-8d.
+8d. SPI1_CE2_N: SPI1 Chip select 2

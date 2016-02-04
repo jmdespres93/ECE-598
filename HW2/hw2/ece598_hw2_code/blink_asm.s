@@ -30,8 +30,8 @@
 .globl _start
 _start:
 
-	/* Load the GPIO region into r0 */
-	ldr	r0,=GPIO_BASE
+	/* Load the GPIO region into r3 */
+	ldr	r3,=GPIO_BASE
 
 	/* The ACT LED is hooked up to GPIO16 on a B, GPIO47 on B+/A+ */
 
@@ -41,9 +41,9 @@ _start:
 /* shift 3*7 bits over to access the 7th element in the GPFSEL4 register */
 /* (each zero represents 3 bits) */
 /* GPFSEL4 = 0001000000 */
-    mov r1, #1
-    lsl r1, #21
-    str r1, [r0, #GPIO_GPFSEL4]
+    mov r4, #1
+    lsl r4, #21
+    str r4, [r3, #GPIO_GPFSEL4]
 
 	/* Write 1 to the proper bit of a GPIO_GPCLR register */
 	/* which will turn off that GPIO pin.                 */
@@ -52,21 +52,21 @@ _start:
 /* GPCLR0 = 00000000000000000000000000000000 */
 /* GPCLR1 = 00000000000000000100000000000000 */
 
-    mov r1, #1
-    lsl r1, #15
+    mov r4, #1
+    lsl r4, #15
 blinky:
-    str r1, [r0, #GPIO_GPSET1]
+    str r4, [r3, #GPIO_GPSET1]
 
 	/* delay */
 
-/* decrement r2 until zero flag is set in order to delay */
-    mov r2, #DELAY
+/* decrement r5 until zero flag is set in order to delay */
+    mov r5, #DELAY
 delay_on1:
-    mov r3, #DELAY
+    mov r6, #DELAY
 delay_on:
-    subs r3, r3, #1
+    subs r6, r6, #1
     bne delay_on
-    subs r2, r2, #1
+    subs r5, r5, #1
     bne delay_on1
 
 	/* Write 1 to the proper bit of a GPIO_GPSET register	*/
@@ -75,16 +75,16 @@ delay_on:
 /* set the 47th bit in GPSET to turn the LED off*/
 /* GPSET0 = 00000000000000000000000000000000 */
 /* GPSET1 = 00000000000000000100000000000000 */
-    str r1, [r0, #GPIO_GPCLR1]
+    str r4, [r3, #GPIO_GPCLR1]
 
-/* decrement r2 until zero flag is set in order to delay */
-    mov r2, #DELAY
+/* decrement r5 until zero flag is set in order to delay */
+    mov r5, #DELAY
 delay_off1:
-    mov r3, #DELAY
+    mov r6, #DELAY
 delay_off:
-    subs r3, r3, #1
+    subs r6, r6, #1
     bne delay_on
-    subs r2, r2, #1
+    subs r5, r5, #1
     bne delay_on1
 
 /*blink foevah */    
