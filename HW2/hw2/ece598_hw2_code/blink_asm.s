@@ -51,10 +51,11 @@ _start:
 /* clear the 47th bit in GPCLR to turn the LED on*/
 /* GPCLR0 = 00000000000000000000000000000000 */
 /* GPCLR1 = 00000000000000000100000000000000 */
+
     mov r1, #1
     lsl r1, #15
 blinky:
-    str r1, [r0, #GPIO_GPCLR1]
+    str r1, [r0, #GPIO_GPSET1]
 
 	/* delay */
 
@@ -74,7 +75,7 @@ delay_on:
 /* set the 47th bit in GPSET to turn the LED off*/
 /* GPSET0 = 00000000000000000000000000000000 */
 /* GPSET1 = 00000000000000000100000000000000 */
-    str r1, [r0, #GPIO_GPSET1]
+    str r1, [r0, #GPIO_GPCLR1]
 
 /* decrement r2 until zero flag is set in order to delay */
     mov r2, #DELAY
