@@ -1,0 +1,112 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD kernel_main.o
+LOAD boot.o
+LOAD console_io.o
+LOAD printk.o
+LOAD serial.o
+                0x0000000000008000                . = 0x8000
+                0x0000000000008000                __start = .
+                0x0000000000008000                __text_start = .
+
+.text           0x0000000000008000      0x324
+ *(.text.boot)
+ .text.boot     0x0000000000008000       0x3c boot.o
+                0x0000000000008000                _start
+ *(.text)
+ .text          0x000000000000803c       0x24 kernel_main.o
+                0x000000000000803c                kernel_main
+ .text          0x0000000000008060        0x0 boot.o
+ .text          0x0000000000008060        0xc console_io.o
+                0x0000000000008060                console_write
+ .text          0x000000000000806c      0x18c printk.o
+                0x000000000000806c                printk
+ .text          0x00000000000081f8      0x12c serial.o
+                0x00000000000081f8                uart_init
+                0x0000000000008294                uart_putc
+                0x00000000000082b8                uart_getc
+                0x00000000000082e0                uart_write
+
+.glue_7         0x0000000000008324        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x0000000000008324        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000008324        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000008324        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000008324        0x0
+ .iplt          0x0000000000000000        0x0 kernel_main.o
+                0x0000000000009000                . = ALIGN (0x1000)
+                0x0000000000009000                __text_end = .
+                0x0000000000009000                __rodata_start = .
+
+.rodata
+ *(.rodata)
+
+.rodata.str1.4  0x0000000000009000       0x20
+ .rodata.str1.4
+                0x0000000000009000       0x20 kernel_main.o
+
+.rel.dyn        0x0000000000009020        0x0
+ .rel.iplt      0x0000000000000000        0x0 kernel_main.o
+                0x000000000000a000                . = ALIGN (0x1000)
+                0x000000000000a000                __rodata_end = .
+                0x000000000000a000                __data_start = .
+
+.data           0x000000000000a000        0x0
+ *(.data)
+ .data          0x000000000000a000        0x0 kernel_main.o
+ .data          0x000000000000a000        0x0 boot.o
+ .data          0x000000000000a000        0x0 console_io.o
+ .data          0x000000000000a000        0x0 printk.o
+ .data          0x000000000000a000        0x0 serial.o
+
+.igot.plt       0x000000000000a000        0x0
+ .igot.plt      0x0000000000000000        0x0 kernel_main.o
+                0x000000000000a000                . = ALIGN (0x1000)
+                0x000000000000a000                __data_end = .
+                0x000000000000a000                __bss_start = .
+
+.bss            0x000000000000a000        0x0
+                0x000000000000a000                bss = .
+ *(.bss)
+ .bss           0x000000000000a000        0x0 kernel_main.o
+ .bss           0x000000000000a000        0x0 boot.o
+ .bss           0x000000000000a000        0x0 console_io.o
+ .bss           0x000000000000a000        0x0 printk.o
+ .bss           0x000000000000a000        0x0 serial.o
+                0x000000000000a000                . = ALIGN (0x1000)
+                0x000000000000a000                __bss_end = .
+                0x000000000000a000                __end = .
+OUTPUT(kernel.elf elf32-littlearm)
+
+.comment        0x0000000000000000       0x1f
+ .comment       0x0000000000000000       0x1f kernel_main.o
+                                         0x20 (size before relaxing)
+ .comment       0x0000000000000000       0x20 console_io.o
+ .comment       0x0000000000000000       0x20 printk.o
+ .comment       0x0000000000000000       0x20 serial.o
+
+.ARM.attributes
+                0x0000000000000000       0x36
+ .ARM.attributes
+                0x0000000000000000       0x38 kernel_main.o
+ .ARM.attributes
+                0x0000000000000038       0x26 boot.o
+ .ARM.attributes
+                0x000000000000005e       0x38 console_io.o
+ .ARM.attributes
+                0x0000000000000096       0x38 printk.o
+ .ARM.attributes
+                0x00000000000000ce       0x38 serial.o
