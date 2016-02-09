@@ -41,14 +41,13 @@ void uart_init(void) {
 	/* UART_CLOCK = 3000000; Baud = 115200.        */
 
 // calculate divider and set IBRD/FBRD registers
-	divider = 300000/(16*115200);
+	divider = 3000000/(16*115200);
 	whole   = (int)divider;
 	dec     = divider-whole;
 	dec     = (dec*64) + .5;
-	dec 	= (int)dec;
 
 	mmio_write(UART0_IBRD, whole);
-	mmio_write(UART0_FBRD, dec);
+	mmio_write(UART0_FBRD, (int)dec);
 
 	/* Set up the Line Control Register */
 	/* Set length to 8 bit */
