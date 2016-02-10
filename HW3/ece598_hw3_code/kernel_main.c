@@ -20,6 +20,8 @@
 #define GPIO_GPCLR0	10
 #define GPIO_GPCLR1	11
 
+#define KMAG  "\x1B[35m"
+
 /* Reference to the GPIO space */
 /* An array of 32-bit integers */
 volatile uint32_t *gpio;
@@ -84,7 +86,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 gpio[GPIO_GPCLR1] = 1<<15;
 
 	/* Print boot message */
-// YOUR CODE HERE
+	printk("┊┊ ☆┊┊┊┊☆┊┊☆ ┊┊┊┊┊\r\n┈┈┈┈╭━━━━━━╮┊☆ ┊┊\r\n┈☆ ┈┈┃╳╳╳▕╲▂▂╱▏┊┊\r\n┈┈☆ ┈┃╳╳╳▕▏▍▕▍▏┊┊\r\b┈┈╰━┫╳╳╳▕▏╰┻╯▏┊┊\r\n☆ ┈┈┈┃╳╳╳╳╲▂▂╱┊┊┊\r\n┊┊☆┊╰┳┳━━┳┳╯┊ ┊ ☆┊\r\n", KMAG);
 
 	/* Print hardware version */
 // YOUR CODE HERE
