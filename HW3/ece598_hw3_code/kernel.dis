@@ -233,7 +233,7 @@ Disassembly of section .text:
     8314:	e3a02028 	mov	r2, #40	; 0x28
     8318:	e2833004 	add	r3, r3, #4
     831c:	e5832000 	str	r2, [r3]
-    8320:	e3a02060 	mov	r2, #96	; 0x60
+    8320:	e3a02070 	mov	r2, #112	; 0x70
     8324:	e2833004 	add	r3, r3, #4
     8328:	e5832000 	str	r2, [r3]
     832c:	e59f2018 	ldr	r2, [pc, #24]	; 834c <__delay_16+0x6c>

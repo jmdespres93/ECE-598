@@ -42,7 +42,7 @@ void uart_init(void) {
 	/* Set up the Line Control Register */
 	/* Set length to 8 bit */
 	/* Defaults for other bit are No parity, 1 stop bit */
-	mmio_write(UART0_LCRH, UART0_LCRH_WLEN_8BIT);
+	 mmio_write(UART0_LCRH, UART0_LCRH_FEN | UART0_LCRH_WLEN_8BIT);
 
 	/* Enable UART0, receive, and transmit */
 	mmio_write(UART0_CR, (1 << 0) | (1 << 8) | (1 << 9));
