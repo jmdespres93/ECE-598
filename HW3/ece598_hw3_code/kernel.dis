@@ -34,13 +34,13 @@ Disassembly of section .text:
     8050:	e5823000 	str	r3, [r2]
     8054:	e5830010 	str	r0, [r3, #16]
     8058:	e3e024ff 	mvn	r2, #-16777216	; 0xff000000
-    805c:	e583102c 	str	r1, [r3, #44]	; 0x2c
+    805c:	e5831020 	str	r1, [r3, #32]
 
 00008060 <__delay_14>:
     8060:	e2522001 	subs	r2, r2, #1
     8064:	1afffffd 	bne	8060 <__delay_14>
     8068:	e3a02902 	mov	r2, #32768	; 0x8000
-    806c:	e5832020 	str	r2, [r3, #32]
+    806c:	e583202c 	str	r2, [r3, #44]	; 0x2c
     8070:	eb00006e 	bl	8230 <uart_init>
     8074:	e59f0018 	ldr	r0, [pc, #24]	; 8094 <__delay_14+0x34>
     8078:	eb000009 	bl	80a4 <printk>

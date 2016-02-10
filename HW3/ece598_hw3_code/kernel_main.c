@@ -39,7 +39,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 			/* Write 1 to clear the GPIO */
 
 	// Write 1 to GPIO pin 47 to clear it. Turns on LED
-		gpio[GPIO_GPCLR1] = 1<<15;
+		gpio[GPIO_GPSET1] = 1<<15;
 
 			/* delay */
 
@@ -50,7 +50,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 
 
 	// Write 1 to GPIO 47 to set it. Turns off LED
-		gpio[GPIO_GPSET1] = 1<<15;
+		gpio[GPIO_GPCLR1] = 1<<15;
 
 	char input_string[256];
 	int input_pointer;
