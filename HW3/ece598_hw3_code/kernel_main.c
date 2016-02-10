@@ -91,6 +91,10 @@ gpio[GPIO_GPCLR1] = 1<<15;
 
 	/* Loop forever, echoing what is typed */
 	while (1) {
+	gpio[GPIO_GPSET1] = 1<<15;	
+	delay(0xFFFFFF);
 		uart_putc(uart_getc());
+		gpio[GPIO_GPCLR1] = 1<<15;
+			delay(0xFFFFFF);
 	}
 }
