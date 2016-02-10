@@ -60,7 +60,21 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 
 	/* Initialize Hardware */
 	uart_init();
+		// delay awhile
+		delay(0xFFFFFF);
+	// Write 1 to GPIO pin 47 to clear it. Turns on LED
+		gpio[GPIO_GPSET1] = 1<<15;
 
+			/* delay */
+
+	// delay awhile
+		delay(0xFFFFFF);
+
+			/* Write 1 to set the GPIO */
+
+
+	// Write 1 to GPIO 47 to set it. Turns off LED
+		gpio[GPIO_GPCLR1] = 1<<15;
 	/* Pause so we don't scroll away boot messages before */
 	/* The terminal emulator is ready */
 	printk("Press any key to continue...\r\n");
