@@ -78,7 +78,10 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 	/* Pause so we don't scroll away boot messages before */
 	/* The terminal emulator is ready */
 	printk("Press any key to continue...\r\n");
+	gpio[GPIO_GPSET1] = 1<<15;	
+	delay(0xFFFFFF);
 	uart_getc();
+gpio[GPIO_GPCLR1] = 1<<15;
 
 	/* Print boot message */
 // YOUR CODE HERE

@@ -20,37 +20,37 @@ LOAD serial.o
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000      0x390
+.text           0x0000000000008000      0x3b8
  *(.text.boot)
  .text.boot     0x0000000000008000       0x3c boot.o
                 0x0000000000008000                _start
  *(.text)
- .text          0x000000000000803c       0x8c kernel_main.o
+ .text          0x000000000000803c       0xb4 kernel_main.o
                 0x000000000000803c                kernel_main
- .text          0x00000000000080c8        0x0 boot.o
- .text          0x00000000000080c8        0xc console_io.o
-                0x00000000000080c8                console_write
- .text          0x00000000000080d4      0x18c printk.o
-                0x00000000000080d4                printk
- .text          0x0000000000008260      0x130 serial.o
-                0x0000000000008260                uart_init
-                0x0000000000008300                uart_putc
-                0x0000000000008324                uart_getc
-                0x000000000000834c                uart_write
+ .text          0x00000000000080f0        0x0 boot.o
+ .text          0x00000000000080f0        0xc console_io.o
+                0x00000000000080f0                console_write
+ .text          0x00000000000080fc      0x18c printk.o
+                0x00000000000080fc                printk
+ .text          0x0000000000008288      0x130 serial.o
+                0x0000000000008288                uart_init
+                0x0000000000008328                uart_putc
+                0x000000000000834c                uart_getc
+                0x0000000000008374                uart_write
 
-.glue_7         0x0000000000008390        0x0
+.glue_7         0x00000000000083b8        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000008390        0x0
+.glue_7t        0x00000000000083b8        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000008390        0x0
+.vfp11_veneer   0x00000000000083b8        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000008390        0x0
+.v4_bx          0x00000000000083b8        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000008390        0x0
+.iplt           0x00000000000083b8        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x0000000000009000                . = ALIGN (0x1000)
                 0x0000000000009000                __text_end = .
