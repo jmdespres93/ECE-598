@@ -45,7 +45,7 @@ void uart_init(void) {
 	mmio_write(UART0_LCRH, UART0_LCRH_WLEN_8BIT);
 
 	/* Enable UART0, receive, and transmit */
-	mmio_write(UART0_CR, UART0_CR_UARTEN | UART0_CR_TXE | UART0_CR_RXE);
+	mmio_write(UART0_CR, (1 << 0) | (1 << 8) | (1 << 9));
 
 }
 
