@@ -4,8 +4,53 @@
 #include "printk.h"
 #include "delay.h"
 
+/* Values from the BCM2835-ARM-Peripherals.pdf manual */
+#define GPIO_BASE	0x20200000
+
+#define GPIO_GPFSEL0	0
+#define GPIO_GPFSEL1	1
+#define GPIO_GPFSEL2	2
+#define GPIO_GPFSEL3	3
+#define GPIO_GPFSEL4	4
+
+
+#define GPIO_GPSET0	7
+#define GPIO_GPSET1	8
+
+#define GPIO_GPCLR0	10
+#define GPIO_GPCLR1	11
+
+/* Reference to the GPIO space */
+/* An array of 32-bit integers */
+volatile uint32_t *gpio;
+
+
 
 void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
+	/* Point to the physical GPIO region */
+	gpio = (uint32_t *)GPIO_BASE;
+
+	/* Enable GPIO for the ACT LED by setting proper GPIO_GPFSEL */
+	/* On the Model B this is 16, on the B+ this is 47 */
+
+// Write 1 to GPIO pin 47. make it an output
+	gpio[GPIO_GPFSEL4] = 1<<21;
+
+			/* Write 1 to clear the GPIO */
+
+	// Write 1 to GPIO pin 47 to clear it. Turns on LED
+		gpio[GPIO_GPCLR1] = 1<<15;
+
+			/* delay */
+
+	// delay awhile
+		delay(0xFFFFFF);
+
+			/* Write 1 to set the GPIO */
+
+
+	// Write 1 to GPIO 47 to set it. Turns off LED
+		gpio[GPIO_GPSET1] = 1<<15;
 
 	char input_string[256];
 	int input_pointer;
