@@ -7,9 +7,6 @@
 
 void uart_init(void) {
 
-// variables to hold the entire divider, the whole part, and the decimal parts of divider
-	float divider, dec;
-	int whole;
 	/* Disable UART */
 	mmio_write(UART0_CR, 0x0);
 
@@ -39,15 +36,8 @@ void uart_init(void) {
 	/* Integer part register = integer part of Divider */
 	/* Fraction part register = (Fractional part * 64) + 0.5 */
 	/* UART_CLOCK = 3000000; Baud = 115200.        */
-
-// calculate divider and set IBRD/FBRD registers
-	divider = 3000000/(16*115200);
-	whole   = (int)divider;
-	dec     = divider-whole;
-	dec     = (dec*64) + .5;
-
-	mmio_write(UART0_IBRD, whole);
-	mmio_write(UART0_FBRD, (int)dec);
+	mmio_write(UART0_IBRD, 1);
+	mmio_write(UART0_FBRD, 40);
 
 	/* Set up the Line Control Register */
 	/* Set length to 8 bit */
