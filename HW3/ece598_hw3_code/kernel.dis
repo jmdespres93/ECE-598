@@ -57,7 +57,7 @@ Disassembly of section .text:
     80a4:	0000a000 	andeq	sl, r0, r0
     80a8:	00009000 	andeq	r9, r0, r0
     80ac:	00009020 	andeq	r9, r0, r0, lsr #32
-    80b0:	000091bc 			; <UNDEFINED> instruction: 0x000091bc
+    80b0:	000091c0 	andeq	r9, r0, r0, asr #3
 
 000080b4 <console_write>:
     80b4:	e92d4008 	push	{r3, lr}
@@ -328,47 +328,48 @@ Disassembly of section .rodata.str1.4:
     9114:	5f2d5f0a 	svcpl	0x002d5f0a
     9118:	5f2d5f2d 	svcpl	0x002d5f2d
     911c:	5f2d5f2d 	svcpl	0x002d5f2d
-    9120:	202d5f2d 	eorcs	r5, sp, sp, lsr #30
-    9124:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9128:	0d202020 	stceq	0, cr2, [r0, #-128]!	; 0xffffff80
-    912c:	20202b0a 	eorcs	r2, r0, sl, lsl #22
-    9130:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9134:	2020206f 	eorcs	r2, r0, pc, rrx
-    9138:	20202020 	eorcs	r2, r0, r0, lsr #32
-    913c:	206f2020 	rsbcs	r2, pc, r0, lsr #32
-    9140:	202b2020 	eorcs	r2, fp, r0, lsr #32
-    9144:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9148:	0d6f2020 	stcleq	0, cr2, [pc, #-128]!	; 90d0 <__rodata_start+0xd0>
-    914c:	2020200a 	eorcs	r2, r0, sl
-    9150:	20202b20 	eorcs	r2, r0, r0, lsr #22
-    9154:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9158:	2b202020 	blcs	8111e0 <__bss_end+0x8061e0>
-    915c:	206f0a0d 	rsbcs	r0, pc, sp, lsl #20
-    9160:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9164:	6f202020 	svcvs	0x00202020
-    9168:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9120:	222d5f2d 	eorcs	r5, sp, #45, 30	; 0xb4
+    9124:	22202022 	eorcs	r2, r0, #34	; 0x22
+    9128:	20202022 	eorcs	r2, r0, r2, lsr #32
+    912c:	0d202020 	stceq	0, cr2, [r0, #-128]!	; 0xffffff80
+    9130:	20202b0a 	eorcs	r2, r0, sl, lsl #22
+    9134:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9138:	2020206f 	eorcs	r2, r0, pc, rrx
+    913c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9140:	206f2020 	rsbcs	r2, pc, r0, lsr #32
+    9144:	202b2020 	eorcs	r2, fp, r0, lsr #32
+    9148:	20202020 	eorcs	r2, r0, r0, lsr #32
+    914c:	0d6f2020 	stcleq	0, cr2, [pc, #-128]!	; 90d4 <__rodata_start+0xd4>
+    9150:	2020200a 	eorcs	r2, r0, sl
+    9154:	20202b20 	eorcs	r2, r0, r0, lsr #22
+    9158:	20202020 	eorcs	r2, r0, r0, lsr #32
+    915c:	2b202020 	blcs	8111e4 <__bss_end+0x8061e4>
+    9160:	206f0a0d 	rsbcs	r0, pc, sp, lsl #20
+    9164:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9168:	6f202020 	svcvs	0x00202020
     916c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9170:	20206f20 	eorcs	r6, r0, r0, lsr #30
-    9174:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9178:	2020206f 	eorcs	r2, r0, pc, rrx
-    917c:	0d2b2020 	stceq	0, cr2, [fp, #-128]!	; 0xffffff80
-    9180:	2020200a 	eorcs	r2, r0, sl
-    9184:	20206f20 	eorcs	r6, r0, r0, lsr #30
-    9188:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9170:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9174:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    9178:	20202020 	eorcs	r2, r0, r0, lsr #32
+    917c:	2020206f 	eorcs	r2, r0, pc, rrx
+    9180:	0d2b2020 	stceq	0, cr2, [fp, #-128]!	; 0xffffff80
+    9184:	2020200a 	eorcs	r2, r0, sl
+    9188:	20206f20 	eorcs	r6, r0, r0, lsr #30
     918c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9190:	0a0d2b20 	beq	353e18 <__bss_end+0x348e18>
-    9194:	2020202b 	eorcs	r2, r0, fp, lsr #32
-    9198:	2b202020 	blcs	811220 <__bss_end+0x806220>
-    919c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91a0:	20206f20 	eorcs	r6, r0, r0, lsr #30
-    91a4:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91a8:	206f2020 	rsbcs	r2, pc, r0, lsr #32
-    91ac:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91b0:	20202b20 	eorcs	r2, r0, r0, lsr #22
-    91b4:	0a0d2020 	beq	35123c <__bss_end+0x34623c>
-    91b8:	00000a0d 	andeq	r0, r0, sp, lsl #20
-    91bc:	35335b1b 	ldrcc	r5, [r3, #-2843]!	; 0xb1b
-    91c0:	0000006d 	andeq	r0, r0, sp, rrx
+    9190:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9194:	0a0d2b20 	beq	353e1c <__bss_end+0x348e1c>
+    9198:	2020202b 	eorcs	r2, r0, fp, lsr #32
+    919c:	2b202020 	blcs	811224 <__bss_end+0x806224>
+    91a0:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91a4:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    91a8:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91ac:	206f2020 	rsbcs	r2, pc, r0, lsr #32
+    91b0:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91b4:	20202b20 	eorcs	r2, r0, r0, lsr #22
+    91b8:	0a0d2020 	beq	351240 <__bss_end+0x346240>
+    91bc:	00000a0d 	andeq	r0, r0, sp, lsl #20
+    91c0:	35335b1b 	ldrcc	r5, [r3, #-2843]!	; 0xb1b
+    91c4:	0000006d 	andeq	r0, r0, sp, rrx
 
 Disassembly of section .bss:
 
