@@ -57,7 +57,7 @@ Disassembly of section .text:
     80a4:	0000a000 	andeq	sl, r0, r0
     80a8:	00009000 	andeq	r9, r0, r0
     80ac:	00009020 	andeq	r9, r0, r0, lsr #32
-    80b0:	000091c0 	andeq	r9, r0, r0, asr #3
+    80b0:	000091c4 	andeq	r9, r0, r4, asr #3
 
 000080b4 <console_write>:
     80b4:	e92d4008 	push	{r3, lr}
@@ -323,53 +323,54 @@ Disassembly of section .rodata.str1.4:
     9100:	5e20285f 	mcrpl	8, 1, r2, cr0, cr15, {2}
     9104:	295e2e20 	ldmdbcs	lr, {r5, r9, sl, fp, sp}^
     9108:	202b2020 	eorcs	r2, fp, r0, lsr #32
-    910c:	202e2020 	eorcs	r2, lr, r0, lsr #32
-    9110:	20202b20 	eorcs	r2, r0, r0, lsr #22
-    9114:	2d5f0a0d 	vldrcs	s1, [pc, #-52]	; 90e8 <__rodata_start+0xe8>
-    9118:	2d5f2d5f 	ldclcs	13, cr2, [pc, #-380]	; 8fa4 <uart_write+0xc6c>
-    911c:	2d5f2d5f 	ldclcs	13, cr2, [pc, #-380]	; 8fa8 <uart_write+0xc70>
-    9120:	2d5f2d5f 	ldclcs	13, cr2, [pc, #-380]	; 8fac <uart_write+0xc74>
-    9124:	20202222 	eorcs	r2, r0, r2, lsr #4
-    9128:	20202222 	eorcs	r2, r0, r2, lsr #4
-    912c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9130:	202b0a0d 	eorcs	r0, fp, sp, lsl #20
-    9134:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9138:	20206f20 	eorcs	r6, r0, r0, lsr #30
-    913c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9140:	6f202020 	svcvs	0x00202020
-    9144:	2b202020 	blcs	8111cc <__bss_end+0x8061cc>
-    9148:	20202020 	eorcs	r2, r0, r0, lsr #32
-    914c:	6f202020 	svcvs	0x00202020
-    9150:	20200a0d 	eorcs	r0, r0, sp, lsl #20
-    9154:	202b2020 	eorcs	r2, fp, r0, lsr #32
-    9158:	20202020 	eorcs	r2, r0, r0, lsr #32
+    910c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9110:	0d20202b 	stceq	0, cr2, [r0, #-172]!	; 0xffffff54
+    9114:	5f2d5f0a 	svcpl	0x002d5f0a
+    9118:	5f2d5f2d 	svcpl	0x002d5f2d
+    911c:	5f2d5f2d 	svcpl	0x002d5f2d
+    9120:	272d5f2d 	strcs	r5, [sp, -sp, lsr #30]!
+    9124:	20272727 	eorcs	r2, r7, r7, lsr #14
+    9128:	27272720 	strcs	r2, [r7, -r0, lsr #14]!
+    912c:	20202027 	eorcs	r2, r0, r7, lsr #32
+    9130:	0d202020 	stceq	0, cr2, [r0, #-128]!	; 0xffffff80
+    9134:	20202b0a 	eorcs	r2, r0, sl, lsl #22
+    9138:	20202020 	eorcs	r2, r0, r0, lsr #32
+    913c:	2020206f 	eorcs	r2, r0, pc, rrx
+    9140:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9144:	206f2020 	rsbcs	r2, pc, r0, lsr #32
+    9148:	202b2020 	eorcs	r2, fp, r0, lsr #32
+    914c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9150:	0d6f2020 	stcleq	0, cr2, [pc, #-128]!	; 90d8 <__rodata_start+0xd8>
+    9154:	2020200a 	eorcs	r2, r0, sl
+    9158:	20202b20 	eorcs	r2, r0, r0, lsr #22
     915c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9160:	6f0a0d2b 	svcvs	0x000a0d2b
-    9164:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9160:	2b202020 	blcs	8111e8 <__bss_end+0x8061e8>
+    9164:	206f0a0d 	rsbcs	r0, pc, sp, lsl #20
     9168:	20202020 	eorcs	r2, r0, r0, lsr #32
-    916c:	2020206f 	eorcs	r2, r0, pc, rrx
+    916c:	6f202020 	svcvs	0x00202020
     9170:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9174:	206f2020 	rsbcs	r2, pc, r0, lsr #32
-    9178:	20202020 	eorcs	r2, r0, r0, lsr #32
-    917c:	20206f20 	eorcs	r6, r0, r0, lsr #30
-    9180:	2b202020 	blcs	811208 <__bss_end+0x806208>
-    9184:	20200a0d 	eorcs	r0, r0, sp, lsl #20
-    9188:	206f2020 	rsbcs	r2, pc, r0, lsr #32
-    918c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9174:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9178:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    917c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9180:	2020206f 	eorcs	r2, r0, pc, rrx
+    9184:	0d2b2020 	stceq	0, cr2, [fp, #-128]!	; 0xffffff80
+    9188:	2020200a 	eorcs	r2, r0, sl
+    918c:	20206f20 	eorcs	r6, r0, r0, lsr #30
     9190:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9194:	0d2b2020 	stceq	0, cr2, [fp, #-128]!	; 0xffffff80
-    9198:	20202b0a 	eorcs	r2, r0, sl, lsl #22
-    919c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91a0:	2020202b 	eorcs	r2, r0, fp, lsr #32
-    91a4:	206f2020 	rsbcs	r2, pc, r0, lsr #32
-    91a8:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91ac:	6f202020 	svcvs	0x00202020
-    91b0:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91b4:	202b2020 	eorcs	r2, fp, r0, lsr #32
-    91b8:	0d202020 	stceq	0, cr2, [r0, #-128]!	; 0xffffff80
-    91bc:	000a0d0a 	andeq	r0, sl, sl, lsl #26
-    91c0:	35335b1b 	ldrcc	r5, [r3, #-2843]!	; 0xb1b
-    91c4:	0000006d 	andeq	r0, r0, sp, rrx
+    9194:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9198:	0a0d2b20 	beq	353e20 <__bss_end+0x348e20>
+    919c:	2020202b 	eorcs	r2, r0, fp, lsr #32
+    91a0:	2b202020 	blcs	811228 <__bss_end+0x806228>
+    91a4:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91a8:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    91ac:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91b0:	206f2020 	rsbcs	r2, pc, r0, lsr #32
+    91b4:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91b8:	20202b20 	eorcs	r2, r0, r0, lsr #22
+    91bc:	0a0d2020 	beq	351244 <__bss_end+0x346244>
+    91c0:	00000a0d 	andeq	r0, r0, sp, lsl #20
+    91c4:	35335b1b 	ldrcc	r5, [r3, #-2843]!	; 0xb1b
+    91c8:	0000006d 	andeq	r0, r0, sp, rrx
 
 Disassembly of section .bss:
 

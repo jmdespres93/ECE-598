@@ -59,11 +59,11 @@ LOAD serial.o
 .rodata
  *(.rodata)
 
-.rodata.str1.4  0x0000000000009000      0x1c8
+.rodata.str1.4  0x0000000000009000      0x1cc
  .rodata.str1.4
-                0x0000000000009000      0x1c8 kernel_main.o
+                0x0000000000009000      0x1cc kernel_main.o
 
-.rel.dyn        0x00000000000091c8        0x0
+.rel.dyn        0x00000000000091cc        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __rodata_end = .
