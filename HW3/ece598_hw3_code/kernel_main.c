@@ -52,15 +52,12 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 	/* Print boot message */
 	printk(KMAG "+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /\\_/\\  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n");
 	printk("-_-_-_-_-_-_-_\"\" \"\"      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n\r\n" ANSI_COLOR_RESET);
-
+	printk("%x %x %x", 16, 128, 65535);
 	/* Print hardware version */
 // YOUR CODE HERE
 
 	/* Loop forever, echoing what is typed */
 	while (1) {
-
 		uart_putc(uart_getc());
-		gpio[GPIO_GPCLR1] = 1<<15;
-			// delay(0xFFFFFF);
 	}
 }

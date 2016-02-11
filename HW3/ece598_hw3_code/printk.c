@@ -16,6 +16,7 @@ int printk(char *string,...) {
 	int buffer_pointer=0;
 	int i;
 	int x;
+	int hexRemain; 
 
 	va_start(ap, string);
 
@@ -46,9 +47,15 @@ int printk(char *string,...) {
 				x=va_arg(ap, int);
 				int_pointer=9;
 				do {
-					int_buffer[int_pointer]=(x%10)+'0';
+					hexRemain = x%16;
+					if(hexRemain > 9) {
+						int_buffer[int_pointer] = hexRemain-10+'a';
+					}
+					else {
+						int_buffer[int_pointer] = hexRemain+'0';
+					}
 					int_pointer--;
-					x/=10;
+					x/=16;
 				} while(x!=0);
 				for(i=int_pointer+1;i<10;i++) {
 					buffer[buffer_pointer]=int_buffer[i];
