@@ -62,41 +62,41 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 
 	/* Initialize Hardware */
 	uart_init();
-		// delay awhile
-		delay(0xFFFFFF);
-	// Write 1 to GPIO pin 47 to clear it. Turns on LED
-		gpio[GPIO_GPSET1] = 1<<15;
+	// 	// delay awhile
+	// 	delay(0xFFFFFF);
+	// // Write 1 to GPIO pin 47 to clear it. Turns on LED
+	// 	gpio[GPIO_GPSET1] = 1<<15;
 
-			/* delay */
+	// 		/* delay */
 
-	// delay awhile
-		delay(0xFFFFFF);
+	// // delay awhile
+	// 	delay(0xFFFFFF);
 
-			/* Write 1 to set the GPIO */
+	// 		/* Write 1 to set the GPIO */
 
 
-	// Write 1 to GPIO 47 to set it. Turns off LED
-		gpio[GPIO_GPCLR1] = 1<<15;
+	// // Write 1 to GPIO 47 to set it. Turns off LED
+	// 	gpio[GPIO_GPCLR1] = 1<<15;
 	/* Pause so we don't scroll away boot messages before */
 	/* The terminal emulator is ready */
 	printk("Press any key to continue...\r\n");
-	gpio[GPIO_GPSET1] = 1<<15;	
-	delay(0xFFFFFF);
+	// gpio[GPIO_GPSET1] = 1<<15;	
+	// delay(0xFFFFFF);
 	uart_getc();
-gpio[GPIO_GPCLR1] = 1<<15;
+// gpio[GPIO_GPCLR1] = 1<<15;
 
 	/* Print boot message */
-	printk("+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /'\'_/'\''  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n_-_-_-_-_-_-_-""  ""      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n", KMAG);
+	printk("+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /\\_/\\  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n_-_-_-_-_-_-_-""  ""      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n", KMAG);
 
 	/* Print hardware version */
 // YOUR CODE HERE
 
 	/* Loop forever, echoing what is typed */
 	while (1) {
-	gpio[GPIO_GPSET1] = 1<<15;	
-	delay(0xFFFFFF);
+	// gpio[GPIO_GPSET1] = 1<<15;	
+	// delay(0xFFFFFF);
 		uart_putc(uart_getc());
 		gpio[GPIO_GPCLR1] = 1<<15;
-			delay(0xFFFFFF);
+			// delay(0xFFFFFF);
 	}
 }
