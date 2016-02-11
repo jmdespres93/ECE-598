@@ -366,7 +366,7 @@ Disassembly of section .rodata.str1.4:
     91ac:	20202020 	eorcs	r2, r0, r0, lsr #32
     91b0:	20202b20 	eorcs	r2, r0, r0, lsr #22
     91b4:	0a0d2020 	beq	35123c <__bss_end+0x34623c>
-    91b8:	00000000 	andeq	r0, r0, r0
+    91b8:	00000a0d 	andeq	r0, r0, sp, lsl #20
     91bc:	35335b1b 	ldrcc	r5, [r3, #-2843]!	; 0xb1b
     91c0:	0000006d 	andeq	r0, r0, sp, rrx
 

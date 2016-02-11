@@ -86,7 +86,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 // gpio[GPIO_GPCLR1] = 1<<15;
 
 	/* Print boot message */
-	printk("+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /\\_/\\  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n_-_-_-_-_-_-_-""  ""      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n", KMAG);
+	printk("+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /\\_/\\  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n_-_-_-_-_-_-_-""  ""      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n\r\n", KMAG);
 
 	/* Print hardware version */
 // YOUR CODE HERE
