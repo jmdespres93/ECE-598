@@ -323,51 +323,51 @@ Disassembly of section .rodata.str1.4:
     9100:	5e20285f 	mcrpl	8, 1, r2, cr0, cr15, {2}
     9104:	295e2e20 	ldmdbcs	lr, {r5, r9, sl, fp, sp}^
     9108:	202b2020 	eorcs	r2, fp, r0, lsr #32
-    910c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9110:	0d20202b 	stceq	0, cr2, [r0, #-172]!	; 0xffffff54
-    9114:	5f2d5f0a 	svcpl	0x002d5f0a
-    9118:	5f2d5f2d 	svcpl	0x002d5f2d
-    911c:	5f2d5f2d 	svcpl	0x002d5f2d
-    9120:	222d5f2d 	eorcs	r5, sp, #45, 30	; 0xb4
-    9124:	22202022 	eorcs	r2, r0, #34	; 0x22
-    9128:	20202022 	eorcs	r2, r0, r2, lsr #32
-    912c:	0d202020 	stceq	0, cr2, [r0, #-128]!	; 0xffffff80
-    9130:	20202b0a 	eorcs	r2, r0, sl, lsl #22
+    910c:	202e2020 	eorcs	r2, lr, r0, lsr #32
+    9110:	20202b20 	eorcs	r2, r0, r0, lsr #22
+    9114:	2d5f0a0d 	vldrcs	s1, [pc, #-52]	; 90e8 <__rodata_start+0xe8>
+    9118:	2d5f2d5f 	ldclcs	13, cr2, [pc, #-380]	; 8fa4 <uart_write+0xc6c>
+    911c:	2d5f2d5f 	ldclcs	13, cr2, [pc, #-380]	; 8fa8 <uart_write+0xc70>
+    9120:	2d5f2d5f 	ldclcs	13, cr2, [pc, #-380]	; 8fac <uart_write+0xc74>
+    9124:	20202222 	eorcs	r2, r0, r2, lsr #4
+    9128:	20202222 	eorcs	r2, r0, r2, lsr #4
+    912c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9130:	202b0a0d 	eorcs	r0, fp, sp, lsl #20
     9134:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9138:	2020206f 	eorcs	r2, r0, pc, rrx
+    9138:	20206f20 	eorcs	r6, r0, r0, lsr #30
     913c:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9140:	206f2020 	rsbcs	r2, pc, r0, lsr #32
-    9144:	202b2020 	eorcs	r2, fp, r0, lsr #32
+    9140:	6f202020 	svcvs	0x00202020
+    9144:	2b202020 	blcs	8111cc <__bss_end+0x8061cc>
     9148:	20202020 	eorcs	r2, r0, r0, lsr #32
-    914c:	0d6f2020 	stcleq	0, cr2, [pc, #-128]!	; 90d4 <__rodata_start+0xd4>
-    9150:	2020200a 	eorcs	r2, r0, sl
-    9154:	20202b20 	eorcs	r2, r0, r0, lsr #22
+    914c:	6f202020 	svcvs	0x00202020
+    9150:	20200a0d 	eorcs	r0, r0, sp, lsl #20
+    9154:	202b2020 	eorcs	r2, fp, r0, lsr #32
     9158:	20202020 	eorcs	r2, r0, r0, lsr #32
-    915c:	2b202020 	blcs	8111e4 <__bss_end+0x8061e4>
-    9160:	206f0a0d 	rsbcs	r0, pc, sp, lsl #20
+    915c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9160:	6f0a0d2b 	svcvs	0x000a0d2b
     9164:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9168:	6f202020 	svcvs	0x00202020
-    916c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    9168:	20202020 	eorcs	r2, r0, r0, lsr #32
+    916c:	2020206f 	eorcs	r2, r0, pc, rrx
     9170:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9174:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    9174:	206f2020 	rsbcs	r2, pc, r0, lsr #32
     9178:	20202020 	eorcs	r2, r0, r0, lsr #32
-    917c:	2020206f 	eorcs	r2, r0, pc, rrx
-    9180:	0d2b2020 	stceq	0, cr2, [fp, #-128]!	; 0xffffff80
-    9184:	2020200a 	eorcs	r2, r0, sl
-    9188:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    917c:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    9180:	2b202020 	blcs	811208 <__bss_end+0x806208>
+    9184:	20200a0d 	eorcs	r0, r0, sp, lsl #20
+    9188:	206f2020 	rsbcs	r2, pc, r0, lsr #32
     918c:	20202020 	eorcs	r2, r0, r0, lsr #32
     9190:	20202020 	eorcs	r2, r0, r0, lsr #32
-    9194:	0a0d2b20 	beq	353e1c <__bss_end+0x348e1c>
-    9198:	2020202b 	eorcs	r2, r0, fp, lsr #32
-    919c:	2b202020 	blcs	811224 <__bss_end+0x806224>
-    91a0:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91a4:	20206f20 	eorcs	r6, r0, r0, lsr #30
+    9194:	0d2b2020 	stceq	0, cr2, [fp, #-128]!	; 0xffffff80
+    9198:	20202b0a 	eorcs	r2, r0, sl, lsl #22
+    919c:	20202020 	eorcs	r2, r0, r0, lsr #32
+    91a0:	2020202b 	eorcs	r2, r0, fp, lsr #32
+    91a4:	206f2020 	rsbcs	r2, pc, r0, lsr #32
     91a8:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91ac:	206f2020 	rsbcs	r2, pc, r0, lsr #32
+    91ac:	6f202020 	svcvs	0x00202020
     91b0:	20202020 	eorcs	r2, r0, r0, lsr #32
-    91b4:	20202b20 	eorcs	r2, r0, r0, lsr #22
-    91b8:	0a0d2020 	beq	351240 <__bss_end+0x346240>
-    91bc:	00000a0d 	andeq	r0, r0, sp, lsl #20
+    91b4:	202b2020 	eorcs	r2, fp, r0, lsr #32
+    91b8:	0d202020 	stceq	0, cr2, [r0, #-128]!	; 0xffffff80
+    91bc:	000a0d0a 	andeq	r0, sl, sl, lsl #26
     91c0:	35335b1b 	ldrcc	r5, [r3, #-2843]!	; 0xb1b
     91c4:	0000006d 	andeq	r0, r0, sp, rrx
 
