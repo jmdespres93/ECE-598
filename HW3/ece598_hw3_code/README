@@ -1,18 +1,18 @@
 ECE598 Advanced Operating Systems
 HW3
 
-Name:
+Name: Jasmine Despres
 
 Answers to Questions:
 
-8a
+8a Serial is a whole bunch easier than just about anything else.
 
-8b
+8b The parity bit is good for error checking. It will let you know if one of your bits was flipped on the way over. 
 
-8c
+8c The parity bit isn't super necessary and it's faster without it.
 
-8d
+8d Inline assembly is assembly that's embedded into C code.
 
-8e
+8e We didnt use it because we are making the operating system from scratch. We would have to write the program ourselves in order to be able to use it.
 
-8f
+8f I was using an XUbuntu VM with minicom and then switched to Windows 10 with Putty. Neither of them would show me any of my stuff but apparently my code worked on a different pi using minicom. In fact, what I've actually ended up doing is compiling all my code in my VM, pushing it to my repo, pulling it in windows, and then putting the kernel image on the SD card from there because apparently VMs can't do SD cards. It's kind of annoying. 
