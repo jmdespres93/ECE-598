@@ -1,0 +1,197 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000008000                . = 0x8000
+                0x0000000000008000                __start = .
+                0x0000000000008000                __text_start = .
+
+.text           0x0000000000008000     0x1030
+ *(.text.boot)
+ .text.boot     0x0000000000008000       0xac boot.o
+                0x0000000000008000                _start
+ *(.text)
+ .text          0x00000000000080ac      0x144 kernel_main.o
+                0x00000000000080ac                kernel_main
+ .text          0x00000000000081f0      0x4ec atags.o
+                0x0000000000008304                atags_dump
+                0x00000000000084ec                atags_detect
+ .text          0x00000000000086dc        0x0 boot.o
+ .text          0x00000000000086dc        0x4 interrupts.o
+                0x00000000000086dc                interrupt_handler
+ .text          0x00000000000086e0        0x4 console_io.o
+                0x00000000000086e0                console_write
+ .text          0x00000000000086e4      0x3bc gpio.o
+                0x00000000000086e4                gpio_request
+                0x0000000000008798                gpio_free
+                0x0000000000008804                gpio_direction_input
+                0x0000000000008874                gpio_direction_output
+                0x00000000000088e4                gpio_to_irq
+                0x00000000000088ec                gpio_get_value
+                0x000000000000894c                gpio_set_value
+                0x00000000000089e4                gpio_set_falling
+                0x0000000000008a44                gpio_clear_interrupt
+ .text          0x0000000000008aa0       0xa8 led.o
+                0x0000000000008aa0                led_init
+                0x0000000000008afc                led_on
+                0x0000000000008b24                led_off
+ .text          0x0000000000008b48      0x198 printk.o
+                0x0000000000008b48                printk
+ .text          0x0000000000008ce0      0x158 serial.o
+                0x0000000000008ce0                uart_init
+                0x0000000000008d80                uart_putc
+                0x0000000000008da4                uart_getc
+                0x0000000000008dcc                uart_write
+ .text          0x0000000000008e38       0x10 shell.o
+                0x0000000000008e38                shell
+ .text          0x0000000000008e48      0x1b8 string.o
+                0x0000000000008e48                strncmp
+                0x0000000000008ea8                memcmp
+                0x0000000000008f08                memcpy
+                0x0000000000008f30                strncpy
+                0x0000000000008f88                strlen
+                0x0000000000008fb8                memset
+                0x0000000000008fdc                memset32
+ .text          0x0000000000009000       0x30 timer.o
+                0x0000000000009000                timer_init
+
+.glue_7         0x0000000000009030        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x0000000000009030        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000009030        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000009030        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000009030        0x0
+ .iplt          0x0000000000000000        0x0 kernel_main.o
+                0x000000000000a000                . = ALIGN (0x1000)
+                0x000000000000a000                __text_end = .
+                0x000000000000a000                __rodata_start = .
+
+.rodata
+ *(.rodata)
+
+.rodata.str1.4  0x000000000000a000      0x348
+ .rodata.str1.4
+                0x000000000000a000       0xb7 kernel_main.o
+                                         0xb8 (size before relaxing)
+ *fill*         0x000000000000a0b7        0x1 
+ .rodata.str1.4
+                0x000000000000a0b8      0x1e8 atags.o
+                                        0x1ec (size before relaxing)
+ .rodata.str1.4
+                0x000000000000a2a0       0x7b gpio.o
+                                         0x7c (size before relaxing)
+ *fill*         0x000000000000a31b        0x1 
+ .rodata.str1.4
+                0x000000000000a31c       0x2c led.o
+
+.rel.dyn        0x000000000000a348        0x0
+ .rel.iplt      0x0000000000000000        0x0 kernel_main.o
+                0x000000000000b000                . = ALIGN (0x1000)
+                0x000000000000b000                __rodata_end = .
+                0x000000000000b000                __data_start = .
+
+.data           0x000000000000b000        0xc
+ *(.data)
+ .data          0x000000000000b000        0x4 kernel_main.o
+                0x000000000000b000                hardware_type
+ .data          0x000000000000b004        0x0 atags.o
+ .data          0x000000000000b004        0x0 boot.o
+ .data          0x000000000000b004        0x0 interrupts.o
+ .data          0x000000000000b004        0x0 console_io.o
+ .data          0x000000000000b004        0x0 gpio.o
+ .data          0x000000000000b004        0x8 led.o
+ .data          0x000000000000b00c        0x0 printk.o
+ .data          0x000000000000b00c        0x0 serial.o
+ .data          0x000000000000b00c        0x0 shell.o
+ .data          0x000000000000b00c        0x0 string.o
+ .data          0x000000000000b00c        0x0 timer.o
+
+.igot.plt       0x000000000000b00c        0x0
+ .igot.plt      0x0000000000000000        0x0 kernel_main.o
+                0x000000000000c000                . = ALIGN (0x1000)
+                0x000000000000c000                __data_end = .
+                0x000000000000c000                __bss_start = .
+
+.bss            0x000000000000c000        0x8
+                0x000000000000c000                bss = .
+ *(.bss)
+ .bss           0x000000000000c000        0x0 kernel_main.o
+ .bss           0x000000000000c000        0x0 atags.o
+ .bss           0x000000000000c000        0x0 boot.o
+ .bss           0x000000000000c000        0x0 interrupts.o
+ .bss           0x000000000000c000        0x0 console_io.o
+ .bss           0x000000000000c000        0x8 gpio.o
+ .bss           0x000000000000c008        0x0 led.o
+ .bss           0x000000000000c008        0x0 printk.o
+ .bss           0x000000000000c008        0x0 serial.o
+ .bss           0x000000000000c008        0x0 shell.o
+ .bss           0x000000000000c008        0x0 string.o
+ .bss           0x000000000000c008        0x0 timer.o
+                0x000000000000d000                . = ALIGN (0x1000)
+                0x000000000000d000                __bss_end = .
+                0x000000000000d000                __end = .
+LOAD kernel_main.o
+LOAD atags.o
+LOAD boot.o
+LOAD interrupts.o
+LOAD console_io.o
+LOAD gpio.o
+LOAD led.o
+LOAD printk.o
+LOAD serial.o
+LOAD shell.o
+LOAD string.o
+LOAD timer.o
+OUTPUT(kernel.elf elf32-littlearm)
+
+.comment        0x0000000000000000       0x1f
+ .comment       0x0000000000000000       0x1f kernel_main.o
+                                         0x20 (size before relaxing)
+ .comment       0x0000000000000000       0x20 atags.o
+ .comment       0x0000000000000000       0x20 interrupts.o
+ .comment       0x0000000000000000       0x20 console_io.o
+ .comment       0x0000000000000000       0x20 gpio.o
+ .comment       0x0000000000000000       0x20 led.o
+ .comment       0x0000000000000000       0x20 printk.o
+ .comment       0x0000000000000000       0x20 serial.o
+ .comment       0x0000000000000000       0x20 shell.o
+ .comment       0x0000000000000000       0x20 string.o
+ .comment       0x0000000000000000       0x20 timer.o
+
+.ARM.attributes
+                0x0000000000000000       0x36
+ .ARM.attributes
+                0x0000000000000000       0x38 kernel_main.o
+ .ARM.attributes
+                0x0000000000000038       0x38 atags.o
+ .ARM.attributes
+                0x0000000000000070       0x26 boot.o
+ .ARM.attributes
+                0x0000000000000096       0x38 interrupts.o
+ .ARM.attributes
+                0x00000000000000ce       0x38 console_io.o
+ .ARM.attributes
+                0x0000000000000106       0x38 gpio.o
+ .ARM.attributes
+                0x000000000000013e       0x38 led.o
+ .ARM.attributes
+                0x0000000000000176       0x38 printk.o
+ .ARM.attributes
+                0x00000000000001ae       0x38 serial.o
+ .ARM.attributes
+                0x00000000000001e6       0x38 shell.o
+ .ARM.attributes
+                0x000000000000021e       0x38 string.o
+ .ARM.attributes
+                0x0000000000000256       0x38 timer.o
