@@ -38,7 +38,7 @@ int timer_init(void) {
 // YOUR CODE HERE -- update TIMER_LOAD to have a value that will
 // give a 1Hz clock rate
 
-//	mmio_write(TIMER_LOAD,????);
+	mmio_write(TIMER_LOAD, 3937);
 
 
 	/* Enable the timer in 32-bit mode, enable interrupts */
@@ -50,7 +50,7 @@ int timer_init(void) {
 		TIMER_CONTROL_PRESCALE_256);
 
 	/* Enable timer interrupt */
-//	mmio_write(IRQ_ENABLE_BASIC_IRQ,IRQ_ENABLE_BASIC_IRQ_ARM_TIMER);
+	mmio_write(IRQ_ENABLE_BASIC_IRQ,IRQ_ENABLE_BASIC_IRQ_ARM_TIMER);
 
 	return 0;
 

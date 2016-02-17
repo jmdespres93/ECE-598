@@ -33,7 +33,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 	timer_init();
 
 	/* Enable Interrupts */
-//	enable_interrupts();
+	enable_interrupts();
 
 	/* Delay to allow time for serial port to settle */
 	/* So we can actually see the output on the terminal */
