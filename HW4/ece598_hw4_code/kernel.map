@@ -10,7 +10,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x11b8
+.text           0x0000000000008000     0x11e0
  *(.text.boot)
  .text.boot     0x0000000000008000       0xac boot.o
                 0x0000000000008000                _start
@@ -47,33 +47,33 @@ Linker script and memory map
                 0x0000000000008e1c                uart_putc
                 0x0000000000008e40                uart_getc
                 0x0000000000008e68                uart_write
- .text          0x0000000000008ed4       0xe0 shell.o
+ .text          0x0000000000008ed4      0x108 shell.o
                 0x0000000000008ed4                shell
-                0x0000000000008fa8                print_err
- .text          0x0000000000008fb4      0x1b8 string.o
-                0x0000000000008fb4                strncmp
-                0x0000000000009014                memcmp
-                0x0000000000009074                memcpy
-                0x000000000000909c                strncpy
-                0x00000000000090f4                strlen
-                0x0000000000009124                memset
-                0x0000000000009148                memset32
- .text          0x000000000000916c       0x4c timer.o
-                0x000000000000916c                timer_init
+                0x0000000000008fd0                print_err
+ .text          0x0000000000008fdc      0x1b8 string.o
+                0x0000000000008fdc                strncmp
+                0x000000000000903c                memcmp
+                0x000000000000909c                memcpy
+                0x00000000000090c4                strncpy
+                0x000000000000911c                strlen
+                0x000000000000914c                memset
+                0x0000000000009170                memset32
+ .text          0x0000000000009194       0x4c timer.o
+                0x0000000000009194                timer_init
 
-.glue_7         0x00000000000091b8        0x0
+.glue_7         0x00000000000091e0        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000091b8        0x0
+.glue_7t        0x00000000000091e0        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000091b8        0x0
+.vfp11_veneer   0x00000000000091e0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000091b8        0x0
+.v4_bx          0x00000000000091e0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000091b8        0x0
+.iplt           0x00000000000091e0        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .
@@ -82,7 +82,7 @@ Linker script and memory map
 .rodata
  *(.rodata)
 
-.rodata.str1.4  0x000000000000a000      0x550
+.rodata.str1.4  0x000000000000a000      0x5ac
  .rodata.str1.4
                 0x000000000000a000       0xb3 kernel_main.o
                                          0xb8 (size before relaxing)
@@ -107,9 +107,9 @@ Linker script and memory map
                                         0x1ac (size before relaxing)
  *fill*         0x000000000000a501        0x3 
  .rodata.str1.4
-                0x000000000000a504       0x4c shell.o
+                0x000000000000a504       0xa8 shell.o
 
-.rel.dyn        0x000000000000a550        0x0
+.rel.dyn        0x000000000000a5ac        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __rodata_end = .

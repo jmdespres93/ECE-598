@@ -50,12 +50,15 @@ uint32_t shell(void) {
 		//compare input with list of known commands
 		//first check that lengths match
 		//then check if content matches
-		if ((i-1)==5) {
-			if(!strncmp(print, buff, 5)) {
+		printk("check if same numebr of letters as print\n");
+		if ((i)==5) {
+			printk("check for print match\n");
+			if(strncmp(print, buff, 5)==0) {
 				printk("Hello World\n");
 			} else print_err();
-		} else if ((i-1) == 4) {
-			if (!strncmp(nyan, buff, 4)) {
+		} else if ((i) == 4) {
+			printk("check for meow match\n");
+			if (strncmp(nyan, buff, 4)==0) {
 				nyan();
 			} else print_err();
 		} else print_err();
