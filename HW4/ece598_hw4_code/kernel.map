@@ -10,68 +10,70 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x10c4
+.text           0x0000000000008000     0x11b8
  *(.text.boot)
  .text.boot     0x0000000000008000       0xac boot.o
                 0x0000000000008000                _start
  *(.text)
- .text          0x00000000000080ac      0x150 kernel_main.o
+ .text          0x00000000000080ac      0x154 kernel_main.o
                 0x00000000000080ac                kernel_main
- .text          0x00000000000081fc      0x4ec atags.o
-                0x0000000000008310                atags_dump
-                0x00000000000084f8                atags_detect
- .text          0x00000000000086e8        0x0 boot.o
- .text          0x00000000000086e8       0x70 interrupts.o
-                0x00000000000086e8                interrupt_handler
- .text          0x0000000000008758        0x4 console_io.o
-                0x0000000000008758                console_write
- .text          0x000000000000875c      0x3bc gpio.o
-                0x000000000000875c                gpio_request
-                0x0000000000008810                gpio_free
-                0x000000000000887c                gpio_direction_input
-                0x00000000000088ec                gpio_direction_output
-                0x000000000000895c                gpio_to_irq
-                0x0000000000008964                gpio_get_value
-                0x00000000000089c4                gpio_set_value
-                0x0000000000008a5c                gpio_set_falling
-                0x0000000000008abc                gpio_clear_interrupt
- .text          0x0000000000008b18       0xa8 led.o
-                0x0000000000008b18                led_init
-                0x0000000000008b74                led_on
-                0x0000000000008b9c                led_off
- .text          0x0000000000008bc0      0x198 printk.o
-                0x0000000000008bc0                printk
- .text          0x0000000000008d58      0x158 serial.o
-                0x0000000000008d58                uart_init
-                0x0000000000008df8                uart_putc
-                0x0000000000008e1c                uart_getc
-                0x0000000000008e44                uart_write
- .text          0x0000000000008eb0       0x10 shell.o
-                0x0000000000008eb0                shell
- .text          0x0000000000008ec0      0x1b8 string.o
-                0x0000000000008ec0                strncmp
-                0x0000000000008f20                memcmp
-                0x0000000000008f80                memcpy
-                0x0000000000008fa8                strncpy
-                0x0000000000009000                strlen
-                0x0000000000009030                memset
-                0x0000000000009054                memset32
- .text          0x0000000000009078       0x4c timer.o
-                0x0000000000009078                timer_init
+ .text          0x0000000000008200      0x4ec atags.o
+                0x0000000000008314                atags_dump
+                0x00000000000084fc                atags_detect
+ .text          0x00000000000086ec        0x0 boot.o
+ .text          0x00000000000086ec       0x70 interrupts.o
+                0x00000000000086ec                interrupt_handler
+ .text          0x000000000000875c        0x4 console_io.o
+                0x000000000000875c                console_write
+ .text          0x0000000000008760      0x3bc gpio.o
+                0x0000000000008760                gpio_request
+                0x0000000000008814                gpio_free
+                0x0000000000008880                gpio_direction_input
+                0x00000000000088f0                gpio_direction_output
+                0x0000000000008960                gpio_to_irq
+                0x0000000000008968                gpio_get_value
+                0x00000000000089c8                gpio_set_value
+                0x0000000000008a60                gpio_set_falling
+                0x0000000000008ac0                gpio_clear_interrupt
+ .text          0x0000000000008b1c       0xa8 led.o
+                0x0000000000008b1c                led_init
+                0x0000000000008b78                led_on
+                0x0000000000008ba0                led_off
+ .text          0x0000000000008bc4      0x1b8 printk.o
+                0x0000000000008bc4                printk
+                0x0000000000008d5c                nyan
+ .text          0x0000000000008d7c      0x158 serial.o
+                0x0000000000008d7c                uart_init
+                0x0000000000008e1c                uart_putc
+                0x0000000000008e40                uart_getc
+                0x0000000000008e68                uart_write
+ .text          0x0000000000008ed4       0xe0 shell.o
+                0x0000000000008ed4                shell
+                0x0000000000008fa8                print_err
+ .text          0x0000000000008fb4      0x1b8 string.o
+                0x0000000000008fb4                strncmp
+                0x0000000000009014                memcmp
+                0x0000000000009074                memcpy
+                0x000000000000909c                strncpy
+                0x00000000000090f4                strlen
+                0x0000000000009124                memset
+                0x0000000000009148                memset32
+ .text          0x000000000000916c       0x4c timer.o
+                0x000000000000916c                timer_init
 
-.glue_7         0x00000000000090c4        0x0
+.glue_7         0x00000000000091b8        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000090c4        0x0
+.glue_7t        0x00000000000091b8        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000090c4        0x0
+.vfp11_veneer   0x00000000000091b8        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000090c4        0x0
+.v4_bx          0x00000000000091b8        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000090c4        0x0
+.iplt           0x00000000000091b8        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .
@@ -80,7 +82,7 @@ Linker script and memory map
 .rodata
  *(.rodata)
 
-.rodata.str1.4  0x000000000000a000      0x358
+.rodata.str1.4  0x000000000000a000      0x550
  .rodata.str1.4
                 0x000000000000a000       0xb3 kernel_main.o
                                          0xb8 (size before relaxing)
@@ -97,9 +99,17 @@ Linker script and memory map
                                          0x7c (size before relaxing)
  *fill*         0x000000000000a32b        0x1 
  .rodata.str1.4
-                0x000000000000a32c       0x2c led.o
+                0x000000000000a32c       0x2a led.o
+                                         0x2c (size before relaxing)
+ *fill*         0x000000000000a356        0x2 
+ .rodata.str1.4
+                0x000000000000a358      0x1a9 printk.o
+                                        0x1ac (size before relaxing)
+ *fill*         0x000000000000a501        0x3 
+ .rodata.str1.4
+                0x000000000000a504       0x4c shell.o
 
-.rel.dyn        0x000000000000a358        0x0
+.rel.dyn        0x000000000000a550        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __rodata_end = .
