@@ -58,10 +58,11 @@ uint32_t shell(void) {
 			} else print_err();
 		} else if ((i) == 4) {
 			printk("check for meow match\n");
-			if (strncmp(nyan, buff, 4)==0) {
+			if (strncmp(meow, buff, 4)==0) {
 				nyan();
 			} else print_err();
 		} else print_err();
+
 	}
 }
 

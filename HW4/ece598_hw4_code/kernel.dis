@@ -1087,7 +1087,7 @@ Disassembly of section .text:
     8fac:	eaffffd0 	b	8ef4 <shell+0x20>
     8fb0:	0000a504 	andeq	sl, r0, r4, lsl #10
     8fb4:	0000a594 	muleq	r0, r4, r5
-    8fb8:	00008d5c 	andeq	r8, r0, ip, asr sp
+    8fb8:	0000a5ac 	andeq	sl, r0, ip, lsr #11
     8fbc:	0000a530 	andeq	sl, r0, r0, lsr r5
     8fc0:	0000a578 	andeq	sl, r0, r8, ror r5
     8fc4:	0000a548 	andeq	sl, r0, r8, asr #10
@@ -1610,6 +1610,8 @@ Disassembly of section .rodata.str1.4:
     a5a0:	6d20776f 	stcvs	7, cr7, [r0, #-444]!	; 0xfffffe44
     a5a4:	68637461 	stmdavs	r3!, {r0, r5, r6, sl, ip, sp, lr}^
     a5a8:	0000000a 	andeq	r0, r0, sl
+    a5ac:	776f656d 	strbvc	r6, [pc, -sp, ror #10]!
+    a5b0:	00000000 	andeq	r0, r0, r0
 
 Disassembly of section .data:
 

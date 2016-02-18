@@ -82,7 +82,7 @@ Linker script and memory map
 .rodata
  *(.rodata)
 
-.rodata.str1.4  0x000000000000a000      0x5ac
+.rodata.str1.4  0x000000000000a000      0x5b4
  .rodata.str1.4
                 0x000000000000a000       0xb3 kernel_main.o
                                          0xb8 (size before relaxing)
@@ -107,9 +107,9 @@ Linker script and memory map
                                         0x1ac (size before relaxing)
  *fill*         0x000000000000a501        0x3 
  .rodata.str1.4
-                0x000000000000a504       0xa8 shell.o
+                0x000000000000a504       0xb0 shell.o
 
-.rel.dyn        0x000000000000a5ac        0x0
+.rel.dyn        0x000000000000a5b4        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __rodata_end = .
