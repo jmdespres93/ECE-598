@@ -1,16 +1,18 @@
 ECE598 Advanced Operating Systems
 HW4
 
-Name:
+Name: Jasmine Despres
 
 Describe your something cool:
 
+command: meow
+use: prints nyan cat
 
 Answers to Questions:
 
-5a.
+5a. FIQ interrupt is a fast interrupt. You only get one. It's fast because it's given priority over a normal IRQ interrupt. It's useful with really important tasks that require firm-hard real time response like if you were programmimg your raspberry pi to be a pacemaker you would make the beat an FIQ interrupt.
 
-5b.
+5b. GPU IRQ 57 (big surprise)
 
-5c.
+5c. Change pc to point to IRQ mode.
 
