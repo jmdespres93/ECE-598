@@ -10,82 +10,84 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x15c4
+.text           0x0000000000008000     0x16a0
  *(.text.boot)
  .text.boot     0x0000000000008000       0xcc boot.o
                 0x0000000000008000                _start
  *(.text)
- .text          0x00000000000080cc      0x18c kernel_main.o
+ .text          0x00000000000080cc      0x1a4 kernel_main.o
                 0x00000000000080cc                kernel_main
- .text          0x0000000000008258      0x4ec atags.o
-                0x000000000000836c                atags_dump
-                0x0000000000008554                atags_detect
- .text          0x0000000000008744        0x0 boot.o
- .text          0x0000000000008744       0xfc interrupts.o
-                0x0000000000008744                interrupt_handler
-                0x00000000000087dc                undefined_handler
-                0x00000000000087f0                prefetch_handler
-                0x0000000000008804                data_handler
-                0x0000000000008818                fiq_handler
-                0x000000000000882c                reset_error
- .text          0x0000000000008840       0x54 console_io.o
-                0x0000000000008840                console_write
-                0x0000000000008844                console_read
- .text          0x0000000000008894      0x3bc gpio.o
-                0x0000000000008894                gpio_request
-                0x0000000000008948                gpio_free
-                0x00000000000089b4                gpio_direction_input
-                0x0000000000008a24                gpio_direction_output
-                0x0000000000008a94                gpio_to_irq
-                0x0000000000008a9c                gpio_get_value
-                0x0000000000008afc                gpio_set_value
-                0x0000000000008b94                gpio_set_falling
-                0x0000000000008bf4                gpio_clear_interrupt
- .text          0x0000000000008c50       0xa8 led.o
-                0x0000000000008c50                led_init
-                0x0000000000008cac                led_on
-                0x0000000000008cd4                led_off
- .text          0x0000000000008cf8      0x198 printk.o
-                0x0000000000008cf8                printk
- .text          0x0000000000008e90      0x188 serial.o
-                0x0000000000008e90                uart_init
-                0x0000000000008f30                uart_putc
-                0x0000000000008f54                uart_getc
-                0x0000000000008f7c                uart_getc_noblock
-                0x0000000000008fac                uart_write
- .text          0x0000000000009018      0x1b8 string.o
-                0x0000000000009018                strncmp
-                0x0000000000009078                memcmp
-                0x00000000000090d8                memcpy
-                0x0000000000009100                strncpy
-                0x0000000000009158                strlen
-                0x0000000000009188                memset
-                0x00000000000091ac                memset32
- .text          0x00000000000091d0      0x108 syscalls.o
-                0x00000000000091d0                swi_handler
- .text          0x00000000000092d8       0x48 timer.o
-                0x00000000000092d8                timer_init
- .text          0x0000000000009320       0x84 ./user/shell.o
-                0x0000000000009320                shell
- .text          0x00000000000093a4      0x220 ./user/vlibc.o
-                0x00000000000093a4                write
-                0x00000000000093c0                putchar
-                0x00000000000093f4                getchar
-                0x0000000000009428                printf
+ .text          0x0000000000008270      0x4ec atags.o
+                0x0000000000008384                atags_dump
+                0x000000000000856c                atags_detect
+ .text          0x000000000000875c        0x0 boot.o
+ .text          0x000000000000875c       0xfc interrupts.o
+                0x000000000000875c                interrupt_handler
+                0x00000000000087f4                undefined_handler
+                0x0000000000008808                prefetch_handler
+                0x000000000000881c                data_handler
+                0x0000000000008830                fiq_handler
+                0x0000000000008844                reset_error
+ .text          0x0000000000008858       0x54 console_io.o
+                0x0000000000008858                console_write
+                0x000000000000885c                console_read
+ .text          0x00000000000088ac      0x3bc gpio.o
+                0x00000000000088ac                gpio_request
+                0x0000000000008960                gpio_free
+                0x00000000000089cc                gpio_direction_input
+                0x0000000000008a3c                gpio_direction_output
+                0x0000000000008aac                gpio_to_irq
+                0x0000000000008ab4                gpio_get_value
+                0x0000000000008b14                gpio_set_value
+                0x0000000000008bac                gpio_set_falling
+                0x0000000000008c0c                gpio_clear_interrupt
+ .text          0x0000000000008c68       0xa8 led.o
+                0x0000000000008c68                led_init
+                0x0000000000008cc4                led_on
+                0x0000000000008cec                led_off
+ .text          0x0000000000008d10      0x198 printk.o
+                0x0000000000008d10                printk
+ .text          0x0000000000008ea8      0x188 serial.o
+                0x0000000000008ea8                uart_init
+                0x0000000000008f48                uart_putc
+                0x0000000000008f6c                uart_getc
+                0x0000000000008f94                uart_getc_noblock
+                0x0000000000008fc4                uart_write
+ .text          0x0000000000009030      0x1b8 string.o
+                0x0000000000009030                strncmp
+                0x0000000000009090                memcmp
+                0x00000000000090f0                memcpy
+                0x0000000000009118                strncpy
+                0x0000000000009170                strlen
+                0x00000000000091a0                memset
+                0x00000000000091c4                memset32
+ .text          0x00000000000091e8      0x108 syscalls.o
+                0x00000000000091e8                swi_handler
+ .text          0x00000000000092f0       0x48 timer.o
+                0x00000000000092f0                timer_init
+ .text          0x0000000000009338      0x128 ./user/shell.o
+                0x0000000000009338                shell
+                0x0000000000009454                print_err
+ .text          0x0000000000009460      0x240 ./user/vlibc.o
+                0x0000000000009460                write
+                0x000000000000947c                putchar
+                0x00000000000094b0                getchar
+                0x00000000000094e4                printf
+                0x0000000000009680                nyan
 
-.glue_7         0x00000000000095c4        0x0
+.glue_7         0x00000000000096a0        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000095c4        0x0
+.glue_7t        0x00000000000096a0        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000095c4        0x0
+.vfp11_veneer   0x00000000000096a0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000095c4        0x0
+.v4_bx          0x00000000000096a0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000095c4        0x0
+.iplt           0x00000000000096a0        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .
@@ -94,32 +96,34 @@ Linker script and memory map
 .rodata
  *(.rodata)
 
-.rodata.str1.4  0x000000000000a000      0x4a8
+.rodata.str1.4  0x000000000000a000      0x688
  .rodata.str1.4
-                0x000000000000a000       0xcc kernel_main.o
+                0x000000000000a000      0x274 kernel_main.o
+                                        0x278 (size before relaxing)
  .rodata.str1.4
-                0x000000000000a0cc      0x1fd atags.o
+                0x000000000000a274      0x1fd atags.o
                                         0x204 (size before relaxing)
- *fill*         0x000000000000a2c9        0x3 
+ *fill*         0x000000000000a471        0x3 
  .rodata.str1.4
-                0x000000000000a2cc       0x76 interrupts.o
+                0x000000000000a474       0x76 interrupts.o
                                          0x78 (size before relaxing)
- *fill*         0x000000000000a342        0x2 
+ *fill*         0x000000000000a4ea        0x2 
  .rodata.str1.4
-                0x000000000000a344       0x7b gpio.o
+                0x000000000000a4ec       0x7b gpio.o
                                          0x7c (size before relaxing)
- *fill*         0x000000000000a3bf        0x1 
+ *fill*         0x000000000000a567        0x1 
  .rodata.str1.4
-                0x000000000000a3c0       0x2a led.o
+                0x000000000000a568       0x2a led.o
                                          0x2c (size before relaxing)
- *fill*         0x000000000000a3ea        0x2 
+ *fill*         0x000000000000a592        0x2 
  .rodata.str1.4
-                0x000000000000a3ec       0x8c syscalls.o
+                0x000000000000a594       0x8c syscalls.o
  .rodata.str1.4
-                0x000000000000a478       0x30 ./user/shell.o
-                                         0x34 (size before relaxing)
+                0x000000000000a620       0x68 ./user/shell.o
+ .rodata.str1.4
+                0x0000000000000000      0x1ac ./user/vlibc.o
 
-.rel.dyn        0x000000000000a4a8        0x0
+.rel.dyn        0x000000000000a688        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __rodata_end = .

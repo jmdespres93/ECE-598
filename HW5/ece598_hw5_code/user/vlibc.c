@@ -5,6 +5,8 @@
 #include "../syscalls.h"
 #include "vlibc.h"
 
+#define KMAG  "\x1B[35m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 uint32_t write(int fd, const void *buf, size_t count) {
 
@@ -51,6 +53,8 @@ int getchar(void) {
 
 
 #define MAX_PRINT_SIZE 256
+
+void nyan(void);
 
 int printf(char *string,...) {
 
@@ -119,4 +123,9 @@ int printf(char *string,...) {
 	write(STDOUT,buffer,buffer_pointer);
 
 	return buffer_pointer;
+}
+
+void nyan(void){
+	printk(KMAG "+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /\\_/\\  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n");
+	printk("-_-_-_-_-_-_-_\"\" \"\"      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n\r\n" ANSI_COLOR_RESET);
 }

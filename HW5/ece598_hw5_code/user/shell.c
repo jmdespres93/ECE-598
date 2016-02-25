@@ -1,43 +1,64 @@
 #include <stddef.h>
 #include <stdint.h>
 #include "../syscalls.h"
+#include "vlibc.h"
 
-static int parse_input(char *string) {
-
-	int result=0;
-
-	if (!strncmp(string,"print",sizeof(string))) {
-		printk("Hello World!\n");
-	}
-	else {
-		printk("\nUnknown commmand!\n");
-	}
-
-	return result;
-}
-
+void prtint_err();
 
 uint32_t shell(void) {
 
-	char input_string[256];
-	uint32_t input_pointer,ch;
+	uint32_t ch;
+	uint8_t buff[4096] = {0}; // buffer to hold input
+	uint32_t i; // placeholder in buffer
+	uint8_t *print = "print", *meow = "meow", *ptime = "time";
+	long ticks;
 
+	/* Enter our "shell" */
 	while (1) {
-		input_pointer=0;
-		printk("$ ");
+		i = 0;
+		while (1) {
+			//get input and echo it to screen
+			ch=getchar();
+			putchar(ch);
 
-		while(1) {
-			ch=uart_getc();
-			if ((ch=='\n') || (ch=='\r')) {
-				input_string[input_pointer]=0;
-				printk("\n");
-				parse_input(input_string);
+			//check if return was hit, 
+			//if so, terminate string and break out of loop to analyze input
+			if (ch == '\r') {
+				buff[i] = '\0';
 				break;
 			}
-
-			input_string[input_pointer]=ch;
-			input_pointer++;
-			uart_putc(ch);
+			//while within the limits of the buffer, keep adding characters
+			if (i<4096) {
+				buff[i] = ch;
+				i++;
+			} 
+			//if exceeded buffer size, print error and break out of loop
+			else {
+				printf("chill wif teh input\n");
+				break;
+			}
 		}
+
+		//compare input with list of known commands
+		//first check that lengths match
+		//then check if content matches
+		if (i==5) {
+			if(strncmp(print, buff, 5)==0) {
+				printf("Hello World\n");
+			} else print_err();
+		} else if (i == 4) {
+			if (strncmp(ptime, buff, 4)==0) {
+				syscall1(SYSCALL_TIME,(long)&ticks);
+				printf("%f seconds\n", ticks);
+			}
+			if (strncmp(meow, buff, 4)==0) {
+				nyan();
+			} else print_err();
+		} else print_err();
+
 	}
+}
+
+print_err() {
+	printf("i doan knoe dis command\n");
 }

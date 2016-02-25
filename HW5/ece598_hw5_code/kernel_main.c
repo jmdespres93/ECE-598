@@ -12,6 +12,8 @@
 #include "hardware.h"
 #include "shell.h"
 
+#define KMAG  "\x1B[35m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 /* default, this is over-ridden later */
 int hardware_type=RPI_MODEL_B;
@@ -43,6 +45,8 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags) {
 	uart_getc();
 
 	/* Print boot messages */
+	printk(KMAG "+      o     +              o   \r\n    +             o     +       +\r\no          +\r\n    o  +           +        +\r\n+        o     o       +        o\r\n-_-_-_-_-_-_-_,------,      o \r\n_-_-_-_-_-_-_-|   /\\_/\\  \r\n-_-_-_-_-_-_-~|__( ^ .^)  +     +  \r\n");
+	printk("-_-_-_-_-_-_-_\"\" \"\"      \r\n+      o         o   +       o\r\n    +         +\r\no        o         o      o     +\r\n    o           +\r\n+      +     o        o      +    \r\n\r\n" ANSI_COLOR_RESET);
 
 
 	/* Print hardware version */
