@@ -11,7 +11,7 @@ uint32_t shell(void) {
 	uint8_t buff[4096] = {0}; // buffer to hold input
 	uint32_t i; // placeholder in buffer
 	uint8_t *print = "print", *meow = "meow", *ptime = "time";
-	long ticks;
+	uint32_t ticks;
 
 	/* Enter our "shell" */
 	while (1) {

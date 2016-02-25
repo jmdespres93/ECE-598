@@ -19,7 +19,6 @@ uint32_t __attribute__((interrupt("SWI"))) swi_handler(
 
 	register long r7 asm ("r7");
 	uint32_t result=0;
-	int *tick_ptr;
 	char *ptr;
 
 //	printk("Starting syscall %d\n",r7);
@@ -53,8 +52,7 @@ uint32_t __attribute__((interrupt("SWI"))) swi_handler(
 			break;
 
 		case SYSCALL_TIME:
-			tick_counter = *tick_ptr;
-			r0 = (uint32_t)tick_ptr;
+			*(uint32_t *)r0 = tick_counter;
 			break;
 
 		case SYSCALL_BLINK:
