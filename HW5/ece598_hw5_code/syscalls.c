@@ -64,6 +64,7 @@ uint32_t __attribute__((interrupt("SWI"))) swi_handler(
 				printk("ENABLING_BLINK\n");
 				blinking_enabled=1;
 			}
+			*(uint32_t *)r0 = blinking_enabled;
 			break;
 
 		default:

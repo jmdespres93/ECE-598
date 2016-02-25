@@ -10,8 +10,9 @@ uint32_t shell(void) {
 	uint32_t ch;
 	uint8_t buff[4096] = {0}; // buffer to hold input
 	uint32_t i; // placeholder in buffer
-	uint8_t *print = "print", *meow = "meow", *ptime = "time";
-	uint32_t ticks;
+	//comamands
+	uint8_t *print = "print", *meow = "meow", *ptime = "time", *blink = "blink";
+	uint32_t ticks, heartbeat;
 
 	/* Enter our "shell" */
 	while (1) {
@@ -43,13 +44,27 @@ uint32_t shell(void) {
 		//first check that lengths match
 		//then check if content matches
 		if (i==5) {
+
+			//print command
 			if(strncmp(print, buff, 5)==0) {
 				printf("Hello World\n");
+
+			//blink command
+			} else if (strncmp(blink, buff, 5)) {
+				syscall1(SYSCALL_BLINK, (long)&heartbeat);
+				if(heartbeat) {
+					printf("Rescuscitating!\n");
+				}
+				else printf("He's dead, Jim.\n");
 			} else print_err();
 		} else if (i == 4) {
+
+			//time command
 			if (strncmp(ptime, buff, 4)==0) {
 				syscall1(SYSCALL_TIME,(long)&ticks);
 				printf("%d seconds\n", ticks);
+
+			//meow command
 			} else if (strncmp(meow, buff, 4)==0) {
 				nyan();
 			} else print_err();
