@@ -33,6 +33,9 @@ void __attribute__((interrupt("IRQ"))) interrupt_handler(void) {
 		/* Clear the ARM Timer interrupt		*/
 		mmio_write(TIMER_IRQ_CLEAR,0x1);
 
+		/*add a second to tick_counter*/
+		tick_counter++;
+
 		if (!blinking_enabled) return;
 
 		/* Flip the LED */

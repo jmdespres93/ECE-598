@@ -19,10 +19,10 @@ uint32_t shell(void) {
 	uint32_t ch;
 	uint8_t buff[4096] = {0}; // buffer to hold input
 	uint32_t i; // placeholder in buffer
-	uint8_t *print = "print";
-	uint8_t *meow = "meow";
-	/* Enter our "shell" */
+	uint8_t *print = "print", *meow = "meow", *ptime = "time";
+	long ticks;
 
+	/* Enter our "shell" */
 	while (1) {
 		i = 0;
 		while (1) {
@@ -56,6 +56,10 @@ uint32_t shell(void) {
 				printf("Hello World\n");
 			} else print_err();
 		} else if (i == 4) {
+			if (strncmp(ptime, buff, 4)==0) {
+				syscall1(SYSCALL_TIME,(long)&ticks);
+				printf("%f seconds\n", ticks);
+			}
 			if (strncmp(meow, buff, 4)==0) {
 				nyan();
 			} else print_err();
