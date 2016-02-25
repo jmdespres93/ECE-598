@@ -57,14 +57,16 @@ uint32_t __attribute__((interrupt("SWI"))) swi_handler(
 
 		case SYSCALL_BLINK:
 			if (r0==0) {
-				printk("DISABLING BLINK\n");
+				//printk("DISABLING BLINK\n");
 				blinking_enabled=0;
+				*(uint32_t *)r0 = 1;
 			}
 			else {
-				printk("ENABLING_BLINK\n");
+				//printk("ENABLING_BLINK\n");
 				blinking_enabled=1;
+				*(uint32_t *)r0 = 0;
 			}
-			*(uint32_t *)r0 = blinking_enabled;
+			
 			break;
 
 		default:

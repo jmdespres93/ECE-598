@@ -10,7 +10,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x1714
+.text           0x0000000000008000     0x16f8
  *(.text.boot)
  .text.boot     0x0000000000008000       0xcc boot.o
                 0x0000000000008000                _start
@@ -61,33 +61,33 @@ Linker script and memory map
                 0x0000000000009170                strlen
                 0x00000000000091a0                memset
                 0x00000000000091c4                memset32
- .text          0x00000000000091e8      0x10c syscalls.o
+ .text          0x00000000000091e8       0xf0 syscalls.o
                 0x00000000000091e8                swi_handler
- .text          0x00000000000092f4       0x48 timer.o
-                0x00000000000092f4                timer_init
- .text          0x000000000000933c      0x198 ./user/shell.o
-                0x000000000000933c                shell
-                0x00000000000094c8                print_err
- .text          0x00000000000094d4      0x240 ./user/vlibc.o
-                0x00000000000094d4                write
-                0x00000000000094f0                putchar
-                0x0000000000009524                getchar
-                0x0000000000009558                printf
-                0x00000000000096f4                nyan
+ .text          0x00000000000092d8       0x48 timer.o
+                0x00000000000092d8                timer_init
+ .text          0x0000000000009320      0x198 ./user/shell.o
+                0x0000000000009320                shell
+                0x00000000000094ac                print_err
+ .text          0x00000000000094b8      0x240 ./user/vlibc.o
+                0x00000000000094b8                write
+                0x00000000000094d4                putchar
+                0x0000000000009508                getchar
+                0x000000000000953c                printf
+                0x00000000000096d8                nyan
 
-.glue_7         0x0000000000009714        0x0
+.glue_7         0x00000000000096f8        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000009714        0x0
+.glue_7t        0x00000000000096f8        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000009714        0x0
+.vfp11_veneer   0x00000000000096f8        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000009714        0x0
+.v4_bx          0x00000000000096f8        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000009714        0x0
+.iplt           0x00000000000096f8        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .
@@ -96,7 +96,7 @@ Linker script and memory map
 .rodata
  *(.rodata)
 
-.rodata.str1.4  0x000000000000a000      0x6b8
+.rodata.str1.4  0x000000000000a000      0x694
  .rodata.str1.4
                 0x000000000000a000      0x274 kernel_main.o
                                         0x278 (size before relaxing)
@@ -117,13 +117,13 @@ Linker script and memory map
                                          0x2c (size before relaxing)
  *fill*         0x000000000000a592        0x2 
  .rodata.str1.4
-                0x000000000000a594       0x8c syscalls.o
+                0x000000000000a594       0x68 syscalls.o
  .rodata.str1.4
-                0x000000000000a620       0x98 ./user/shell.o
+                0x000000000000a5fc       0x98 ./user/shell.o
  .rodata.str1.4
                 0x0000000000000000      0x1ac ./user/vlibc.o
 
-.rel.dyn        0x000000000000a6b8        0x0
+.rel.dyn        0x000000000000a694        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __rodata_end = .
