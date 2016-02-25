@@ -10,7 +10,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x16f8
+.text           0x0000000000008000     0x16f0
  *(.text.boot)
  .text.boot     0x0000000000008000       0xcc boot.o
                 0x0000000000008000                _start
@@ -61,33 +61,33 @@ Linker script and memory map
                 0x0000000000009170                strlen
                 0x00000000000091a0                memset
                 0x00000000000091c4                memset32
- .text          0x00000000000091e8       0xf0 syscalls.o
+ .text          0x00000000000091e8       0xe8 syscalls.o
                 0x00000000000091e8                swi_handler
- .text          0x00000000000092d8       0x48 timer.o
-                0x00000000000092d8                timer_init
- .text          0x0000000000009320      0x198 ./user/shell.o
-                0x0000000000009320                shell
-                0x00000000000094ac                print_err
- .text          0x00000000000094b8      0x240 ./user/vlibc.o
-                0x00000000000094b8                write
-                0x00000000000094d4                putchar
-                0x0000000000009508                getchar
-                0x000000000000953c                printf
-                0x00000000000096d8                nyan
+ .text          0x00000000000092d0       0x48 timer.o
+                0x00000000000092d0                timer_init
+ .text          0x0000000000009318      0x198 ./user/shell.o
+                0x0000000000009318                shell
+                0x00000000000094a4                print_err
+ .text          0x00000000000094b0      0x240 ./user/vlibc.o
+                0x00000000000094b0                write
+                0x00000000000094cc                putchar
+                0x0000000000009500                getchar
+                0x0000000000009534                printf
+                0x00000000000096d0                nyan
 
-.glue_7         0x00000000000096f8        0x0
+.glue_7         0x00000000000096f0        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000096f8        0x0
+.glue_7t        0x00000000000096f0        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000096f8        0x0
+.vfp11_veneer   0x00000000000096f0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000096f8        0x0
+.v4_bx          0x00000000000096f0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000096f8        0x0
+.iplt           0x00000000000096f0        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .
