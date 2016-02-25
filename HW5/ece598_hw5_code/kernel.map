@@ -10,7 +10,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x16a0
+.text           0x0000000000008000     0x16a4
  *(.text.boot)
  .text.boot     0x0000000000008000       0xcc boot.o
                 0x0000000000008000                _start
@@ -65,29 +65,29 @@ Linker script and memory map
                 0x00000000000091e8                swi_handler
  .text          0x00000000000092f0       0x48 timer.o
                 0x00000000000092f0                timer_init
- .text          0x0000000000009338      0x128 ./user/shell.o
+ .text          0x0000000000009338      0x12c ./user/shell.o
                 0x0000000000009338                shell
-                0x0000000000009454                print_err
- .text          0x0000000000009460      0x240 ./user/vlibc.o
-                0x0000000000009460                write
-                0x000000000000947c                putchar
-                0x00000000000094b0                getchar
-                0x00000000000094e4                printf
-                0x0000000000009680                nyan
+                0x0000000000009458                print_err
+ .text          0x0000000000009464      0x240 ./user/vlibc.o
+                0x0000000000009464                write
+                0x0000000000009480                putchar
+                0x00000000000094b4                getchar
+                0x00000000000094e8                printf
+                0x0000000000009684                nyan
 
-.glue_7         0x00000000000096a0        0x0
+.glue_7         0x00000000000096a4        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x00000000000096a0        0x0
+.glue_7t        0x00000000000096a4        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x00000000000096a0        0x0
+.vfp11_veneer   0x00000000000096a4        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x00000000000096a0        0x0
+.v4_bx          0x00000000000096a4        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x00000000000096a0        0x0
+.iplt           0x00000000000096a4        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .

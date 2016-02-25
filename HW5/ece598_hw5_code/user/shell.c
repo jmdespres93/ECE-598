@@ -49,9 +49,8 @@ uint32_t shell(void) {
 		} else if (i == 4) {
 			if (strncmp(ptime, buff, 4)==0) {
 				syscall1(SYSCALL_TIME,(long)&ticks);
-				printf("%f seconds\n", ticks);
-			}
-			if (strncmp(meow, buff, 4)==0) {
+				printf("%d seconds\n", ticks);
+			} else if (strncmp(meow, buff, 4)==0) {
 				nyan();
 			} else print_err();
 		} else print_err();
