@@ -53,8 +53,8 @@ uint32_t __attribute__((interrupt("SWI"))) swi_handler(
 			break;
 
 		case SYSCALL_TIME:
-			tick_ptr = (int *)r0;
 			tick_counter = *tick_ptr;
+			r0 = (uint32_t)tick_ptr;
 			break;
 
 		case SYSCALL_BLINK:
