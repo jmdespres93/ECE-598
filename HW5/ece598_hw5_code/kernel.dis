@@ -1420,7 +1420,7 @@ Disassembly of section .text:
     9448:	e1a01005 	mov	r1, r5
     944c:	ebfffef7 	bl	9030 <strncmp>
     9450:	e3500000 	cmp	r0, #0
-    9454:	0affffe3 	beq	93e8 <shell+0xac>
+    9454:	1affffe3 	bne	93e8 <shell+0xac>
     9458:	e2450004 	sub	r0, r5, #4
     945c:	e3a07a02 	mov	r7, #8192	; 0x2000
     9460:	ef000000 	svc	0x00000000

@@ -50,7 +50,7 @@ uint32_t shell(void) {
 				printf("Hello World\n");
 
 			//blink command
-			} else if (strncmp(blink, buff, 5)) {
+			} else if (strncmp(blink, buff, 5)==0) {
 				syscall1(SYSCALL_BLINK, (long)&heartbeat);
 				if(heartbeat) {
 					printf("Rescuscitating!\n");
