@@ -1,17 +1,17 @@
 ECE598 Advanced Operating Systems
 HW5
 
-Name:
+Name: Jasmine Despres
 
-Describe your something cool:
+Describe your something cool: type "blink" to enable/disable heartbeat LED. 
 
 
 Answers to Questions:
 
-5a.
+5a. The system would be locked up waiting for a key to be pressed. It wouldn't be able to do anything else (except higher priority interrupts). 
 
-5b.
+5b. It's for safety/security. You don't want to be able to have access to all of the nitty gritty of your OS all the time. That's a dangerous business.
 
-5c.
+5c. Interrupts and system calls can bring your back into the kernel after already entering the user mode.
 
-5d.
+5d. ABI is an application binary interface. It is the agreed upon way to interface with a system. It makes it so that functions can know what to expect and so that different people's code can work together. 

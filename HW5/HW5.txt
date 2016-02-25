@@ -1,0 +1,112 @@
+Jasmine Despres
+ECE 571
+Homework 5
+
+
+1. Cache paramaters
+A Haswell machine has a 44-bit physical address space, 32-kB L1 data cache, 8-way set associative,
+64-bytes per line.
+	(a) How many bits are used to calculate the offset?
+		6 bits
+	(b) How many bits are used to calculate the line?
+	    6 bits
+	(c) How many bits are used for the tag?
+		32 bits
+
+2. Cache problem
+	(a) ldrb r0, 0x0000080f
+		hit
+	(b) ldrb r0, 0xffffffff
+		miss, don't have to write back to memory
+	(c) strb r0, 0x00000810
+		miss, do have to write back to memory
+
+3. Bzip2 cache behavior on the x86 Haswell Machine
+
+(a) Measure and report the L1 instruction cache miss rate.
+Use instructions:u and L1-icache-load-misses:u for the events.
+    19,161,577,786      instructions:u                                              
+            74,256      L1-icache-load-misses  
+
+            .00039% instruction cache miss rate
+
+(b) Measure and report the L1 data cache load miss rate.
+Use L1-dcache-loads:u and L1-dcache-load-misses:u
+
+     6,244,601,884      L1-dcache-loads                                             
+       311,872,148      L1-dcache-load-misses     #    4.99% of all L1-dcache hits  
+
+(c) Measure and report the L3 cache miss rate
+Use cache-references:u and cache-misses:u
+       139,708,202      cache-references:u                                          
+         1,162,110      cache-misses:u            #    0.832 % of all cache refs    
+
+       3.297069345 seconds time elapsed
+
+4. equake_l cache behavior on the x86 Haswell Machine
+Recall that running equake looks something like this:
+perf stat -e instructions:u,L1-icache-load-misses:u \
+/opt/ece571/equake_l.specomp/equake_l < \
+/opt/ece571/equake_l.specomp/inp.in
+(a) Measure and report the L1 instruction cache miss rate.
+Use instructions:u and L1-icache-load-misses:u for the events.
+
+ 1,443,186,902,155      instructions:u                                              
+        13,444,229      L1-icache-load-misses                                       
+
+     139.460698935 seconds time elapsed
+
+
+(b) Measure and report the L1 data cache load miss rate.
+Use L1-dcache-loads:u and L1-dcache-load-misses:u
+
+   527,105,849,376      L1-dcache-loads                                             
+    30,756,898,016      L1-dcache-load-misses     #    5.84% of all L1-dcache hits  
+
+
+(c) Measure and report the L1 data cache store miss rate.
+Use L1-dcache-stores:u and L1-dcache-store-misses:u
+
+   140,445,522,240      L1-dcache-stores                                            
+   <not supported>      L1-dcache-store-misses   
+
+     134.715203180 seconds time elapsed
+
+(d) Measure and report the L3 cache miss rate
+Use cache-references:u and cache-misses:u
+
+    13,644,184,798      cache-references:u                                          
+     8,067,618,834      cache-misses:u            #   59.129 % of all cache refs    
+
+     134.471519065 seconds time elapsed
+
+
+5. Bzip2 cache behavior on the Jetson
+Now run the bzip2 benchmark on the ARM64 jetson machine. (recall from the last homework, just
+ssh from haswell, ssh jetson).
+You will note on the jetson machine that perf list shows a lot of events missing. For some reason
+the linux-kernel is missing support for them, but if you look at the ARM Cortex-A57 manual:
+http://web.eece.maine.edu/~vweaver/classes/ece571/DDI0488C_cortex_a57_
+mpcore_r1p0_trm.pdf
+in Chapter 11.8 you will see support is listed for them.
+The perf built-in events for Cortex-A57 were not really updated until Linux 4.4 but we are running
+3.10 on our system.
+(a) For icache rate try measuring r14:u (which is L1_ICACHE) and r01:u (which is L1I_CACHE_REFILL).
+
+
+    10,490,856,637      r14:u                                                       
+           169,493      r01:u                                                       
+
+      10.449327328 seconds time elapsed
+
+
+(b) Measure and report the L1 data cache load miss rate.
+Use r40:u (which is L1D_CACHE_LD) and r42:u (which is L1D_CACHE_REFILL_LD).
+(c) Measure and report the L1 data cache store miss rate.
+Use r41:u (which is L1D_CACHE_ST) and r43:u (which is L1D_CACHE_REFILL_ST).
+
+
+7.        305,240,986      r51:u                                                       
+        21,306,760      r53:u                                                       
+
+      10.454314057 seconds time elapsed
