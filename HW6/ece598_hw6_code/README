@@ -1,0 +1,30 @@
+ECE598 Advanced Operating Systems
+HW6
+
+Name:
+
+
+Answers to Questions:
+
+3a. First Fit
+
+3b. I would create a global variable that stores the last value of i and then start i at that variable next time. 
+int last = 0;
+.
+.
+.
+for(i=last; i<max_chunk; i++) {
+	slkjdf;sdl
+}
+
+
+4a. 44kB
+
+4b. 0x3-0x6
+
+4c. 0xc-0xf
+
+4d. If you wanted to allocate memory for something larger than 16kB you will be able to if you use best-fit because that larger chunk of chunk won't be taken. 
+
+4e. Not without special memory managing code. It could be possible if you have a layer of abstraction between the user and the memory. This layer of abstraction could manage the memory and reorganize it as memory gets freed. Then all of the free memory will be together. It wouldn't work if you used malloc. It's not sophisticated enough to defragment all of the memory. 
+
