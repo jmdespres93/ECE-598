@@ -19,11 +19,15 @@ Initializing 448MB of memory.  1136kB used by kernel, 8kB used by memory map
 
 Something Cool
 
-3. Default memory:
-        MEMSPEED: 16777216 MB took 98 ticks
+3. Changed to 32 bit writes. 
+
+	Default memory:
+        MEMSPEED: 16777216 MB took 85 ticks
 
 
 Questions
 
-4a.
-4b.
+4a. Virtual memory on Linux allows for more than (or less than) the address space would normally permit. 
+4b. Filesystems are used to organize data in a consistent way for usage acrosss different machines (i.e. if 
+your flash drive doesnt have a file system, your computer can't read it). Yes, you could write a system 
+in machien code and just make the machine execute it. It doesn't necessarily need to be organized. 
