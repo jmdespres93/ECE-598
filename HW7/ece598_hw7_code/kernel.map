@@ -17,7 +17,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x1ab0
+.text           0x0000000000008000     0x1ab4
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
@@ -73,41 +73,41 @@ Linker script and memory map
                 0x000000000000934c                uart_getc
                 0x0000000000009374                uart_getc_noblock
                 0x00000000000093a4                uart_write
- .text          0x0000000000009410      0x1cc string.o
+ .text          0x0000000000009410      0x1d0 string.o
                 0x0000000000009410                strncmp
                 0x0000000000009470                memcmp
                 0x00000000000094d0                memcpy
                 0x00000000000094f8                strncpy
                 0x0000000000009550                strlen
                 0x0000000000009580                memset
- .text          0x00000000000095dc       0x10 swi_handler.o
-                0x00000000000095dc                swi_handler
- .text          0x00000000000095ec      0x10c syscalls.o
-                0x00000000000095ec                swi_handler_c
- .text          0x00000000000096f8       0x58 timer.o
-                0x00000000000096f8                timer_init
-                0x0000000000009740                ticks_since_boot
- .text          0x0000000000009750      0x140 ./user/shell.o
-                0x0000000000009750                shell
- .text          0x0000000000009890      0x220 ./user/vlibc.o
-                0x0000000000009890                write
-                0x00000000000098ac                putchar
-                0x00000000000098e0                getchar
-                0x0000000000009914                printf
+ .text          0x00000000000095e0       0x10 swi_handler.o
+                0x00000000000095e0                swi_handler
+ .text          0x00000000000095f0      0x10c syscalls.o
+                0x00000000000095f0                swi_handler_c
+ .text          0x00000000000096fc       0x58 timer.o
+                0x00000000000096fc                timer_init
+                0x0000000000009744                ticks_since_boot
+ .text          0x0000000000009754      0x140 ./user/shell.o
+                0x0000000000009754                shell
+ .text          0x0000000000009894      0x220 ./user/vlibc.o
+                0x0000000000009894                write
+                0x00000000000098b0                putchar
+                0x00000000000098e4                getchar
+                0x0000000000009918                printf
 
-.glue_7         0x0000000000009ab0        0x0
+.glue_7         0x0000000000009ab4        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x0000000000009ab0        0x0
+.glue_7t        0x0000000000009ab4        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000009ab0        0x0
+.vfp11_veneer   0x0000000000009ab4        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x0000000000009ab0        0x0
+.v4_bx          0x0000000000009ab4        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x0000000000009ab0        0x0
+.iplt           0x0000000000009ab4        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000a000                . = ALIGN (0x1000)
                 0x000000000000a000                __text_end = .

@@ -86,8 +86,8 @@ void *memset(void *s, int c, uint32_t n) {
 	// for(i=0;i<n;i++) b[i]=c;
 
 	// return 0;
-
-	uint32_t i=0;
+	c = (char)c;
+	uint32_t i=0, m;
 	char *b;
 	uint32_t *l;
 	const uint32_t set = c << 24 | c << 16 | c << 8 | c;
@@ -95,8 +95,8 @@ void *memset(void *s, int c, uint32_t n) {
 	b=(char *)s;
 	l=(uint32_t *)s;
 
-	while (i < (n >> 2)) l[i++] = set;
-
+	m=n>>2;
+	while (i < m) l[i++] = set;
 	for(i<<2;i < n;i++) b[i]=c;
 
 	return 0;
