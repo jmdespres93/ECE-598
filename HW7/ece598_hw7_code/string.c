@@ -78,12 +78,26 @@ int strlen(const char *s1) {
 
 void *memset(void *s, int c, uint32_t n) {
 
-	uint32_t i;
+	// uint32_t i;
+	// char *b;
+
+	// b=(char *)s;
+
+	// for(i=0;i<n;i++) b[i]=c;
+
+	// return 0;
+
+	uint32_t i=0;
 	char *b;
+	uint32_t *l;
+	const uint32_t set = c << 24 | c << 16 | c << 8 | c;
 
 	b=(char *)s;
+	l=(uint32_t *)s;
 
-	for(i=0;i<n;i++) b[i]=c;
+	while (i < (n << 2)) l[i++] = set;
+
+	for(i>>2;i < n;i++) b[i]=c;
 
 	return 0;
 }
