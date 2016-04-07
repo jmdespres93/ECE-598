@@ -1,15 +1,21 @@
 ECE598 Advanced Operating Systems
 HW7
 
-Name:
+Name: Jasmine Despres
 
 
 Answers to Questions:
+Initializing 448MB of memory.  1136kB used by kernel, 8kB used by memory map
 
-2a.
-2b.
-2c.
-2d.
+
+2a. Default memory:
+        MEMSPEED: 16777216 MB took 85 ticks
+2b. L1 cache enabled
+        MEMSPEED: 16777216 MB took 32 ticks
+2c. Branch predictor enabled
+        MEMSPEED: 16777216 MB took 25 ticks
+2d. Virtual memory and dcache enabled
+        MEMSPEED: 16777216 MB took 11 ticks
 
 Something Cool
 
