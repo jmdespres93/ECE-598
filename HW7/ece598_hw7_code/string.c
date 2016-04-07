@@ -95,9 +95,9 @@ void *memset(void *s, int c, uint32_t n) {
 	b=(char *)s;
 	l=(uint32_t *)s;
 
-	while (i < (n << 2)) l[i++] = set;
+	while (i < (n >> 2)) l[i++] = set;
 
-	//for(i>>2;i < n;i++) b[i]=c;
+	for(i<<2;i < n;i++) b[i]=c;
 
 	return 0;
 }
