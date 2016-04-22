@@ -1,0 +1,49 @@
+Jasmine Despres
+ECE 598
+Homework 8
+
+
+1.  No it is not, it is stored in the directory structure of the directory the file is contained in.  One possible reason behind storing file names in the directory structure is to allow for features such as hard links.  With a hard link, multiple files (filenames) point to the same inode.  A single inode could not otherwise easily have multiple file names.  It also allows for decoupling of the directory structure from the file.  A move operation in linux just creates a new directory structure entry pointing to the original inode instead of modifying the file itself.
+
+2.
+
+a. 12kB
+
+b. 12kB + 256kB = 268kB
+
+c. 12kB + 256kB + 65525kB = 65804kB
+
+d. 12kB + 256kB + 66535kB + 4294836225kB = 4294902029kB
+
+e. 1kB + (1kB + 1024kB) + (1kB + 1024kB + 1048576kB) = 1050627kB
+
+
+
+3. 
+
+a. The ext2 filesystem would be better than FAT for embedded systems prone to power loss due to its “journaling”.  Uncommitted changes are stored in the journal and can be replayed after power loss reducing the chance of corruption.
+
+b. FAT would be a better choice for drives which must be read by many different operating systems.  Due to its age and simplicity, the FAT filesystem has native drivers in nearly all common operating systems (as well as simple, bare metal, embedded systems).
+
+
+
+4.
+
+Possible with “sparse files”.  Essentially files which exist in terms of filesystem metadata but contain no actual data in the space they “occupy”.  “ls” sees the apparent size of the file while du sees the actual space used.
+
+
+
+5.
+
+The whole /proc filesystem is virtual and loaded at boot, existing only in memory.  The /proc/cpuinfo data originates from the cpu itself each time the computer boots by using the “cupid” opcode on x86.
+
+
+
+6.
+
+JFFS/JFFS2 (Journalling Flash File System) is a file system targeted at flash memory (NOR and later NAND with JFFS2) applications.  It was designed to compensate for the limitations of flash memory devices, specifically addressing their requirements for wear leveling.  
+
+For example, NOR flash segments (which are annoyingly large) can only be erased on the order of 1 Million times at most before becoming unstable.  Typical linux file systems, like ext2 and FAT discussed earlier, have a tendency to update inodes and similar bookkeeping structures with every file modifications in place, making the sections storing commonly accessed files, like your system logs, wear out very quickly.  JFFS2 stores files in incrementing blocks;  Multiple file can exist in a single block but modifications to an existing file are placed in a new block.  The block where the old version of the file exists is marked dirty and a garbage collector must move whatever valid files exist in the dirty block out and clean the block for reuse.  
+
+But, the operating system must know what exists on the file system at boot requiring a complete file system scan and storing this information in memory.  As such, the amount of memory consumed on a system is directly proportional to the number of files stored in the file system.  As Linux found its way into embedded systems, the need for a filesystem supporting NOR/NAD flash lead to its inclusion.  JFFS2 supersedes the original JFFS standard.
+
