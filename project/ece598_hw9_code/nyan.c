@@ -19,7 +19,7 @@ void nyan_init(void) {
 	gpio[GPIO_GPFSEL4] = (0b100<<(3*5))|(0b100<<3*0);
 
 	//load PWM base
-	pwm = (uint32_t *)PWM_BASE;
+	pwm = (uint32_t *)(PWM_BASE+PERIPHERAL_BASE);
 	//set both channels to to 8bit 44100Hz Mono
 	pwm[PWM_RNG1>>2] = 0x1B4;
 	pwm[PWM_RNG2>>2] = 0x1B4;
@@ -28,12 +28,13 @@ void nyan_init(void) {
 }
 void nyan_sing(void) {
 	//load PWM base
-	pwm  = (uint32_t *)PWM_BASE;
+	pwm  = (uint32_t *)(PWM_BASE+PERIPHERAL_BASE);
 	// uint8_t  * psong = song;
 	uint8_t * psong = Sample;
 	// uint8_t  * psong_end = &song[1539490];
 	uint8_t * psong_end = Sample_end;
 	//Check if at end of song
+	printk("Beginning song\n");
 	while(psong!=psong_end) {
 		//load byte into PWM FIF1
 		pwm[PWM_FIF1>>2] = *psong;

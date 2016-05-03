@@ -290,6 +290,7 @@
 #define CM_PWMDIV     0x0A4 // Clock Manager PWM Clock Divisor
 
 // PWM / Pulse Width Modulator Interface
+#define PERIPHERAL_BASE 0x20000000 //Peripheral Base Address
 
 #define PWM_BASE  0x20C000 // PWM Base Address
 
