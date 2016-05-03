@@ -10,14 +10,16 @@ extern uint8_t Sample[]      asm("_binary_Sample_bin_start");
 extern uint8_t Sample_size[] asm("_binary_Sample_bin_size");
 extern uint8_t Sample_end[]  asm("_binary_Sample_bin_end");
 
+volatile uint32_t * gpio;
+volatile uint32_t * pwm;
 void nyan_init(void) {
 	//load GPIO base
-	uint32_t * gpio = (uint32_t *)GPIO_BASE;
+	gpio = (uint32_t *)GPIO_BASE;
 	//Set GPIO 45 & 40 to ALT0
 	gpio[GPIO_GPFSEL4] = (0b100<<(3*5))|(0b100<<3*0);
 
 	//load PWM base
-	uint32_t * pwm = (uint32_t *)PWM_BASE;
+	pwm = (uint32_t *)PWM_BASE;
 	//set both channels to to 8bit 44100Hz Mono
 	pwm[PWM_RNG1] = 0x1B4;
 	pwm[PWM_RNG2] = 0x1B4;
