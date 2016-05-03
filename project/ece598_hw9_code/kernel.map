@@ -88,9 +88,9 @@ Linker script and memory map
  .text          0x0000000000009a94      0x188 serial.o
                 0x0000000000009a94                uart_init
                 0x0000000000009b34                uart_putc
-                0x0000000000009b58                uart_getc
-                0x0000000000009b80                uart_getc_noblock
-                0x0000000000009bb0                uart_write
+                0x0000000000009b78                uart_getc
+                0x0000000000009ba0                uart_getc_noblock
+                0x0000000000009bd0                uart_write
  .text          0x0000000000009c1c      0x390 string.o
                 0x0000000000009c1c                strncmp
                 0x0000000000009c7c                memcmp
@@ -141,7 +141,7 @@ Linker script and memory map
  *(.rodata)
  .rodata        0x000000000000b000       0x20 mmu.o
 
-.rodata.str1.4  0x000000000000b020      0x948
+.rodata.str1.4  0x000000000000b020      0x968
  .rodata.str1.4
                 0x000000000000b020      0x169 kernel_main.o
                                         0x170 (size before relaxing)
@@ -181,18 +181,22 @@ Linker script and memory map
                                          0x98 (size before relaxing)
  *fill*         0x000000000000b7c1        0x3 
  .rodata.str1.4
-                0x000000000000b7c4       0x6d string.o
+                0x000000000000b7c4       0x1d serial.o
+                                         0x20 (size before relaxing)
+ *fill*         0x000000000000b7e1        0x3 
+ .rodata.str1.4
+                0x000000000000b7e4       0x6d string.o
                                          0x70 (size before relaxing)
- *fill*         0x000000000000b831        0x3 
+ *fill*         0x000000000000b851        0x3 
  .rodata.str1.4
-                0x000000000000b834       0x8c syscalls.o
+                0x000000000000b854       0x8c syscalls.o
  .rodata.str1.4
-                0x000000000000b8c0       0x98 ./user/shell.o
+                0x000000000000b8e0       0x98 ./user/shell.o
                                          0xa0 (size before relaxing)
  .rodata.str1.4
-                0x000000000000b958       0x10 nyan.o
+                0x000000000000b978       0x10 nyan.o
 
-.rel.dyn        0x000000000000b968        0x0
+.rel.dyn        0x000000000000b988        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000c000                . = ALIGN (0x1000)
                 0x000000000000c000                __rodata_end = .

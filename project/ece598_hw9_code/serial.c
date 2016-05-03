@@ -58,8 +58,10 @@ void uart_putc(unsigned char byte) {
 
 	/* Check Flags Register */
 	/* And wait until FIFO not full */
-	while ( mmio_read(UART0_FR) & UART0_FR_TXFF ) {
+	printk("waiting for RX\n");
+	while ( mmio_read(UART0_FR) & UART0_FR_RXFE ) {
 	}
+	printk("RX received\n");
 
 	/* Write our data byte out to the data register */
 	mmio_write(UART0_DR, byte);
