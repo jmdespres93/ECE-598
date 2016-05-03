@@ -13,6 +13,7 @@ extern uint8_t Sample_end[]  asm("_binary_Sample_bin_end");
 volatile uint32_t * gpio;
 volatile uint32_t * pwm;
 volatile uint32_t * clock;
+
 void nyan_init(void) {
 	//load GPIO base
 	gpio = (uint32_t *)GPIO_BASE;
@@ -21,7 +22,7 @@ void nyan_init(void) {
 
 	//Set clock
 	clock = (uint32_t *)(PERIPHERAL_BASE+CM_BASE);
-	clock[CM_PWMDIV>>2] = CM_PASSWORD+0x2000;
+	clock[CM_PWMDIV>>2] = CM_PASSWORD + 0x2000;
 	clock[CM_PWMCTL] = CM_PASSWORD + CM_ENAB + CM_SRC_OSCILLATOR;
 
 	//load PWM base
@@ -45,7 +46,7 @@ void nyan_sing(void) {
 		//load byte into PWM FIF1
 		pwm[PWM_FIF1>>2] = *psong;
 		while(pwm[PWM_STA>>2] && PWM_FULL1);
-		printk("Buffer Full\n");
+		printk("%d\n", *psong);
 		//move to next byte
 		psong++;
 	}
