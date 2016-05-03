@@ -28,7 +28,7 @@ void nyan_init(void) {
 }
 void nyan_sing(void) {
 	//load PWM base
-	uint32_t * pwm  = (uint32_t *)PWM_BASE;
+	pwm  = (uint32_t *)PWM_BASE;
 	// uint8_t  * psong = song;
 	uint8_t * psong = Sample;
 	// uint8_t  * psong_end = &song[1539490];
