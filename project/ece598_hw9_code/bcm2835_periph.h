@@ -32,7 +32,7 @@
 /* GPEDS = Event Detect */
 /*  Set based on rising/falling event status */
 /*  Can trigger an interrupt */
-/*  Three interrupts; one for each bank plus one for "any" */
+/*  Three interrupts one for each bank plus one for "any" */
 #define GPIO_GPEDS0	(GPIO_BASE + 0x40)
 #define GPIO_GPEDS1	(GPIO_BASE + 0x44)
 /* GPREN = Rising Edge Detect */
@@ -282,3 +282,87 @@
 #define UART0_ITOP	(UART0_BASE + 0x88)
 /* TDR = Test Data Register */
 #define UART0_TDR	(UART0_BASE + 0x8C)
+
+#define CLK_PWM_ID    0xA // PWM
+
+#define CM_PWMCTL     0x0A0 // Clock Manager PWM Clock Control
+
+#define CM_PWMDIV     0x0A4 // Clock Manager PWM Clock Divisor
+
+// PWM / Pulse Width Modulator Interface
+
+#define PWM_BASE  0x20C000 // PWM Base Address
+
+#define PWM_CTL        0x0 // PWM Control
+
+#define PWM_STA        0x4 // PWM Status
+
+#define PWM_DMAC       0x8 // PWM DMA Configuration
+
+#define PWM_RNG1      0x10 // PWM Channel 1 Range
+
+#define PWM_DAT1      0x14 // PWM Channel 1 Data
+
+#define PWM_FIF1      0x18 // PWM FIFO Input
+
+#define PWM_RNG2      0x20 // PWM Channel 2 Range
+
+#define PWM_DAT2      0x24 // PWM Channel 2 Data
+
+#define PWM_PWEN1     0x1 // PWM Control: Channel 1 Enable
+
+#define PWM_MODE1     0x2 // PWM Control: Channel 1 Mode
+
+#define PWM_RPTL1     0x4 // PWM Control: Channel 1 Repeat Last Data
+
+#define PWM_SBIT1     0x8 // PWM Control: Channel 1 Silence Bit
+
+#define PWM_POLA1    0x10 // PWM Control: Channel 1 Polarity
+
+#define PWM_USEF1    0x20 // PWM Control: Channel 1 Use Fifo
+
+#define PWM_CLRF1    0x40 // PWM Control: Clear Fifo
+
+#define PWM_MSEN1    0x80 // PWM Control: Channel 1 M/S Enable
+
+#define PWM_PWEN2   0x100 // PWM Control: Channel 2 Enable
+
+#define PWM_MODE2   0x200 // PWM Control: Channel 2 Mode
+
+#define PWM_RPTL2   0x400 // PWM Control: Channel 2 Repeat Last Data
+
+#define PWM_SBIT2   0x800 // PWM Control: Channel 2 Silence Bit
+
+#define PWM_POLA2  0x1000 // PWM Control: Channel 2 Polarity
+
+#define PWM_USEF2  0x2000 // PWM Control: Channel 2 Use Fifo
+
+#define PWM_MSEN2  0x8000 // PWM Control: Channel 2 M/S Enable
+
+#define PWM_FULL1     0x1 // PWM Status: Fifo Full Flag
+
+#define PWM_EMPT1     0x2 // PWM Status: Fifo Empty Flag
+
+#define PWM_WERR1     0x4 // PWM Status: Fifo Write Error Flag
+
+#define PWM_RERR1     0x8 // PWM Status: Fifo Read Error Flag
+
+#define PWM_GAPO1    0x10 // PWM Status: Channel 1 Gap Occurred Flag
+
+#define PWM_GAPO2    0x20 // PWM Status: Channel 2 Gap Occurred Flag
+
+#define PWM_GAPO3    0x40 // PWM Status: Channel 3 Gap Occurred Flag
+
+#define PWM_GAPO4    0x80 // PWM Status: Channel 4 Gap Occurred Flag
+
+#define PWM_BERR    0x100 // PWM Status: Bus Error Flag
+
+#define PWM_STA1    0x200 // PWM Status: Channel 1 State
+
+#define PWM_STA2    0x400 // PWM Status: Channel 2 State
+
+#define PWM_STA3    0x800 // PWM Status: Channel 3 State
+
+#define PWM_STA4   0x1000 // PWM Status: Channel 4 State
+
+#define PWM_ENAB  0x80000000 // PWM DMA Configuration: DMA Enable

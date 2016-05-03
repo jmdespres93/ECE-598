@@ -1,13 +1,11 @@
-#include <stddef.h>
-#include <stdint.h>
-#include "bcm2835_periph.h"
-#include "serial.h"
-#include "printk.h"
+// #include "serial.h"
+// #include "printk.h"
 
-#ifndef
-#define
+// #ifndef NYAN_H
+// #define NYAN_H
 
-void nyan_sing();
-void nyan_dance();
+void nyan_init(void);
+void nyan_sing(void);
+void nyan_dance(void);
 
-#endif
+// #endif //NYAN_H

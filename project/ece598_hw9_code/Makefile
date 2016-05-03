@@ -12,14 +12,14 @@ kernel.elf:	kernel_main.o \
 		console_io.o framebuffer.o framebuffer_console.o gpio.o led.o \
 		mailbox.o memory.o mmu.o printk.o \
 		serial.o string.o swi_handler.o syscalls.o timer.o \
-		./user/shell.o ./user/vlibc.o
+		./user/shell.o ./user/vlibc.o nyan.o
 	$(CROSS)ld $(LFLAGS) \
 		kernel_main.o \
 		atags.o boot.o interrupts.o \
 		console_io.o framebuffer.o framebuffer_console.o gpio.o led.o \
 		mailbox.o memory.o mmu.o printk.o \
 		serial.o string.o swi_handler.o syscalls.o timer.o \
-		./user/shell.o ./user/vlibc.o \
+		./user/shell.o ./user/vlibc.o nyan.o Sample.o\
 		-Map kernel.map -o kernel.elf
 
 
@@ -78,6 +78,8 @@ syscalls.o:	syscalls.c syscalls.h
 timer.o:	timer.c timer.h
 	$(CROSS)$(CC) $(CFLAGS) -o timer.o -c timer.c
 
+nyan.o:	nyan.c nyan.h
+	$(CROSS)$(CC) $(CFLAGS) -o nyan.o -c nyan.c
 
 
 boot.o:	boot.s

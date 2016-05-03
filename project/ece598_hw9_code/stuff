@@ -1,0 +1,53 @@
+	asm volatile(
+		// 		; Raspberry Pi 'Bare Metal' Sound 8Bit Mono 44100Hz CPU Demo by krom (Peter Lemon):
+		// ; 1. Set 3.5" Phone Jack To PWM 
+		// ; 2. Setup PWM Sound Buffer
+		// ; 3. Play Sound Sample Using CPU & FIFO
+
+		// format binary as 'img'
+		"include 'sound/LIB/FASMARM.INC'\n"
+		"include 'sound/LIB/R_PI.INC'\n"
+
+		"org $0000\n"
+
+		// ; Set GPIO 40 & 45 (Phone Jack) To Alternate PWM Function 0
+		"imm32 r0,PERIPHERAL_BASE + GPIO_BASE\n"
+		"imm32 r1,GPIO_FSEL0_ALT0 + GPIO_FSEL5_ALT0\n"
+		"str r1,[r0,GPIO_GPFSEL4]\n"
+
+		// ; Set Clock
+		"imm32 r0,PERIPHERAL_BASE + CM_BASE\n"
+		"imm32 r1,CM_PASSWORD + $2000 ; Bits 0..11 Fractional Part Of Divisor = 0, Bits 12..23 Integer Part Of Divisor = 2\n"
+		"str r1,[r0,CM_PWMDIV]\n"
+
+		"imm32 r1,CM_PASSWORD + CM_ENAB + CM_SRC_OSCILLATOR ; Use Default 100MHz Clock\n"
+		"str r1,[r0,CM_PWMCTL]\n"
+
+		// ; Set PWM
+		"imm32 r0,PERIPHERAL_BASE + PWM_BASE\n"
+		"imm32 r1,$1B4 ; Range = 8bit 44100Hz Mono\n"
+		"str r1,[r0,PWM_RNG1]\n"
+		"str r1,[r0,PWM_RNG2]\n"
+
+		"imm32 r1,PWM_USEF2 + PWM_PWEN2 + PWM_USEF1 + PWM_PWEN1 + PWM_CLRF1\n"
+		"str r1,[r0,PWM_CTL]\n"
+
+		"Loop:\n"
+		  "imm32 r1,SND_Sample ; R1 = Sound Sample\n"
+		  "imm32 r2,SND_SampleEOF ; R2 = End Of Sound Sample\n"
+		  "FIFO_Write:\n"
+		    "ldrb r3,[r1],1\n" //; Write 1 Byte To FIFO
+		    "str r3,[r0,PWM_FIF1]\n" //; FIFO Address
+		    "FIFO_Wait:\n"
+		      "ldr r3,[r0,PWM_STA]\n"
+		      "tst r3,PWM_FULL1 \n"//; Test Bit 1 FIFO Full
+		      "bne FIFO_Wait\n"
+		    "cmp r1,r2\n" //; Check End Of Sound Sample
+		    "bne FIFO_Write\n"
+
+		  "b Loop\n" //; Play Sample Again
+
+		"SND_Sample:\n" //; 8bit 44100Hz Unsigned Mono Sound Sample
+		  "file 'sound/Sample.bin'\n"
+		  "SND_SampleEOF:\n"
+		);
