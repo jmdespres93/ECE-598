@@ -69,9 +69,10 @@ unsigned char uart_getc(void) {
 
 	/* Check Flags Register */
 	/* Wait until Receive FIFO is not empty */
+	printk("waiting for RX\n");
 	while ( mmio_read(UART0_FR) & UART0_FR_RXFE ) {
 	}
-
+	printk("RX received\n");
 	/* Read and return the received data */
 	/* Note we are ignoring the top 4 error bits */
 
