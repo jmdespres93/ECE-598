@@ -41,8 +41,8 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	enable_interrupts();
 	printk("enable interrupts\n");
 	/* Enable Framebuffer */
-	framebuffer_init(framebuffer_width,framebuffer_height,24);
-	framebuffer_console_init();
+	// framebuffer_init(framebuffer_width,framebuffer_height,24);
+	// framebuffer_console_init();
 
 	printk("\nWaiting for serial port to be ready (press any key)\n");
 	uart_getc();
