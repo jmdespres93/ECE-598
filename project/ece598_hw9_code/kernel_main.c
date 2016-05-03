@@ -20,7 +20,7 @@ int hardware_type=RPI_MODEL_B;
 
 void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 		uint32_t memory_kernel) {
-
+	printk("enter kernel\n");
 	int ch;
 	struct atag_info_t atag_info;
 	unsigned int memory_total;
@@ -31,15 +31,15 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	/* Detect Hardware */
 	atags_detect(atags,&atag_info);
 	hardware_type=atag_info.hardware_type;
-
+	printk("detect atags\n");
 	/* Initialize Hardware */
 	uart_init();
 	led_init();
 	timer_init();
-
+	printk("Initialize uart, led, and timer\n");
 	/* Enable Interrupts */
 	enable_interrupts();
-
+	printk("enable interrupts\n");
 	/* Enable Framebuffer */
 	framebuffer_init(framebuffer_width,framebuffer_height,24);
 	framebuffer_console_init();
