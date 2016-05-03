@@ -3,7 +3,7 @@
 #include "bcm2835_periph.h"
 #include "mmio.h"
 #include "delay.h"
-#include "printk.h"
+// #include "printk.h"
 
 void uart_init(void) {
 
@@ -58,10 +58,10 @@ void uart_putc(unsigned char byte) {
 
 	/* Check Flags Register */
 	/* And wait until FIFO not full */
-	printk("waiting for RX\n");
+	// printk("waiting for RX\n");
 	while ( mmio_read(UART0_FR) & UART0_FR_RXFE ) {
 	}
-	printk("RX received\n");
+	// printk("RX received\n");
 
 	/* Write our data byte out to the data register */
 	mmio_write(UART0_DR, byte);
