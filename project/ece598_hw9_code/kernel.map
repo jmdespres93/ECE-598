@@ -16,7 +16,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x24e0
+.text           0x0000000000008000     0x24f0
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
@@ -115,23 +115,23 @@ Linker script and memory map
                 0x000000000000a270                putchar
                 0x000000000000a2a4                getchar
                 0x000000000000a2d8                printf
- .text          0x000000000000a474       0x6c nyan.o
+ .text          0x000000000000a474       0x7c nyan.o
                 0x000000000000a474                nyan_init
                 0x000000000000a4a8                nyan_sing
 
-.glue_7         0x000000000000a4e0        0x0
+.glue_7         0x000000000000a4f0        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000000a4e0        0x0
+.glue_7t        0x000000000000a4f0        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000a4e0        0x0
+.vfp11_veneer   0x000000000000a4f0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000000a4e0        0x0
+.v4_bx          0x000000000000a4f0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000000a4e0        0x0
+.iplt           0x000000000000a4f0        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __text_end = .
@@ -196,7 +196,7 @@ Linker script and memory map
                 0x000000000000c000                __rodata_end = .
                 0x000000000000c000                __data_start = .
 
-.data           0x000000000000c000   0x178dc0
+.data           0x000000000000c000   0x2f0b64
  *(.data)
  .data          0x000000000000c000        0x4 kernel_main.o
                 0x000000000000c000                hardware_type
@@ -223,48 +223,51 @@ Linker script and memory map
  .data          0x000000000000d01c        0x0 ./user/vlibc.o
  .data          0x000000000000d01c   0x177da4 nyan.o
                 0x000000000000d01c                song
+ .data          0x0000000000184dc0   0x177da4 Sample.o
+                0x0000000000184dc0                _binary_Sample_bin_start
+                0x00000000002fcb64                _binary_Sample_bin_end
 
-.igot.plt       0x0000000000184dc0        0x0
+.igot.plt       0x00000000002fcb64        0x0
  .igot.plt      0x0000000000000000        0x0 kernel_main.o
-                0x0000000000185000                . = ALIGN (0x1000)
-                0x0000000000185000                __data_end = .
-                0x0000000000185000                __bss_start = .
+                0x00000000002fd000                . = ALIGN (0x1000)
+                0x00000000002fd000                __data_end = .
+                0x00000000002fd000                __bss_start = .
 
-.bss            0x0000000000188000    0x10000
-                0x0000000000188000                bss = .
+.bss            0x0000000000300000    0x10000
+                0x0000000000300000                bss = .
  *(.bss)
- .bss           0x0000000000188000        0x0 kernel_main.o
- .bss           0x0000000000188000        0x0 atags.o
- .bss           0x0000000000188000        0x0 boot.o
- .bss           0x0000000000188000        0x4 interrupts.o
- .bss           0x0000000000188004        0x0 console_io.o
- *fill*         0x0000000000188004        0xc 
- .bss           0x0000000000188010       0x60 framebuffer.o
- .bss           0x0000000000188070     0x15ec framebuffer_console.o
- *fill*         0x000000000018965c        0x4 
- .bss           0x0000000000189660        0x8 gpio.o
- .bss           0x0000000000189668        0x0 led.o
- .bss           0x0000000000189668        0x0 mailbox.o
- .bss           0x0000000000189668        0x4 memory.o
- .bss           0x000000000018966c        0x0 mmu.o
- .bss           0x000000000018966c        0x0 printk.o
- .bss           0x000000000018966c        0x0 serial.o
- .bss           0x000000000018966c        0x0 string.o
- .bss           0x000000000018966c        0x0 swi_handler.o
- .bss           0x000000000018966c        0x0 syscalls.o
- .bss           0x000000000018966c        0x4 timer.o
-                0x000000000018966c                tick_counter
- .bss           0x0000000000189670        0x0 ./user/shell.o
- .bss           0x0000000000189670        0x0 ./user/vlibc.o
- .bss           0x0000000000189670        0x0 nyan.o
- COMMON         0x0000000000189670     0x8000 memory.o
-                0x0000000000189670                memory_map
- *fill*         0x0000000000191670     0x2990 
- COMMON         0x0000000000194000     0x4000 mmu.o
-                0x0000000000194000                page_table
-                0x0000000000198000                . = ALIGN (0x1000)
-                0x0000000000198000                __bss_end = .
-                0x0000000000198000                __end = .
+ .bss           0x0000000000300000        0x0 kernel_main.o
+ .bss           0x0000000000300000        0x0 atags.o
+ .bss           0x0000000000300000        0x0 boot.o
+ .bss           0x0000000000300000        0x4 interrupts.o
+ .bss           0x0000000000300004        0x0 console_io.o
+ *fill*         0x0000000000300004        0xc 
+ .bss           0x0000000000300010       0x60 framebuffer.o
+ .bss           0x0000000000300070     0x15ec framebuffer_console.o
+ *fill*         0x000000000030165c        0x4 
+ .bss           0x0000000000301660        0x8 gpio.o
+ .bss           0x0000000000301668        0x0 led.o
+ .bss           0x0000000000301668        0x0 mailbox.o
+ .bss           0x0000000000301668        0x4 memory.o
+ .bss           0x000000000030166c        0x0 mmu.o
+ .bss           0x000000000030166c        0x0 printk.o
+ .bss           0x000000000030166c        0x0 serial.o
+ .bss           0x000000000030166c        0x0 string.o
+ .bss           0x000000000030166c        0x0 swi_handler.o
+ .bss           0x000000000030166c        0x0 syscalls.o
+ .bss           0x000000000030166c        0x4 timer.o
+                0x000000000030166c                tick_counter
+ .bss           0x0000000000301670        0x0 ./user/shell.o
+ .bss           0x0000000000301670        0x0 ./user/vlibc.o
+ .bss           0x0000000000301670        0x0 nyan.o
+ COMMON         0x0000000000301670     0x8000 memory.o
+                0x0000000000301670                memory_map
+ *fill*         0x0000000000309670     0x2990 
+ COMMON         0x000000000030c000     0x4000 mmu.o
+                0x000000000030c000                page_table
+                0x0000000000310000                . = ALIGN (0x1000)
+                0x0000000000310000                __bss_end = .
+                0x0000000000310000                __end = .
 LOAD kernel_main.o
 LOAD atags.o
 LOAD boot.o
@@ -286,6 +289,7 @@ LOAD timer.o
 LOAD ./user/shell.o
 LOAD ./user/vlibc.o
 LOAD nyan.o
+LOAD Sample.o
 OUTPUT(kernel.elf elf32-littlearm)
 
 .comment        0x0000000000000000       0x1f

@@ -19,7 +19,7 @@ kernel.elf:	kernel_main.o \
 		console_io.o framebuffer.o framebuffer_console.o gpio.o led.o \
 		mailbox.o memory.o mmu.o printk.o \
 		serial.o string.o swi_handler.o syscalls.o timer.o \
-		./user/shell.o ./user/vlibc.o nyan.o \
+		./user/shell.o ./user/vlibc.o nyan.o Sample.o\
 		-Map kernel.map -o kernel.elf
 
 
