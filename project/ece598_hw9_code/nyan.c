@@ -21,7 +21,7 @@ void nyan_init(void) {
 	//set both channels to to 8bit 44100Hz Mono
 	pwm[PWM_RNG1] = 0x1B4;
 	pwm[PWM_RNG2] = 0x1B4;
-	pwm[PWM_CTL]  = PWM_USEF2 + PWM_PWEN2 + PWM_USEF1 + PWM_PWEN1 + PWM_CLRF1;
+	pwm[PWM_CTL]  = PWM_USEF2 | PWM_PWEN2 | PWM_USEF1 | PWM_PWEN1 | PWM_CLRF1;
 
 }
 void nyan_sing(void) {
@@ -34,7 +34,7 @@ void nyan_sing(void) {
 	//Check if at end of song
 	while(psong!=psong_end) {
 		//load byte into PWM FIF1
-		pwm[PWM_FIF1] = psong;
+		pwm[PWM_FIF1] = *psong;
 		while(pwm[PWM_STA] && PWM_FULL1);
 		printk("Buffer Full\n");
 		//move to next byte
