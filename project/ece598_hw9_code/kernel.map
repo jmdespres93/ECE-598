@@ -6,6 +6,7 @@ page_table          0x4000            mmu.o
 memory_map          0x8000            memory.o
 pwm                 0x4               nyan.o
 gpio                0x4               nyan.o
+clock               0x4               nyan.o
 
 Memory Configuration
 
@@ -18,7 +19,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x25d8
+.text           0x0000000000008000     0x2604
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
@@ -117,23 +118,23 @@ Linker script and memory map
                 0x000000000000a2fc                putchar
                 0x000000000000a330                getchar
                 0x000000000000a364                printf
- .text          0x000000000000a500       0xd8 nyan.o
+ .text          0x000000000000a500      0x104 nyan.o
                 0x000000000000a500                nyan_init
-                0x000000000000a560                nyan_sing
+                0x000000000000a58c                nyan_sing
 
-.glue_7         0x000000000000a5d8        0x0
+.glue_7         0x000000000000a604        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000000a5d8        0x0
+.glue_7t        0x000000000000a604        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000a5d8        0x0
+.vfp11_veneer   0x000000000000a604        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000000a5d8        0x0
+.v4_bx          0x000000000000a604        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000000a5d8        0x0
+.iplt           0x000000000000a604        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __text_end = .
@@ -241,7 +242,7 @@ Linker script and memory map
                 0x00000000002fd000                __data_end = .
                 0x00000000002fd000                __bss_start = .
 
-.bss            0x0000000000300000    0x10008
+.bss            0x0000000000300000    0x1000c
                 0x0000000000300000                bss = .
  *(.bss)
  .bss           0x0000000000300000        0x0 kernel_main.o
@@ -273,9 +274,10 @@ Linker script and memory map
  *fill*         0x0000000000309670     0x2990 
  COMMON         0x000000000030c000     0x4000 mmu.o
                 0x000000000030c000                page_table
- COMMON         0x0000000000310000        0x8 nyan.o
+ COMMON         0x0000000000310000        0xc nyan.o
                 0x0000000000310000                pwm
                 0x0000000000310004                gpio
+                0x0000000000310008                clock
                 0x0000000000311000                . = ALIGN (0x1000)
                 0x0000000000311000                __bss_end = .
                 0x0000000000311000                __end = .

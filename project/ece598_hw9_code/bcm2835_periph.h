@@ -289,8 +289,18 @@
 
 #define CM_PWMDIV     0x0A4 // Clock Manager PWM Clock Divisor
 
-// PWM / Pulse Width Modulator Interface
+
 #define PERIPHERAL_BASE 0x20000000 //Peripheral Base Address
+
+// Clock 
+#define CM_BASE   0x101000 // Clock Manager Base Address
+
+#define CM_ENAB           0x10 // Clock Control: Enable The Clock Generator
+
+#define CM_SRC_OSCILLATOR 0x01 // Clock Control: Clock Source = Oscillator
+
+// PWM / Pulse Width Modulator Interface
+#define CM_PASSWORD 0x5A000000 // Clock Control: Password "5A"
 
 #define PWM_BASE  0x20C000 // PWM Base Address
 
