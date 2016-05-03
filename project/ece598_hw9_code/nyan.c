@@ -44,7 +44,7 @@ void nyan_sing(void) {
 	while(psong!=psong_end) {
 		//load byte into PWM FIF1
 		pwm[PWM_FIF1>>2] = *psong;
-		while(!(pwm[PWM_STA>>2] && PWM_FULL1));
+		while(pwm[PWM_STA>>2] && PWM_FULL1);
 		printk("Buffer Full\n");
 		//move to next byte
 		psong++;
