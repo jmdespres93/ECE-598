@@ -18,7 +18,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x25d4
+.text           0x0000000000008000     0x25d8
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
@@ -117,23 +117,23 @@ Linker script and memory map
                 0x000000000000a2fc                putchar
                 0x000000000000a330                getchar
                 0x000000000000a364                printf
- .text          0x000000000000a500       0xd4 nyan.o
+ .text          0x000000000000a500       0xd8 nyan.o
                 0x000000000000a500                nyan_init
                 0x000000000000a560                nyan_sing
 
-.glue_7         0x000000000000a5d4        0x0
+.glue_7         0x000000000000a5d8        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000000a5d4        0x0
+.glue_7t        0x000000000000a5d8        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000a5d4        0x0
+.vfp11_veneer   0x000000000000a5d8        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000000a5d4        0x0
+.v4_bx          0x000000000000a5d8        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000000a5d4        0x0
+.iplt           0x000000000000a5d8        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __text_end = .
@@ -143,7 +143,7 @@ Linker script and memory map
  *(.rodata)
  .rodata        0x000000000000b000       0x20 mmu.o
 
-.rodata.str1.4  0x000000000000b020      0x9d4
+.rodata.str1.4  0x000000000000b020      0x9e4
  .rodata.str1.4
                 0x000000000000b020      0x1c1 kernel_main.o
                                         0x1c8 (size before relaxing)
@@ -196,9 +196,9 @@ Linker script and memory map
                 0x000000000000b940       0x98 ./user/shell.o
                                          0xa0 (size before relaxing)
  .rodata.str1.4
-                0x000000000000b9d8       0x1c nyan.o
+                0x000000000000b9d8       0x2c nyan.o
 
-.rel.dyn        0x000000000000b9f4        0x0
+.rel.dyn        0x000000000000ba04        0x0
  .rel.iplt      0x0000000000000000        0x0 kernel_main.o
                 0x000000000000c000                . = ALIGN (0x1000)
                 0x000000000000c000                __rodata_end = .
