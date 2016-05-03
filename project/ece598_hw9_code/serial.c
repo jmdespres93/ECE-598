@@ -3,7 +3,7 @@
 #include "bcm2835_periph.h"
 #include "mmio.h"
 #include "delay.h"
-
+#include "printk.h"
 
 void uart_init(void) {
 
