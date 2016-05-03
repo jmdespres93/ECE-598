@@ -73,7 +73,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 
 	/* Init memory subsystem */
 	memory_init(memory_total,memory_kernel);
-
+	printk("do i ever get here \n");
 	/* Setup hardware for performance */
 	enable_l1_icache();
 	enable_branch_predictor();
