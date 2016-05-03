@@ -3,6 +3,8 @@
 #include "bcm2835_periph.h"
 #include "nyan.h"
 #include "song.h"
+#include "printk.h"
+
 /** created from binary via objcopy */
 extern uint8_t Sample[]      asm("_binary_Sample_bin_start");
 extern uint8_t Sample_size[] asm("_binary_Sample_bin_size");
@@ -34,6 +36,7 @@ void nyan_sing(void) {
 		//load byte into PWM FIF1
 		pwm[PWM_FIF1] = *psong;
 		while(pwm[PWM_STA] && PWM_FULL1);
+		printk("Buffer Full\n");
 		//move to next byte
 		psong++;
 	}

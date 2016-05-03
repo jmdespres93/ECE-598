@@ -73,16 +73,23 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 
 	/* Init memory subsystem */
 	memory_init(memory_total,memory_kernel);
-	printk("do i ever get here \n");
+	printk("Memory Initialized \n");
 	/* Setup hardware for performance */
 	enable_l1_icache();
+	printk("Cache Initialized \n");
 	enable_branch_predictor();
-	enable_mmu(0,memory_total);
+	printk("Branch Predictor Initialized \n");
+	enable_mmu(0,memory_total);	
+	printk("MMU Initialized \n");
 	enable_l1_dcache();
+	printk("DCache Initialized \n");
+
 
 	//sing for me you sweet little poptart kitty
 	nyan_init();
+	printk("Nyan Initialized \n");
 	nyan_sing();
+	printk("Song Completed \n");
 
 	/* switch to userspace and enter our shell */
 
