@@ -19,7 +19,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x2600
+.text           0x0000000000008000     0x25f0
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
@@ -118,23 +118,23 @@ Linker script and memory map
                 0x000000000000a2fc                putchar
                 0x000000000000a330                getchar
                 0x000000000000a364                printf
- .text          0x000000000000a500      0x100 nyan.o
+ .text          0x000000000000a500       0xf0 nyan.o
                 0x000000000000a500                nyan_init
                 0x000000000000a58c                nyan_sing
 
-.glue_7         0x000000000000a600        0x0
+.glue_7         0x000000000000a5f0        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000000a600        0x0
+.glue_7t        0x000000000000a5f0        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000a600        0x0
+.vfp11_veneer   0x000000000000a5f0        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000000a600        0x0
+.v4_bx          0x000000000000a5f0        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000000a600        0x0
+.iplt           0x000000000000a5f0        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __text_end = .

@@ -36,10 +36,10 @@ void nyan_init(void) {
 void nyan_sing(void) {
 	//load PWM base
 	pwm  = (uint32_t *)(PWM_BASE+PERIPHERAL_BASE);
-	// uint8_t  * psong = song;
-	uint8_t * psong = Sample;
-	// uint8_t  * psong_end = &song[1539490];
-	uint8_t * psong_end = Sample_end;
+	uint8_t  * psong = song;
+	// uint8_t * psong = Sample;
+	uint8_t  * psong_end = &song[1539490];
+	// uint8_t * psong_end = Sample_end;
 	//Check if at end of song
 	printk("Beginning song\n");
 	while(psong!=psong_end) {
