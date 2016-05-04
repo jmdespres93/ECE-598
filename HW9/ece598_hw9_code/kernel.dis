@@ -88,7 +88,7 @@ Disassembly of section .text:
 
 000080d0 <kernel_main>:
     80d0:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
-    80d4:	e3a00004 	mov	r0, #4
+    80d4:	e3a00010 	mov	r0, #16
     80d8:	e24dd020 	sub	sp, sp, #32
     80dc:	e1a04002 	mov	r4, r2
     80e0:	e1a07003 	mov	r7, r3
@@ -152,7 +152,7 @@ Disassembly of section .text:
     81c8:	ef000000 	svc	0x00000000
     81cc:	e3a010aa 	mov	r1, #170	; 0xaa
     81d0:	e1a00008 	mov	r0, r8
-    81d4:	e3a02004 	mov	r2, #4
+    81d4:	e3a02010 	mov	r2, #16
     81d8:	eb0006df 	bl	9d5c <memset>
     81dc:	e28d0008 	add	r0, sp, #8
     81e0:	ef000000 	svc	0x00000000
