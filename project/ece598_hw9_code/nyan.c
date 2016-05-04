@@ -46,9 +46,9 @@ void nyan_sing(void) {
 		//load byte into PWM FIF1
 		pwm[PWM_FIF1>>2] = *psong;
 		while(pwm[PWM_STA>>2] & PWM_FULL1){
-			printk("%x\n", pwm[PWM_STA>>2]);
+			// printk("%x\n", pwm[PWM_STA>>2]);
 		}
-		printk("%d\n", *psong);
+		// printk("%d\n", *psong);
 		//move to next byte
 		psong++;
 	}
