@@ -30,7 +30,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	//being time of memset/end time of memset
 	int begin, end;
 
-	gimmeanaddress = memory_allocate(1<<8);
+	gimmeanaddress = memory_allocate(1<<2);
 
 	(void) r0;	/* Ignore boot method */
 
@@ -89,7 +89,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 // measure amount of time for memset of 16MB
 	uart_getc();
 	syscall1(SYSCALL_TIME,(long)&begin);
-	memset(gimmeanaddress, 0xAA, (1<<8));
+	memset(gimmeanaddress, 0xAA, (1<<2));
 	syscall1(SYSCALL_TIME,(long)&end);
 
 	printk("\n%d\n", end-begin);
