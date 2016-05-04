@@ -87,11 +87,12 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	// enable_l1_dcache();
 
 // measure amount of time for memset of 16MB
+	uart_getc();
 	syscall1(SYSCALL_TIME,(long)&begin);
 	memset(gimmeanaddress, 0xAA, (1<<24));
 	syscall1(SYSCALL_TIME,(long)&end);
 
-	printk("%d\n", end-begin);
+	printk("\n%d\n", end-begin);
 	/* switch to userspace and enter our shell */
 	printk("\nEntering userspace\n");
 
