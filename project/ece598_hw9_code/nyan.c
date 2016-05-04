@@ -55,3 +55,4 @@ void nyan_sing(void) {
 	printk("end song\n");
 }
 void nyan_dance(void);
+

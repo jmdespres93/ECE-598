@@ -205,7 +205,7 @@ Linker script and memory map
                 0x000000000000c000                __rodata_end = .
                 0x000000000000c000                __data_start = .
 
-.data           0x000000000000c000   0x2f0b64
+.data           0x000000000000c000   0x6053ec
  *(.data)
  .data          0x000000000000c000        0x4 kernel_main.o
                 0x000000000000c000                hardware_type
@@ -230,57 +230,57 @@ Linker script and memory map
  .data          0x000000000000d01c        0x0 timer.o
  .data          0x000000000000d01c        0x0 ./user/shell.o
  .data          0x000000000000d01c        0x0 ./user/vlibc.o
- .data          0x000000000000d01c   0x177da4 nyan.o
+ .data          0x000000000000d01c   0x48c62c nyan.o
                 0x000000000000d01c                song
- .data          0x0000000000184dc0   0x177da4 Sample.o
-                0x0000000000184dc0                _binary_Sample_bin_start
-                0x00000000002fcb64                _binary_Sample_bin_end
+ .data          0x0000000000499648   0x177da4 Sample.o
+                0x0000000000499648                _binary_Sample_bin_start
+                0x00000000006113ec                _binary_Sample_bin_end
 
-.igot.plt       0x00000000002fcb64        0x0
+.igot.plt       0x00000000006113ec        0x0
  .igot.plt      0x0000000000000000        0x0 kernel_main.o
-                0x00000000002fd000                . = ALIGN (0x1000)
-                0x00000000002fd000                __data_end = .
-                0x00000000002fd000                __bss_start = .
+                0x0000000000612000                . = ALIGN (0x1000)
+                0x0000000000612000                __data_end = .
+                0x0000000000612000                __bss_start = .
 
-.bss            0x0000000000300000    0x1000c
-                0x0000000000300000                bss = .
+.bss            0x0000000000614000    0x1000c
+                0x0000000000614000                bss = .
  *(.bss)
- .bss           0x0000000000300000        0x0 kernel_main.o
- .bss           0x0000000000300000        0x0 atags.o
- .bss           0x0000000000300000        0x0 boot.o
- .bss           0x0000000000300000        0x4 interrupts.o
- .bss           0x0000000000300004        0x0 console_io.o
- *fill*         0x0000000000300004        0xc 
- .bss           0x0000000000300010       0x60 framebuffer.o
- .bss           0x0000000000300070     0x15ec framebuffer_console.o
- *fill*         0x000000000030165c        0x4 
- .bss           0x0000000000301660        0x8 gpio.o
- .bss           0x0000000000301668        0x0 led.o
- .bss           0x0000000000301668        0x0 mailbox.o
- .bss           0x0000000000301668        0x4 memory.o
- .bss           0x000000000030166c        0x0 mmu.o
- .bss           0x000000000030166c        0x0 printk.o
- .bss           0x000000000030166c        0x0 serial.o
- .bss           0x000000000030166c        0x0 string.o
- .bss           0x000000000030166c        0x0 swi_handler.o
- .bss           0x000000000030166c        0x0 syscalls.o
- .bss           0x000000000030166c        0x4 timer.o
-                0x000000000030166c                tick_counter
- .bss           0x0000000000301670        0x0 ./user/shell.o
- .bss           0x0000000000301670        0x0 ./user/vlibc.o
- .bss           0x0000000000301670        0x0 nyan.o
- COMMON         0x0000000000301670     0x8000 memory.o
-                0x0000000000301670                memory_map
- *fill*         0x0000000000309670     0x2990 
- COMMON         0x000000000030c000     0x4000 mmu.o
-                0x000000000030c000                page_table
- COMMON         0x0000000000310000        0xc nyan.o
-                0x0000000000310000                pwm
-                0x0000000000310004                gpio
-                0x0000000000310008                clock
-                0x0000000000311000                . = ALIGN (0x1000)
-                0x0000000000311000                __bss_end = .
-                0x0000000000311000                __end = .
+ .bss           0x0000000000614000        0x0 kernel_main.o
+ .bss           0x0000000000614000        0x0 atags.o
+ .bss           0x0000000000614000        0x0 boot.o
+ .bss           0x0000000000614000        0x4 interrupts.o
+ .bss           0x0000000000614004        0x0 console_io.o
+ *fill*         0x0000000000614004        0xc 
+ .bss           0x0000000000614010       0x60 framebuffer.o
+ .bss           0x0000000000614070     0x15ec framebuffer_console.o
+ *fill*         0x000000000061565c        0x4 
+ .bss           0x0000000000615660        0x8 gpio.o
+ .bss           0x0000000000615668        0x0 led.o
+ .bss           0x0000000000615668        0x0 mailbox.o
+ .bss           0x0000000000615668        0x4 memory.o
+ .bss           0x000000000061566c        0x0 mmu.o
+ .bss           0x000000000061566c        0x0 printk.o
+ .bss           0x000000000061566c        0x0 serial.o
+ .bss           0x000000000061566c        0x0 string.o
+ .bss           0x000000000061566c        0x0 swi_handler.o
+ .bss           0x000000000061566c        0x0 syscalls.o
+ .bss           0x000000000061566c        0x4 timer.o
+                0x000000000061566c                tick_counter
+ .bss           0x0000000000615670        0x0 ./user/shell.o
+ .bss           0x0000000000615670        0x0 ./user/vlibc.o
+ .bss           0x0000000000615670        0x0 nyan.o
+ COMMON         0x0000000000615670     0x8000 memory.o
+                0x0000000000615670                memory_map
+ *fill*         0x000000000061d670     0x2990 
+ COMMON         0x0000000000620000     0x4000 mmu.o
+                0x0000000000620000                page_table
+ COMMON         0x0000000000624000        0xc nyan.o
+                0x0000000000624000                pwm
+                0x0000000000624004                gpio
+                0x0000000000624008                clock
+                0x0000000000625000                . = ALIGN (0x1000)
+                0x0000000000625000                __bss_end = .
+                0x0000000000625000                __end = .
 LOAD kernel_main.o
 LOAD atags.o
 LOAD boot.o
