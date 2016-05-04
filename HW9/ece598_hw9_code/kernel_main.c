@@ -90,9 +90,9 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	uart_getc();
 	syscall1(SYSCALL_TIME,(long)&begin);
 	memset(gimmeanaddress, 0xAA, (1<<4));
-	// syscall1(SYSCALL_TIME,(long)&end);
+	syscall1(SYSCALL_TIME,(long)&end);
 
-	printk("%d\n", begin);
+	printk("%d %d\n", begin, end);
 	/* switch to userspace and enter our shell */
 	printk("\nEntering userspace\n");
 
