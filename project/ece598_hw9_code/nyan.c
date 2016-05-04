@@ -23,7 +23,7 @@ void nyan_init(void) {
 	//Set clock
 	clock = (uint32_t *)(PERIPHERAL_BASE+CM_BASE);
 	clock[CM_PWMDIV>>2] = CM_PASSWORD + 0x2000;
-	clock[CM_PWMCTL] = CM_PASSWORD + CM_ENAB + CM_SRC_OSCILLATOR;
+	clock[CM_PWMCTL>>2] = CM_PASSWORD + CM_ENAB + CM_SRC_OSCILLATOR;
 
 	//load PWM base
 	pwm = (uint32_t *)(PWM_BASE+PERIPHERAL_BASE);
