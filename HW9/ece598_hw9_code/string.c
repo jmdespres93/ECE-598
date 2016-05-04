@@ -87,7 +87,7 @@ void *memset(void *s, int c, uint32_t n) {
 		if(!(i%10)) printk("%d\n", i);
 		b[i]=c;
 	}
-
+	printk("%d\n", i);
 	return 0;
 }
 
