@@ -1,0 +1,346 @@
+
+Allocating common symbols
+Common symbol       size              file
+
+page_table          0x4000            mmu.o
+memory_map          0x8000            memory.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+                0x0000000000008000                . = 0x8000
+                0x0000000000008000                __start = .
+                0x0000000000008000                __text_start = .
+
+.text           0x0000000000008000     0x2458
+ *(.text.boot)
+ .text.boot     0x0000000000008000       0xd0 boot.o
+                0x0000000000008000                _start
+ *(.text)
+ .text          0x00000000000080d0      0x1a8 kernel_main.o
+                0x00000000000080d0                kernel_main
+ .text          0x0000000000008278      0x4ec atags.o
+                0x000000000000838c                atags_dump
+                0x0000000000008574                atags_detect
+ .text          0x0000000000008764        0x0 boot.o
+ .text          0x0000000000008764      0x104 interrupts.o
+                0x0000000000008764                interrupt_handler
+                0x0000000000008804                undefined_handler
+                0x0000000000008818                prefetch_handler
+                0x000000000000882c                data_handler
+                0x0000000000008840                fiq_handler
+                0x0000000000008854                reset_error
+ .text          0x0000000000008868       0x70 console_io.o
+                0x0000000000008868                console_write
+                0x0000000000008888                console_read
+ .text          0x00000000000088d8      0x2e0 framebuffer.o
+                0x0000000000008934                framebuffer_ready
+                0x0000000000008944                framebuffer_init
+                0x0000000000008a3c                framebuffer_hline
+                0x0000000000008ab8                framebuffer_vline
+                0x0000000000008b28                framebuffer_clear_screen
+                0x0000000000008b74                framebuffer_putpixel
+                0x0000000000008bb0                framebuffer_gradient
+ .text          0x0000000000008bb8      0x414 framebuffer_console.o
+                0x0000000000008bb8                framebuffer_console_setfont
+                0x0000000000008bf4                framebuffer_console_clear
+                0x0000000000008c4c                framebuffer_console_home
+                0x0000000000008c64                framebuffer_console_init
+                0x0000000000008c84                framebuffer_console_push
+                0x0000000000008c9c                framebuffer_console_write
+                0x0000000000008f94                framebuffer_console_val
+                0x0000000000008fc4                framebuffer_console_putchar
+ .text          0x0000000000008fcc      0x3bc gpio.o
+                0x0000000000008fcc                gpio_request
+                0x0000000000009080                gpio_free
+                0x00000000000090ec                gpio_direction_input
+                0x000000000000915c                gpio_direction_output
+                0x00000000000091cc                gpio_to_irq
+                0x00000000000091d4                gpio_get_value
+                0x0000000000009234                gpio_set_value
+                0x00000000000092cc                gpio_set_falling
+                0x000000000000932c                gpio_clear_interrupt
+ .text          0x0000000000009388       0xa8 led.o
+                0x0000000000009388                led_init
+                0x00000000000093e4                led_on
+                0x000000000000940c                led_off
+ .text          0x0000000000009430      0x148 mailbox.o
+                0x0000000000009430                mailbox_write
+                0x00000000000094d8                mailbox_read
+ .text          0x0000000000009578      0x1bc memory.o
+                0x0000000000009578                memory_init
+                0x000000000000962c                memory_allocate
+ .text          0x0000000000009734      0x178 mmu.o
+                0x0000000000009734                enable_mmu
+                0x00000000000097bc                enable_l1_dcache
+                0x00000000000097cc                disable_l1_dcache
+                0x00000000000097d0                enable_l1_icache
+                0x00000000000097e0                disable_l1_icache
+                0x00000000000097f0                enable_branch_predictor
+                0x0000000000009800                disable_branch_predictor
+                0x0000000000009810                l1_cache_detect
+ .text          0x00000000000098ac      0x178 printk.o
+                0x00000000000098ac                printk
+ .text          0x0000000000009a24      0x188 serial.o
+                0x0000000000009a24                uart_init
+                0x0000000000009ac4                uart_putc
+                0x0000000000009ae8                uart_getc
+                0x0000000000009b10                uart_getc_noblock
+                0x0000000000009b40                uart_write
+ .text          0x0000000000009bac      0x390 string.o
+                0x0000000000009bac                strncmp
+                0x0000000000009c0c                memcmp
+                0x0000000000009c6c                memcpy
+                0x0000000000009c94                strncpy
+                0x0000000000009cec                strlen
+                0x0000000000009d1c                memset
+                0x0000000000009d40                memset32
+                0x0000000000009dcc                asm_memset
+                0x0000000000009e6c                test_memset
+ .text          0x0000000000009f3c       0x10 swi_handler.o
+                0x0000000000009f3c                swi_handler
+ .text          0x0000000000009f4c      0x128 syscalls.o
+                0x0000000000009f4c                swi_handler_c
+ .text          0x000000000000a074       0x58 timer.o
+                0x000000000000a074                timer_init
+                0x000000000000a0bc                ticks_since_boot
+ .text          0x000000000000a0cc      0x16c ./user/shell.o
+                0x000000000000a0cc                shell
+ .text          0x000000000000a238      0x220 ./user/vlibc.o
+                0x000000000000a238                write
+                0x000000000000a254                putchar
+                0x000000000000a288                getchar
+                0x000000000000a2bc                printf
+
+.glue_7         0x000000000000a458        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x000000000000a458        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x000000000000a458        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x000000000000a458        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x000000000000a458        0x0
+ .iplt          0x0000000000000000        0x0 kernel_main.o
+                0x000000000000b000                . = ALIGN (0x1000)
+                0x000000000000b000                __text_end = .
+                0x000000000000b000                __rodata_start = .
+
+.rodata         0x000000000000b000       0x20
+ *(.rodata)
+ .rodata        0x000000000000b000       0x20 mmu.o
+
+.rodata.str1.4  0x000000000000b020      0x898
+ .rodata.str1.4
+                0x000000000000b020       0xc9 kernel_main.o
+                                         0xd0 (size before relaxing)
+ *fill*         0x000000000000b0e9        0x3 
+ .rodata.str1.4
+                0x000000000000b0ec      0x1fd atags.o
+                                        0x204 (size before relaxing)
+ *fill*         0x000000000000b2e9        0x3 
+ .rodata.str1.4
+                0x000000000000b2ec       0x76 interrupts.o
+                                         0x78 (size before relaxing)
+ *fill*         0x000000000000b362        0x2 
+ .rodata.str1.4
+                0x000000000000b364       0xb5 framebuffer.o
+                                         0xb8 (size before relaxing)
+ *fill*         0x000000000000b419        0x3 
+ .rodata.str1.4
+                0x000000000000b41c       0x14 framebuffer_console.o
+ .rodata.str1.4
+                0x000000000000b430       0x7b gpio.o
+                                         0x7c (size before relaxing)
+ *fill*         0x000000000000b4ab        0x1 
+ .rodata.str1.4
+                0x000000000000b4ac       0x2a led.o
+                                         0x2c (size before relaxing)
+ *fill*         0x000000000000b4d6        0x2 
+ .rodata.str1.4
+                0x000000000000b4d8      0x11d mailbox.o
+                                        0x120 (size before relaxing)
+ *fill*         0x000000000000b5f5        0x3 
+ .rodata.str1.4
+                0x000000000000b5f8       0x92 memory.o
+                                         0x94 (size before relaxing)
+ *fill*         0x000000000000b68a        0x2 
+ .rodata.str1.4
+                0x000000000000b68c       0x95 mmu.o
+                                         0x98 (size before relaxing)
+ *fill*         0x000000000000b721        0x3 
+ .rodata.str1.4
+                0x000000000000b724       0x6d string.o
+                                         0x70 (size before relaxing)
+ *fill*         0x000000000000b791        0x3 
+ .rodata.str1.4
+                0x000000000000b794       0x8c syscalls.o
+ .rodata.str1.4
+                0x000000000000b820       0x98 ./user/shell.o
+                                         0xa0 (size before relaxing)
+
+.rel.dyn        0x000000000000b8b8        0x0
+ .rel.iplt      0x0000000000000000        0x0 kernel_main.o
+                0x000000000000c000                . = ALIGN (0x1000)
+                0x000000000000c000                __rodata_end = .
+                0x000000000000c000                __data_start = .
+
+.data           0x000000000000c000     0x101c
+ *(.data)
+ .data          0x000000000000c000        0x4 kernel_main.o
+                0x000000000000c000                hardware_type
+ .data          0x000000000000c004        0x0 atags.o
+ .data          0x000000000000c004        0x0 boot.o
+ .data          0x000000000000c004        0x4 interrupts.o
+                0x000000000000c004                blinking_enabled
+ .data          0x000000000000c008        0x0 console_io.o
+ .data          0x000000000000c008        0x0 framebuffer.o
+ .data          0x000000000000c008     0x100c framebuffer_console.o
+                0x000000000000c00c                default_font
+ .data          0x000000000000d014        0x0 gpio.o
+ .data          0x000000000000d014        0x8 led.o
+ .data          0x000000000000d01c        0x0 mailbox.o
+ .data          0x000000000000d01c        0x0 memory.o
+ .data          0x000000000000d01c        0x0 mmu.o
+ .data          0x000000000000d01c        0x0 printk.o
+ .data          0x000000000000d01c        0x0 serial.o
+ .data          0x000000000000d01c        0x0 string.o
+ .data          0x000000000000d01c        0x0 swi_handler.o
+ .data          0x000000000000d01c        0x0 syscalls.o
+ .data          0x000000000000d01c        0x0 timer.o
+ .data          0x000000000000d01c        0x0 ./user/shell.o
+ .data          0x000000000000d01c        0x0 ./user/vlibc.o
+
+.igot.plt       0x000000000000d01c        0x0
+ .igot.plt      0x0000000000000000        0x0 kernel_main.o
+                0x000000000000e000                . = ALIGN (0x1000)
+                0x000000000000e000                __data_end = .
+                0x000000000000e000                __bss_start = .
+
+.bss            0x0000000000010000    0x10000
+                0x0000000000010000                bss = .
+ *(.bss)
+ .bss           0x0000000000010000        0x0 kernel_main.o
+ .bss           0x0000000000010000        0x0 atags.o
+ .bss           0x0000000000010000        0x0 boot.o
+ .bss           0x0000000000010000        0x4 interrupts.o
+ .bss           0x0000000000010004        0x0 console_io.o
+ *fill*         0x0000000000010004        0xc 
+ .bss           0x0000000000010010       0x60 framebuffer.o
+ .bss           0x0000000000010070     0x15ec framebuffer_console.o
+ *fill*         0x000000000001165c        0x4 
+ .bss           0x0000000000011660        0x8 gpio.o
+ .bss           0x0000000000011668        0x0 led.o
+ .bss           0x0000000000011668        0x0 mailbox.o
+ .bss           0x0000000000011668        0x4 memory.o
+ .bss           0x000000000001166c        0x0 mmu.o
+ .bss           0x000000000001166c        0x0 printk.o
+ .bss           0x000000000001166c        0x0 serial.o
+ .bss           0x000000000001166c        0x0 string.o
+ .bss           0x000000000001166c        0x0 swi_handler.o
+ .bss           0x000000000001166c        0x0 syscalls.o
+ .bss           0x000000000001166c        0x4 timer.o
+                0x000000000001166c                tick_counter
+ .bss           0x0000000000011670        0x0 ./user/shell.o
+ .bss           0x0000000000011670        0x0 ./user/vlibc.o
+ COMMON         0x0000000000011670     0x8000 memory.o
+                0x0000000000011670                memory_map
+ *fill*         0x0000000000019670     0x2990 
+ COMMON         0x000000000001c000     0x4000 mmu.o
+                0x000000000001c000                page_table
+                0x0000000000020000                . = ALIGN (0x1000)
+                0x0000000000020000                __bss_end = .
+                0x0000000000020000                __end = .
+LOAD kernel_main.o
+LOAD atags.o
+LOAD boot.o
+LOAD interrupts.o
+LOAD console_io.o
+LOAD framebuffer.o
+LOAD framebuffer_console.o
+LOAD gpio.o
+LOAD led.o
+LOAD mailbox.o
+LOAD memory.o
+LOAD mmu.o
+LOAD printk.o
+LOAD serial.o
+LOAD string.o
+LOAD swi_handler.o
+LOAD syscalls.o
+LOAD timer.o
+LOAD ./user/shell.o
+LOAD ./user/vlibc.o
+OUTPUT(kernel.elf elf32-littlearm)
+
+.comment        0x0000000000000000       0x1f
+ .comment       0x0000000000000000       0x1f kernel_main.o
+                                         0x20 (size before relaxing)
+ .comment       0x0000000000000000       0x20 atags.o
+ .comment       0x0000000000000000       0x20 interrupts.o
+ .comment       0x0000000000000000       0x20 console_io.o
+ .comment       0x0000000000000000       0x20 framebuffer.o
+ .comment       0x0000000000000000       0x20 framebuffer_console.o
+ .comment       0x0000000000000000       0x20 gpio.o
+ .comment       0x0000000000000000       0x20 led.o
+ .comment       0x0000000000000000       0x20 mailbox.o
+ .comment       0x0000000000000000       0x20 memory.o
+ .comment       0x0000000000000000       0x20 mmu.o
+ .comment       0x0000000000000000       0x20 printk.o
+ .comment       0x0000000000000000       0x20 serial.o
+ .comment       0x0000000000000000       0x20 string.o
+ .comment       0x0000000000000000       0x20 syscalls.o
+ .comment       0x0000000000000000       0x20 timer.o
+ .comment       0x0000000000000000       0x20 ./user/shell.o
+ .comment       0x0000000000000000       0x20 ./user/vlibc.o
+
+.ARM.attributes
+                0x0000000000000000       0x36
+ .ARM.attributes
+                0x0000000000000000       0x38 kernel_main.o
+ .ARM.attributes
+                0x0000000000000038       0x38 atags.o
+ .ARM.attributes
+                0x0000000000000070       0x26 boot.o
+ .ARM.attributes
+                0x0000000000000096       0x38 interrupts.o
+ .ARM.attributes
+                0x00000000000000ce       0x38 console_io.o
+ .ARM.attributes
+                0x0000000000000106       0x38 framebuffer.o
+ .ARM.attributes
+                0x000000000000013e       0x38 framebuffer_console.o
+ .ARM.attributes
+                0x0000000000000176       0x38 gpio.o
+ .ARM.attributes
+                0x00000000000001ae       0x38 led.o
+ .ARM.attributes
+                0x00000000000001e6       0x38 mailbox.o
+ .ARM.attributes
+                0x000000000000021e       0x38 memory.o
+ .ARM.attributes
+                0x0000000000000256       0x38 mmu.o
+ .ARM.attributes
+                0x000000000000028e       0x38 printk.o
+ .ARM.attributes
+                0x00000000000002c6       0x38 serial.o
+ .ARM.attributes
+                0x00000000000002fe       0x38 string.o
+ .ARM.attributes
+                0x0000000000000336       0x26 swi_handler.o
+ .ARM.attributes
+                0x000000000000035c       0x38 syscalls.o
+ .ARM.attributes
+                0x0000000000000394       0x38 timer.o
+ .ARM.attributes
+                0x00000000000003cc       0x38 ./user/shell.o
+ .ARM.attributes
+                0x0000000000000404       0x38 ./user/vlibc.o
