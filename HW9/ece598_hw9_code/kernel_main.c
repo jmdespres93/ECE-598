@@ -26,11 +26,11 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	unsigned int memory_total;
 	int framebuffer_width=1024,framebuffer_height=768;
 	//first address of 16MB memset
-	char * gimmeanaddress;
+	char gimmeanaddress[1<<4];
 	//being time of memset/end time of memset
 	int begin, end = 0;
 
-	gimmeanaddress = memory_allocate(1<<4);
+	// gimmeanaddress = memory_allocate(1<<4);
 
 	(void) r0;	/* Ignore boot method */
 
