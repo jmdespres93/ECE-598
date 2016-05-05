@@ -16,119 +16,119 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x2508
+.text           0x0000000000008000     0x2538
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
  *(.text)
- .text          0x00000000000080d0      0x1e8 kernel_main.o
+ .text          0x00000000000080d0      0x218 kernel_main.o
                 0x00000000000080d0                kernel_main
- .text          0x00000000000082b8      0x4ec atags.o
-                0x00000000000083cc                atags_dump
-                0x00000000000085b4                atags_detect
- .text          0x00000000000087a4        0x0 boot.o
- .text          0x00000000000087a4      0x104 interrupts.o
-                0x00000000000087a4                interrupt_handler
-                0x0000000000008844                undefined_handler
-                0x0000000000008858                prefetch_handler
-                0x000000000000886c                data_handler
-                0x0000000000008880                fiq_handler
-                0x0000000000008894                reset_error
- .text          0x00000000000088a8       0x70 console_io.o
-                0x00000000000088a8                console_write
-                0x00000000000088c8                console_read
- .text          0x0000000000008918      0x2e0 framebuffer.o
-                0x0000000000008974                framebuffer_ready
-                0x0000000000008984                framebuffer_init
-                0x0000000000008a7c                framebuffer_hline
-                0x0000000000008af8                framebuffer_vline
-                0x0000000000008b68                framebuffer_clear_screen
-                0x0000000000008bb4                framebuffer_putpixel
-                0x0000000000008bf0                framebuffer_gradient
- .text          0x0000000000008bf8      0x414 framebuffer_console.o
-                0x0000000000008bf8                framebuffer_console_setfont
-                0x0000000000008c34                framebuffer_console_clear
-                0x0000000000008c8c                framebuffer_console_home
-                0x0000000000008ca4                framebuffer_console_init
-                0x0000000000008cc4                framebuffer_console_push
-                0x0000000000008cdc                framebuffer_console_write
-                0x0000000000008fd4                framebuffer_console_val
-                0x0000000000009004                framebuffer_console_putchar
- .text          0x000000000000900c      0x3bc gpio.o
-                0x000000000000900c                gpio_request
-                0x00000000000090c0                gpio_free
-                0x000000000000912c                gpio_direction_input
-                0x000000000000919c                gpio_direction_output
-                0x000000000000920c                gpio_to_irq
-                0x0000000000009214                gpio_get_value
-                0x0000000000009274                gpio_set_value
-                0x000000000000930c                gpio_set_falling
-                0x000000000000936c                gpio_clear_interrupt
- .text          0x00000000000093c8       0xa8 led.o
-                0x00000000000093c8                led_init
-                0x0000000000009424                led_on
-                0x000000000000944c                led_off
- .text          0x0000000000009470      0x148 mailbox.o
-                0x0000000000009470                mailbox_write
-                0x0000000000009518                mailbox_read
- .text          0x00000000000095b8      0x1bc memory.o
-                0x00000000000095b8                memory_init
-                0x000000000000966c                memory_allocate
- .text          0x0000000000009774      0x178 mmu.o
-                0x0000000000009774                enable_mmu
-                0x00000000000097fc                enable_l1_dcache
-                0x000000000000980c                disable_l1_dcache
-                0x0000000000009810                enable_l1_icache
-                0x0000000000009820                disable_l1_icache
-                0x0000000000009830                enable_branch_predictor
-                0x0000000000009840                disable_branch_predictor
-                0x0000000000009850                l1_cache_detect
- .text          0x00000000000098ec      0x178 printk.o
-                0x00000000000098ec                printk
- .text          0x0000000000009a64      0x188 serial.o
-                0x0000000000009a64                uart_init
-                0x0000000000009b04                uart_putc
-                0x0000000000009b28                uart_getc
-                0x0000000000009b50                uart_getc_noblock
-                0x0000000000009b80                uart_write
- .text          0x0000000000009bec      0x400 string.o
-                0x0000000000009bec                strncmp
-                0x0000000000009c4c                memcmp
-                0x0000000000009cac                memcpy
-                0x0000000000009cd4                strncpy
-                0x0000000000009d2c                strlen
-                0x0000000000009d5c                memset
-                0x0000000000009df0                memset32
-                0x0000000000009e7c                asm_memset
-                0x0000000000009f1c                test_memset
- .text          0x0000000000009fec       0x10 swi_handler.o
-                0x0000000000009fec                swi_handler
- .text          0x0000000000009ffc      0x128 syscalls.o
-                0x0000000000009ffc                swi_handler_c
- .text          0x000000000000a124       0x58 timer.o
-                0x000000000000a124                timer_init
-                0x000000000000a16c                ticks_since_boot
- .text          0x000000000000a17c      0x16c ./user/shell.o
-                0x000000000000a17c                shell
- .text          0x000000000000a2e8      0x220 ./user/vlibc.o
-                0x000000000000a2e8                write
-                0x000000000000a304                putchar
-                0x000000000000a338                getchar
-                0x000000000000a36c                printf
+ .text          0x00000000000082e8      0x4ec atags.o
+                0x00000000000083fc                atags_dump
+                0x00000000000085e4                atags_detect
+ .text          0x00000000000087d4        0x0 boot.o
+ .text          0x00000000000087d4      0x104 interrupts.o
+                0x00000000000087d4                interrupt_handler
+                0x0000000000008874                undefined_handler
+                0x0000000000008888                prefetch_handler
+                0x000000000000889c                data_handler
+                0x00000000000088b0                fiq_handler
+                0x00000000000088c4                reset_error
+ .text          0x00000000000088d8       0x70 console_io.o
+                0x00000000000088d8                console_write
+                0x00000000000088f8                console_read
+ .text          0x0000000000008948      0x2e0 framebuffer.o
+                0x00000000000089a4                framebuffer_ready
+                0x00000000000089b4                framebuffer_init
+                0x0000000000008aac                framebuffer_hline
+                0x0000000000008b28                framebuffer_vline
+                0x0000000000008b98                framebuffer_clear_screen
+                0x0000000000008be4                framebuffer_putpixel
+                0x0000000000008c20                framebuffer_gradient
+ .text          0x0000000000008c28      0x414 framebuffer_console.o
+                0x0000000000008c28                framebuffer_console_setfont
+                0x0000000000008c64                framebuffer_console_clear
+                0x0000000000008cbc                framebuffer_console_home
+                0x0000000000008cd4                framebuffer_console_init
+                0x0000000000008cf4                framebuffer_console_push
+                0x0000000000008d0c                framebuffer_console_write
+                0x0000000000009004                framebuffer_console_val
+                0x0000000000009034                framebuffer_console_putchar
+ .text          0x000000000000903c      0x3bc gpio.o
+                0x000000000000903c                gpio_request
+                0x00000000000090f0                gpio_free
+                0x000000000000915c                gpio_direction_input
+                0x00000000000091cc                gpio_direction_output
+                0x000000000000923c                gpio_to_irq
+                0x0000000000009244                gpio_get_value
+                0x00000000000092a4                gpio_set_value
+                0x000000000000933c                gpio_set_falling
+                0x000000000000939c                gpio_clear_interrupt
+ .text          0x00000000000093f8       0xa8 led.o
+                0x00000000000093f8                led_init
+                0x0000000000009454                led_on
+                0x000000000000947c                led_off
+ .text          0x00000000000094a0      0x148 mailbox.o
+                0x00000000000094a0                mailbox_write
+                0x0000000000009548                mailbox_read
+ .text          0x00000000000095e8      0x1bc memory.o
+                0x00000000000095e8                memory_init
+                0x000000000000969c                memory_allocate
+ .text          0x00000000000097a4      0x178 mmu.o
+                0x00000000000097a4                enable_mmu
+                0x000000000000982c                enable_l1_dcache
+                0x000000000000983c                disable_l1_dcache
+                0x0000000000009840                enable_l1_icache
+                0x0000000000009850                disable_l1_icache
+                0x0000000000009860                enable_branch_predictor
+                0x0000000000009870                disable_branch_predictor
+                0x0000000000009880                l1_cache_detect
+ .text          0x000000000000991c      0x178 printk.o
+                0x000000000000991c                printk
+ .text          0x0000000000009a94      0x188 serial.o
+                0x0000000000009a94                uart_init
+                0x0000000000009b34                uart_putc
+                0x0000000000009b58                uart_getc
+                0x0000000000009b80                uart_getc_noblock
+                0x0000000000009bb0                uart_write
+ .text          0x0000000000009c1c      0x400 string.o
+                0x0000000000009c1c                strncmp
+                0x0000000000009c7c                memcmp
+                0x0000000000009cdc                memcpy
+                0x0000000000009d04                strncpy
+                0x0000000000009d5c                strlen
+                0x0000000000009d8c                memset
+                0x0000000000009e20                memset32
+                0x0000000000009eac                asm_memset
+                0x0000000000009f4c                test_memset
+ .text          0x000000000000a01c       0x10 swi_handler.o
+                0x000000000000a01c                swi_handler
+ .text          0x000000000000a02c      0x128 syscalls.o
+                0x000000000000a02c                swi_handler_c
+ .text          0x000000000000a154       0x58 timer.o
+                0x000000000000a154                timer_init
+                0x000000000000a19c                ticks_since_boot
+ .text          0x000000000000a1ac      0x16c ./user/shell.o
+                0x000000000000a1ac                shell
+ .text          0x000000000000a318      0x220 ./user/vlibc.o
+                0x000000000000a318                write
+                0x000000000000a334                putchar
+                0x000000000000a368                getchar
+                0x000000000000a39c                printf
 
-.glue_7         0x000000000000a508        0x0
+.glue_7         0x000000000000a538        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000000a508        0x0
+.glue_7t        0x000000000000a538        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000a508        0x0
+.vfp11_veneer   0x000000000000a538        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000000a508        0x0
+.v4_bx          0x000000000000a538        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000000a508        0x0
+.iplt           0x000000000000a538        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __text_end = .

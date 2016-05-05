@@ -26,7 +26,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	unsigned int memory_total;
 	int framebuffer_width=1024,framebuffer_height=768;
 	//first address of 16MB memset
-	char gimmeanaddress[1<<4];
+	char gimmeanaddress[1<<24];
 	//being time of memset/end time of memset
 	int begin, end = 0;
 
@@ -88,7 +88,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 
 // measure amount of time for memset of 16MB
 	syscall1(SYSCALL_TIME,(long)&begin);
-	memset(gimmeanaddress, 0xAA, (1<<4));
+	memset(gimmeanaddress, 0xAA, (1<<24));
 	syscall1(SYSCALL_TIME,(long)&end);
 
 	printk("%d %d\n", begin, end);
