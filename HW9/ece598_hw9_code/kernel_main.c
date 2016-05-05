@@ -88,8 +88,8 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 
 // measure amount of time for memset of 16MB
 	syscall1(SYSCALL_TIME,(long)&begin);
-	// memset(gimmeanaddress, 0xAA, (1<<4));
-	// syscall1(SYSCALL_TIME,(long)&end);
+	memset(gimmeanaddress, 0xAA, (1<<4));
+	syscall1(SYSCALL_TIME,(long)&end);
 
 	printk("%d %d\n", begin, end);
 	/* switch to userspace and enter our shell */
