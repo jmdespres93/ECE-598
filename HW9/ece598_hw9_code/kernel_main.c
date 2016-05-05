@@ -82,7 +82,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	enable_l1_icache();
 	enable_branch_predictor();
 	enable_mmu(0,memory_total);
-	// enable_l1_dcache();
+	enable_l1_dcache();
 	gimmeanaddress = memory_allocate(1<<28);
 
 	printk("address: 0x%x\n", gimmeanaddress);
