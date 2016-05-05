@@ -26,11 +26,10 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	unsigned int memory_total;
 	int framebuffer_width=1024,framebuffer_height=768;
 	//first address of 16MB memset
-	char gimmeanaddress[1<<24];
+	// char gimmeanaddress[1<<24];
+	char * gimmeanaddress;
 	//being time of memset/end time of memset
 	int begin, end = 0;
-
-	// gimmeanaddress = memory_allocate(1<<4);
 
 	(void) r0;	/* Ignore boot method */
 
@@ -52,7 +51,6 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 
 	printk("\nWaiting for serial port to be ready (press any key)\n");
 	uart_getc();
-	printk("address: 0x%x\n", gimmeanaddress);
 	/* Print hardware version */
 	printk("Hardware version: %x ",r1);
 	if (r1==0xc42) printk("(Raspberry Pi)");
@@ -85,6 +83,9 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	// enable_branch_predictor();
 	enable_mmu(0,memory_total);
 	// enable_l1_dcache();
+	gimmeanaddress = memory_allocate(1<<24);
+
+	printk("address: 0x%x\n", gimmeanaddress);
 
 // measure amount of time for memset of 16MB
 	syscall1(SYSCALL_TIME,(long)&begin);
