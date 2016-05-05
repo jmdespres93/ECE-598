@@ -145,7 +145,7 @@ Disassembly of section .text:
     81ac:	e1a01004 	mov	r1, r4
     81b0:	e3a00000 	mov	r0, #0
     81b4:	eb000571 	bl	9780 <enable_mmu>
-    81b8:	e3a00401 	mov	r0, #16777216	; 0x1000000
+    81b8:	e3a00201 	mov	r0, #268435456	; 0x10000000
     81bc:	eb00052d 	bl	9678 <memory_allocate>
     81c0:	e1a01000 	mov	r1, r0
     81c4:	e1a04000 	mov	r4, r0
@@ -156,7 +156,7 @@ Disassembly of section .text:
     81d8:	ef000000 	svc	0x00000000
     81dc:	e3a010aa 	mov	r1, #170	; 0xaa
     81e0:	e1a00004 	mov	r0, r4
-    81e4:	e3a02401 	mov	r2, #16777216	; 0x1000000
+    81e4:	e3a02201 	mov	r2, #268435456	; 0x10000000
     81e8:	eb0006de 	bl	9d68 <memset>
     81ec:	e28d0008 	add	r0, sp, #8
     81f0:	ef000000 	svc	0x00000000

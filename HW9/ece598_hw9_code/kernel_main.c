@@ -83,13 +83,13 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	// enable_branch_predictor();
 	enable_mmu(0,memory_total);
 	// enable_l1_dcache();
-	gimmeanaddress = memory_allocate(1<<24);
+	gimmeanaddress = memory_allocate(1<<28);
 
 	printk("address: 0x%x\n", gimmeanaddress);
 
 // measure amount of time for memset of 16MB
 	syscall1(SYSCALL_TIME,(long)&begin);
-	memset(gimmeanaddress, 0xAA, (1<<24));
+	memset(gimmeanaddress, 0xAA, (1<<28));
 	syscall1(SYSCALL_TIME,(long)&end);
 
 	printk("%d %d\n", begin, end);
