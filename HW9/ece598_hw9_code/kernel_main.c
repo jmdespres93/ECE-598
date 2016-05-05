@@ -91,7 +91,7 @@ void kernel_main(uint32_t r0, uint32_t r1, uint32_t *atags,
 	memset(gimmeanaddress, 0xAA, (1<<24));
 	syscall1(SYSCALL_TIME,(long)&end);
 
-	printk("%d %d\n", begin, end);
+	printk("%d %d %d\n", begin, end, (begin-end)/64);
 	/* switch to userspace and enter our shell */
 	printk("\nEntering userspace\n");
 

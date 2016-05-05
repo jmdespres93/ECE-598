@@ -82,12 +82,9 @@ void *memset(void *s, int c, uint32_t n) {
 	char *b;
 
 	b=(char *)s;
-	printk("n: %d\n", n);
-	for(i=0;i<n;i++) {
-		if(!(i%10)) printk("%d\n", i);
-		b[i]=c;
-	}
-	printk("%d\n", i);
+
+	for(i=0;i<n;i++) b[i]=c;
+		
 	return 0;
 }
 
