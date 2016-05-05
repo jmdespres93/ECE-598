@@ -16,7 +16,7 @@ Linker script and memory map
                 0x0000000000008000                __start = .
                 0x0000000000008000                __text_start = .
 
-.text           0x0000000000008000     0x24f4
+.text           0x0000000000008000     0x24a4
  *(.text.boot)
  .text.boot     0x0000000000008000       0xd0 boot.o
                 0x0000000000008000                _start
@@ -91,44 +91,44 @@ Linker script and memory map
                 0x0000000000009b34                uart_getc
                 0x0000000000009b5c                uart_getc_noblock
                 0x0000000000009b8c                uart_write
- .text          0x0000000000009bf8      0x3e0 string.o
+ .text          0x0000000000009bf8      0x390 string.o
                 0x0000000000009bf8                strncmp
                 0x0000000000009c58                memcmp
                 0x0000000000009cb8                memcpy
                 0x0000000000009ce0                strncpy
                 0x0000000000009d38                strlen
                 0x0000000000009d68                memset
-                0x0000000000009ddc                memset32
-                0x0000000000009e68                asm_memset
-                0x0000000000009f08                test_memset
- .text          0x0000000000009fd8       0x10 swi_handler.o
-                0x0000000000009fd8                swi_handler
- .text          0x0000000000009fe8      0x128 syscalls.o
-                0x0000000000009fe8                swi_handler_c
- .text          0x000000000000a110       0x58 timer.o
-                0x000000000000a110                timer_init
-                0x000000000000a158                ticks_since_boot
- .text          0x000000000000a168      0x16c ./user/shell.o
-                0x000000000000a168                shell
- .text          0x000000000000a2d4      0x220 ./user/vlibc.o
-                0x000000000000a2d4                write
-                0x000000000000a2f0                putchar
-                0x000000000000a324                getchar
-                0x000000000000a358                printf
+                0x0000000000009d8c                memset32
+                0x0000000000009e18                asm_memset
+                0x0000000000009eb8                test_memset
+ .text          0x0000000000009f88       0x10 swi_handler.o
+                0x0000000000009f88                swi_handler
+ .text          0x0000000000009f98      0x128 syscalls.o
+                0x0000000000009f98                swi_handler_c
+ .text          0x000000000000a0c0       0x58 timer.o
+                0x000000000000a0c0                timer_init
+                0x000000000000a108                ticks_since_boot
+ .text          0x000000000000a118      0x16c ./user/shell.o
+                0x000000000000a118                shell
+ .text          0x000000000000a284      0x220 ./user/vlibc.o
+                0x000000000000a284                write
+                0x000000000000a2a0                putchar
+                0x000000000000a2d4                getchar
+                0x000000000000a308                printf
 
-.glue_7         0x000000000000a4f4        0x0
+.glue_7         0x000000000000a4a4        0x0
  .glue_7        0x0000000000000000        0x0 linker stubs
 
-.glue_7t        0x000000000000a4f4        0x0
+.glue_7t        0x000000000000a4a4        0x0
  .glue_7t       0x0000000000000000        0x0 linker stubs
 
-.vfp11_veneer   0x000000000000a4f4        0x0
+.vfp11_veneer   0x000000000000a4a4        0x0
  .vfp11_veneer  0x0000000000000000        0x0 linker stubs
 
-.v4_bx          0x000000000000a4f4        0x0
+.v4_bx          0x000000000000a4a4        0x0
  .v4_bx         0x0000000000000000        0x0 linker stubs
 
-.iplt           0x000000000000a4f4        0x0
+.iplt           0x000000000000a4a4        0x0
  .iplt          0x0000000000000000        0x0 kernel_main.o
                 0x000000000000b000                . = ALIGN (0x1000)
                 0x000000000000b000                __text_end = .
@@ -179,7 +179,7 @@ Linker script and memory map
  *fill*         0x000000000000b739        0x3 
  .rodata.str1.4
                 0x000000000000b73c       0x6d string.o
-                                         0x74 (size before relaxing)
+                                         0x70 (size before relaxing)
  *fill*         0x000000000000b7a9        0x3 
  .rodata.str1.4
                 0x000000000000b7ac       0x8c syscalls.o
